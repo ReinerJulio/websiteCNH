@@ -15,6 +15,10 @@ Selama sebuah foto belum ada, website menampilkan **tekstur kayu sementara**, ja
 
 ```
 foto/
+├── logo/
+│   ├── logo.png            ← emblem logo, PNG latar transparan (header, footer, loader)
+│   └── favicon.png         ← ikon tab browser (persegi)
+│
 ├── beranda/
 │   ├── hero.jpg            ← foto besar paling atas (landscape, ≥1920 px)
 │   ├── tentang.jpg         ← bagian "Tentang Kami" (portrait 4:5)

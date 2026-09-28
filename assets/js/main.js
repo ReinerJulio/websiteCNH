@@ -18,7 +18,7 @@ const CEK = /[?&]cekfoto\b/.test(location.search);
 /* =====================================================================
    FOTO — cari file otomatis (.jpg/.jpeg/.png/.webp) dari nama dasar
    ===================================================================== */
-const EXT = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+const EXT = ['png', 'jpg', 'jpeg', 'webp', 'svg', 'PNG', 'JPG', 'JPEG', 'WEBP', 'SVG'];
 const cache = new Map();
 
 function cariFoto(path) {
@@ -87,6 +87,15 @@ async function isiGaleri(dir) {
 /* =====================================================================
    ISI KONTEN DARI PENGATURAN
    ===================================================================== */
+// Logo: emblem (foto/logo/logo.png) + tulisan CENTRAL NIAGA / HARDWARE
+const huruf = t => [...t].map(c => `<span>${c}</span>`).join('');
+$$('.logo').forEach(a => a.innerHTML =
+  `<span class="logo-m" data-logo></span><span class="logo-t" aria-hidden="true"><b>CENTRAL NIAGA</b><small>${huruf('HARDWARE')}</small></span>`);
+cariFoto(CFG.foto.logo).then(url => $$('[data-logo]').forEach(m => {
+  m.classList.toggle('img', !!url);
+  m.innerHTML = url ? `<img src="${url}" alt="">` : '<i>CN</i>'; // CN = cadangan jika file logo tidak ada
+}));
+
 const K = CFG.kontak;
 $$('.k-wa').forEach(e => e.textContent = K.waTampil);
 $$('.k-ig').forEach(e => e.textContent = (e.closest('footer') ? '' : '@') + K.instagram);

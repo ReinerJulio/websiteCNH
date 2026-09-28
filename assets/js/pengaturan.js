@@ -34,6 +34,7 @@ const PENGATURAN = {
 
   /* ---------- FOTO HALAMAN BERANDA ---------- */
   foto: {
+    logo: 'foto/logo/logo',               // logo/emblem (PNG transparan) — tampil di header, footer & loader
     hero: 'foto/beranda/hero',            // foto besar paling atas (landscape, min. 1920px)
     tentang: 'foto/beranda/tentang',      // foto bagian "Tentang Kami" (portrait 4:5)
     konsultasi: 'foto/beranda/konsultasi' // latar bagian "Punya proyek?" (landscape)
