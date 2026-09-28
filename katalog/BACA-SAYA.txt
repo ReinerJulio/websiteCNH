@@ -1,0 +1,2 @@
+Taruh file katalog di sini dengan nama: katalog.pdf
+Tombol "Download Katalog" di halaman produk akan membuka file ini.

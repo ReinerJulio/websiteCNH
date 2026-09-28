@@ -1,0 +1,7 @@
+FOTO PORTOFOLIO
+===============
+Beri nama berurutan: 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg
+Ukuran ideal: portrait, mis. 1200 x 1500 px.
+
+Judul & kategori tiap foto diatur di assets/js/pengaturan.js (bagian PORTOFOLIO).
+Ingin menambah foto ke-7 dst? Tambah satu baris di bagian PORTOFOLIO tersebut.

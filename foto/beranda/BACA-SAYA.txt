@@ -1,0 +1,9 @@
+FOTO HALAMAN BERANDA
+====================
+Taruh foto di folder ini dengan nama berikut (ekstensi bebas: .jpg / .png / .webp):
+
+  hero.jpg        -> Foto besar paling atas. Landscape, minimal 1920 x 1080 px.
+  tentang.jpg     -> Foto bagian "Tentang Kami". Portrait (rasio 4:5), mis. 1200 x 1500 px.
+  konsultasi.jpg  -> Latar bagian "Punya proyek?". Landscape, minimal 1920 px.
+
+Jika foto belum ada, website otomatis menampilkan tekstur kayu sementara.
