@@ -24,7 +24,7 @@ const PENGATURAN = {
     wa: '6287852328888',                 // nomor WA format internasional, tanpa + dan spasi
     waTampil: '0878 5232 8888',          // nomor yang ditampilkan di website
     instagram: 'centralniagahardware_',  // tanpa @
-    alamat: 'Alamat lengkap toko (isi di sini)',
+    alamat: 'Ruko Central Niaga Pandaan Blok C3-5, Jl. Raya Kasri No.321, Petung Sari, Petungasri, Kec. Pandaan, Pasuruan, Jawa Timur',
     jam: 'Senin – Minggu, 07.00 – 18.00',
     maps: 'https://share.google/HbRGai5cvOndSn72E'
   },
