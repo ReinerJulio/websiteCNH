@@ -163,8 +163,8 @@ function renderProduk(id) {
 
   if (p.tipe) pasangTipe(p, v);
   else {
-    const setWA = n => $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama} motif ${n}.`);
-    setWA(m0.nama);
+    const setWA = n => $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama}${p.merek ? ' ' + p.merek : ''} motif ${n}.`);
+    setWA(labelMotif(m0));
 
     const bf = $('#big-f');
     $$('.sw button', v).forEach(b => b.addEventListener('click', () => {
@@ -175,18 +175,18 @@ function renderProduk(id) {
       setTimeout(() => {
         bf.className = `foto tex ${m.tekstur} swap`;
         bf.dataset.foto = m.foto;
-        bf.dataset.alt = `${p.nama} ${m.nama}`;
+        bf.dataset.alt = `${p.nama} ${labelMotif(m)}`;
         $('img', bf)?.remove(); $('.fcek', bf)?.remove();
         pasangFoto(bf).finally(() => requestAnimationFrame(() => bf.classList.remove('swap')));
       }, 380);
-      $('#m-n').textContent = m.nama; $('#big-tag').textContent = m.nama;
-      setWA(m.nama);
+      $('#m-n').textContent = m.nama; $('#big-tag').textContent = labelMotif(m); if ($('#m-k')) $('#m-k').textContent = m.kode || '-';
+      setWA(labelMotif(m));
     }));
 
     // Klik foto besar → lightbox semua motif yang sudah ada fotonya
     $('#big').addEventListener('click', async () => {
       const list = [];
-      for (const m of p.motif) { const u = await cariFoto(m.foto); if (u) list.push({ src: u, cap: `${p.nama} — ${m.nama}` }); }
+      for (const m of p.motif) { const u = await cariFoto(m.foto); if (u) list.push({ src: u, cap: `${p.nama}${p.merek ? ' ' + p.merek : ''} — ${labelMotif(m)}` }); }
       if (!list.length) return;
       const cur = bf.dataset.src;
       lightbox(list, Math.max(0, list.findIndex(x => x.src === cur)));
@@ -242,18 +242,20 @@ function renderProduk(id) {
   });
 }
 
+const labelMotif = m => (m.kode ? m.kode + ' · ' : '') + m.nama;
+
 function atasMotif(p, m0) {
   return `    <div class="pd">
       <div class="pd-media rv">
-        <div class="big" id="big" data-cursor="Perbesar"><div class="foto tex ${m0.tekstur}" id="big-f" data-foto="${esc(m0.foto)}" data-alt="${esc(p.nama + ' ' + m0.nama)}"></div><span class="big-tag" id="big-tag">${esc(m0.nama)}</span></div>
+        <div class="big" id="big" data-cursor="Perbesar"><div class="foto tex ${m0.tekstur}" id="big-f" data-foto="${esc(m0.foto)}" data-alt="${esc(p.nama + ' ' + m0.nama)}"></div><span class="big-tag" id="big-tag">${esc(labelMotif(m0))}</span></div>
       </div>
       <div>
-        <div class="eb">${esc(p.nama)}</div>
+        <div class="eb">${esc(p.nama)}${p.merek ? ' · ' + esc(p.merek) : ''}</div>
         <h1 data-split>${esc(p.tagline)}</h1>
         <p class="lead rv">${esc(p.deskripsi)}</p>
-        <table class="spec rv">${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
+        <table class="spec rv">${p.merek ? `<tr><td>Merek</td><td>${esc(p.merek)}</td></tr>` : ''}${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}${m0.kode ? `<tr><td>Kode</td><td id="m-k">${esc(m0.kode)}</td></tr>` : ''}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
         <div class="rv"><div class="sw-l">Pilihan Motif &amp; Warna</div>
-        <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}</button>`).join('')}</div></div>
+        <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}${m.kode ? `<small class="sw-k">${esc(m.kode)}</small>` : ''}</button>`).join('')}</div></div>
         <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
       </div>
     </div>`;

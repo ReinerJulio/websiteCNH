@@ -31,7 +31,7 @@ foto/
 │   │   └── galeri/         ← 1.jpg, 2.jpg, 3.jpg, ... (hasil pemasangan)
 │   ├── wall-board/
 │   │   ├── sampul.jpg
-│   │   ├── motif/          ← natural.jpg, white.jpg, grey.jpg
+│   │   ├── champion/       ← motif Champion (bagian atas halaman): mb01.jpg ... mb10.jpg
 │   │   ├── marble-series/  ← 23 motif Mevvah: atlantic.jpg, new-york.jpg, ... (lihat BACA-SAYA.txt)
 │   │   └── galeri/         ← 1.jpg, 2.jpg, ...
 │   └── hpl/

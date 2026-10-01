@@ -104,16 +104,26 @@ const PENGATURAN = {
     {
       id: 'wall-board',
       nama: 'Wall Board',
+      merek: 'Champion',
       tagline: 'Praktis. Rapi. Tahan lama.',
       deskripsi: 'Solusi papan dinding praktis untuk interior maupun eksterior.',
       sampul: 'foto/produk/wall-board/sampul',
       galeri: 'foto/produk/wall-board/galeri',
       tekstur: 'brd',
       spesifikasi: [],
+      /* MOTIF CHAMPION — tampil di bagian atas halaman Wall Board.
+         Foto: foto/produk/wall-board/champion/mb01.jpg ... mb10.jpg  (kode huruf kecil) */
       motif: [
-        { nama: 'Natural', foto: 'foto/produk/wall-board/motif/natural', tekstur: 'brd' },
-        { nama: 'White',   foto: 'foto/produk/wall-board/motif/white',   tekstur: 'wht' },
-        { nama: 'Grey',    foto: 'foto/produk/wall-board/motif/grey',    tekstur: 'stn' }
+        { kode: 'MB01', nama: 'Pearl Beige',    foto: 'foto/produk/wall-board/champion/mb01', tekstur: 'wht' },
+        { kode: 'MB02', nama: 'Vanilla Cloud',  foto: 'foto/produk/wall-board/champion/mb02', tekstur: 'brd' },
+        { kode: 'MB03', nama: 'Linen Touch',    foto: 'foto/produk/wall-board/champion/mb03', tekstur: 'stn' },
+        { kode: 'MB04', nama: 'Dove Feather',   foto: 'foto/produk/wall-board/champion/mb04', tekstur: 'stn' },
+        { kode: 'MB05', nama: 'Natural Maple',  foto: 'foto/produk/wall-board/champion/mb05', tekstur: 'wood oak' },
+        { kode: 'MB06', nama: 'Golden Hickory', foto: 'foto/produk/wall-board/champion/mb06', tekstur: 'wood oak' },
+        { kode: 'MB07', nama: 'Schatt Walnut',  foto: 'foto/produk/wall-board/champion/mb07', tekstur: 'wood wal' },
+        { kode: 'MB08', nama: 'White Marble',   foto: 'foto/produk/wall-board/champion/mb08', tekstur: 'wht' },
+        { kode: 'MB09', nama: 'White Beige',    foto: 'foto/produk/wall-board/champion/mb09', tekstur: 'wht' },
+        { kode: 'MB10', nama: 'Vanilla Brown',  foto: 'foto/produk/wall-board/champion/mb10', tekstur: 'stn' }
       ],
       /* KOLEKSI / SERI — tampil sebagai katalog motif di halaman produk.
          Foto motif ada di folder: foto/produk/wall-board/marble-series/  (nama file = nama motif, huruf kecil, spasi jadi -)
