@@ -60,7 +60,7 @@ Wall Board punya bagian **Koleksi** berisi Marble Series dari Mevvah: 23 motif d
 
 - Foto motif ada di `foto/produk/wall-board/marble-series/`, satu file per motif
   (nama motif huruf kecil, spasi jadi `-`, mis. `new-york.jpg`).
-- Foto saat ini dipotong dari gambar katalog sehingga resolusinya rendah —
+- Foto sudah versi tajam, kecuali `matt-concrete.jpg` yang masih resolusi rendah —
   **timpa dengan foto HD memakai nama file yang sama**.
 - Menambah motif, grup, atau seri baru (juga untuk produk lain): edit bagian `koleksi`
   di `assets/js/pengaturan.js`. Tandai motif baru dengan `baru: true` agar muncul label "New".

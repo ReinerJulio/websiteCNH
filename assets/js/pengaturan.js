@@ -101,7 +101,7 @@ const PENGATURAN = {
             { nama: 'Premium Matte Material', spesifikasi: [], motif: [
               { nama: 'Matt Concrete', foto: 'foto/produk/wall-board/marble-series/matt-concrete', baru: true }
             ] },
-            { nama: 'Motif Marble', spesifikasi: [], motif: [
+            { nama: 'Motif Marble', spesifikasi: [['Lebar', '120 cm'], ['Panjang', '240 cm'], ['Ketebalan', '3 mm']], motif: [
               { nama: 'New York', foto: 'foto/produk/wall-board/marble-series/new-york' },
               { nama: 'Nagoya', foto: 'foto/produk/wall-board/marble-series/nagoya' },
               { nama: 'London', foto: 'foto/produk/wall-board/marble-series/london' },
@@ -119,7 +119,7 @@ const PENGATURAN = {
               { nama: 'Brussels', foto: 'foto/produk/wall-board/marble-series/brussels' }
             ] },
             { nama: 'New Size', spesifikasi: [['Lebar', '120 cm'], ['Panjang', '240 / 300 cm'], ['Ketebalan', '3 mm']], motif: [
-              { nama: 'Zurich', foto: 'foto/produk/wall-board/marble-series/zurich' },
+              { nama: 'Zürich', foto: 'foto/produk/wall-board/marble-series/zurich' },
               { nama: 'Santorini', foto: 'foto/produk/wall-board/marble-series/santorini' },
               { nama: 'Montreal', foto: 'foto/produk/wall-board/marble-series/montreal' }
             ] }
