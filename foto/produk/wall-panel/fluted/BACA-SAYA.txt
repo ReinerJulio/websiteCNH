@@ -1,8 +1,7 @@
 FLUTED PANEL — MEVVAH (Wall Panel)
 ==================================
-flt-175.jpg, flt-195.jpg, flt-202.jpg              -> foto produk tiap tipe
+flt-175.png, flt-195.png, flt-202.png              -> foto produk tiap tipe (PNG latar transparan)
 flt-175-penampang.jpg, ... flt-202-penampang.jpg  -> gambar penampang (section)
-katalog.webp                                      -> katalog asli (tombol "Lihat katalog asli")
 
 Pilihan warna saat ini tampil sebagai kotak warna bergaris (dari tabel katalog).
 Ingin pakai FOTO per warna? Buat subfolder sesuai tipe, lalu isi:

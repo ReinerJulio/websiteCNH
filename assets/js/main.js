@@ -264,7 +264,7 @@ function atasTipe(p) {
   const t0 = p.tipe[0];
   return `<div class="pd">
       <div class="pd-media rv">
-        <div class="big gelap" id="big" data-cursor="Perbesar"><div class="foto" id="big-f" data-foto="${esc(t0.foto)}" data-alt="${esc(p.nama + ' ' + t0.nama)}"></div><span class="big-tag" id="big-tag">${esc(t0.nama)}</span></div>
+        <div class="big produk" id="big" data-cursor="Perbesar"><div class="foto" id="big-f" data-foto="${esc(t0.foto)}" data-alt="${esc(p.nama + ' ' + t0.nama)}"></div><span class="big-tag" id="big-tag">${esc(t0.nama)}</span></div>
         ${t0.penampang ? `<div class="pd-sec"><div class="tp-l">Penampang</div><button type="button" class="tp-sec" id="t-sec" data-cursor="Perbesar"><span class="foto" id="t-sec-f" data-foto="${esc(t0.penampang)}" data-alt="Penampang ${esc(t0.nama)}"></span></button></div>` : ''}
       </div>
       <div>

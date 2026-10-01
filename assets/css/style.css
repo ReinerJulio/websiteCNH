@@ -345,8 +345,11 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 .sw button:hover{transform:translateY(-4px)}
 .sw button.on{border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 22%,transparent)}
 /* Halaman produk mode tipe (Wall Panel Fluted) */
-.big.gelap{background:#0f0e0d}
-.big.gelap .foto>img{object-fit:contain}
+/* foto produk PNG transparan: latar terang lembut + bayangan */
+.big.produk{background:radial-gradient(120% 90% at 50% 35%,var(--card),var(--bg2) 70%);border:1px solid var(--line)}
+.big.produk .foto{inset:7%;overflow:visible}
+.big.produk .foto>img{object-fit:contain;filter:drop-shadow(0 26px 30px rgba(30,20,10,.28)) drop-shadow(0 4px 6px rgba(30,20,10,.18))}
+.big.produk .big-tag{z-index:3}
 .pd-sec{margin-top:22px}
 .pd-sec .tp-sec{max-width:none}
 .tps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 6px}

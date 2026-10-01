@@ -27,7 +27,7 @@ foto/
 ├── produk/
 │   ├── wall-panel/
 │   │   ├── sampul.jpg      ← kartu produk di beranda (portrait)
-│   │   ├── fluted/         ← Fluted Panel Mevvah: flt-175.jpg, flt-175-penampang.jpg, ... (lihat BACA-SAYA.txt)
+│   │   ├── fluted/         ← Fluted Panel Mevvah: flt-175.png (transparan), flt-175-penampang.jpg, ... (lihat BACA-SAYA.txt)
 │   │   └── galeri/         ← 1.jpg, 2.jpg, 3.jpg, ... (hasil pemasangan)
 │   ├── wall-board/
 │   │   ├── sampul.jpg

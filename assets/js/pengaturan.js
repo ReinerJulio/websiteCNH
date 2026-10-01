@@ -58,7 +58,6 @@ const PENGATURAN = {
       deskripsi: 'Panel dinding bergaris (fluted) untuk aksen dinding yang modern dan berdimensi. Tersedia 3 tipe profil dengan pilihan warna kayu hingga warna solid.',
       sampul: 'foto/produk/wall-panel/sampul',
       galeri: 'foto/produk/wall-panel/galeri',
-      katalogGambar: 'foto/produk/wall-panel/fluted/katalog',
       tekstur: 'wood oak',
       /* TIPE — tampil di bagian atas halaman produk: pilih tipe → foto, penampang,
          spesifikasi & pilihan warna ikut berganti.
