@@ -78,6 +78,53 @@ const PENGATURAN = {
         { nama: 'Natural', foto: 'foto/produk/wall-board/motif/natural', tekstur: 'brd' },
         { nama: 'White',   foto: 'foto/produk/wall-board/motif/white',   tekstur: 'wht' },
         { nama: 'Grey',    foto: 'foto/produk/wall-board/motif/grey',    tekstur: 'stn' }
+      ],
+      /* KOLEKSI / SERI — tampil sebagai katalog motif di halaman produk.
+         Foto motif ada di folder: foto/produk/wall-board/marble-series/  (nama file = nama motif, huruf kecil, spasi jadi -)
+         Tambah motif   : salin satu baris { nama: ..., foto: ... }
+         Motif baru     : tambahkan  baru: true  (muncul label "New")
+         spesifikasi    : [label, isi] — boleh per seri atau per grup. Kosongkan [] jika tidak ada. */
+      koleksi: [
+        {
+          nama: 'Marble Series',
+          merek: 'Mevvah',
+          deskripsi: 'Panel dinding bermotif marmer dengan pilihan motif lengkap — dari desain spesial berwarna berani hingga marmer klasik hitam, putih, dan krem.',
+          katalog: 'foto/produk/wall-board/marble-series/katalog',
+          spesifikasi: [],
+          grup: [
+            { nama: 'Special Design', spesifikasi: [], motif: [
+              { nama: 'Atlantic', foto: 'foto/produk/wall-board/marble-series/atlantic' },
+              { nama: 'Andromeda', foto: 'foto/produk/wall-board/marble-series/andromeda' },
+              { nama: 'Aztec', foto: 'foto/produk/wall-board/marble-series/aztec' },
+              { nama: 'Pegasus', foto: 'foto/produk/wall-board/marble-series/pegasus' }
+            ] },
+            { nama: 'Premium Matte Material', spesifikasi: [], motif: [
+              { nama: 'Matt Concrete', foto: 'foto/produk/wall-board/marble-series/matt-concrete', baru: true }
+            ] },
+            { nama: 'Motif Marble', spesifikasi: [], motif: [
+              { nama: 'New York', foto: 'foto/produk/wall-board/marble-series/new-york' },
+              { nama: 'Nagoya', foto: 'foto/produk/wall-board/marble-series/nagoya' },
+              { nama: 'London', foto: 'foto/produk/wall-board/marble-series/london' },
+              { nama: 'Prague', foto: 'foto/produk/wall-board/marble-series/prague' },
+              { nama: 'Moscow', foto: 'foto/produk/wall-board/marble-series/moscow' },
+              { nama: 'Alexandria', foto: 'foto/produk/wall-board/marble-series/alexandria' },
+              { nama: 'Berlin', foto: 'foto/produk/wall-board/marble-series/berlin' },
+              { nama: 'Shanghai', foto: 'foto/produk/wall-board/marble-series/shanghai' },
+              { nama: 'Cairo', foto: 'foto/produk/wall-board/marble-series/cairo' },
+              { nama: 'Dubai', foto: 'foto/produk/wall-board/marble-series/dubai' },
+              { nama: 'Milan', foto: 'foto/produk/wall-board/marble-series/milan' },
+              { nama: 'Helsinki', foto: 'foto/produk/wall-board/marble-series/helsinki' },
+              { nama: 'Tokyo', foto: 'foto/produk/wall-board/marble-series/tokyo' },
+              { nama: 'Rome', foto: 'foto/produk/wall-board/marble-series/rome' },
+              { nama: 'Brussels', foto: 'foto/produk/wall-board/marble-series/brussels' }
+            ] },
+            { nama: 'New Size', spesifikasi: [['Lebar', '120 cm'], ['Panjang', '240 / 300 cm'], ['Ketebalan', '3 mm']], motif: [
+              { nama: 'Zurich', foto: 'foto/produk/wall-board/marble-series/zurich' },
+              { nama: 'Santorini', foto: 'foto/produk/wall-board/marble-series/santorini' },
+              { nama: 'Montreal', foto: 'foto/produk/wall-board/marble-series/montreal' }
+            ] }
+          ]
+        }
       ]
     },
     {

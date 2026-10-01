@@ -32,6 +32,7 @@ foto/
 │   ├── wall-board/
 │   │   ├── sampul.jpg
 │   │   ├── motif/          ← natural.jpg, white.jpg, grey.jpg
+│   │   ├── marble-series/  ← 23 motif Mevvah: atlantic.jpg, new-york.jpg, ... (lihat BACA-SAYA.txt)
 │   │   └── galeri/         ← 1.jpg, 2.jpg, ...
 │   └── hpl/
 │       ├── sampul.jpg
@@ -50,6 +51,19 @@ Setiap folder juga berisi file `BACA-SAYA.txt` sebagai pengingat.
 Taruh foto hasil pemasangan di `foto/produk/<produk>/galeri/` dengan nama **1.jpg, 2.jpg, 3.jpg, dst.**
 Semua foto langsung tampil sebagai galeri di halaman produk, bisa diklik untuk diperbesar.
 Nomor harus **berurutan** — jika 3.jpg tidak ada, foto 4.jpg dan seterusnya tidak akan dibaca.
+
+## Koleksi / seri motif (mis. Marble Series)
+
+Wall Board punya bagian **Koleksi** berisi Marble Series dari Mevvah: 23 motif dalam 4 grup
+(Special Design, Premium Matte Material, Motif Marble, New Size), lengkap dengan filter dan tombol
+"Tanya Harga Motif Ini" ke WhatsApp.
+
+- Foto motif ada di `foto/produk/wall-board/marble-series/`, satu file per motif
+  (nama motif huruf kecil, spasi jadi `-`, mis. `new-york.jpg`).
+- Foto saat ini dipotong dari gambar katalog sehingga resolusinya rendah —
+  **timpa dengan foto HD memakai nama file yang sama**.
+- Menambah motif, grup, atau seri baru (juga untuk produk lain): edit bagian `koleksi`
+  di `assets/js/pengaturan.js`. Tandai motif baru dengan `baru: true` agar muncul label "New".
 
 ## Cek foto mana yang sudah / belum ada
 

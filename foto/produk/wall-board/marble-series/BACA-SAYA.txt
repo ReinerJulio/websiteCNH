@@ -1,0 +1,17 @@
+MARBLE SERIES — MEVVAH (Wall Board)
+===================================
+Satu file per motif. Nama file = nama motif, huruf kecil, spasi diganti tanda -
+
+Special Design : atlantic, andromeda, aztec, pegasus
+Premium Matte  : matt-concrete
+Motif Marble   : new-york, nagoya, london, prague, moscow, alexandria, berlin,
+                 shanghai, cairo, dubai, milan, helsinki, tokyo, rome, brussels
+New Size       : zurich, santorini, montreal
+katalog.webp   : gambar katalog asli (tombol "Lihat katalog asli")
+
+Foto yang ada sekarang dipotong dari gambar katalog (resolusi rendah).
+Ganti dengan foto HD (mis. 800 x 800 px) memakai NAMA FILE YANG SAMA.
+Boleh .jpg / .png / .webp.
+
+Menambah motif atau mengubah nama/grup/spesifikasi: edit bagian "koleksi"
+pada Wall Board di assets/js/pengaturan.js

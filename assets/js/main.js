@@ -162,6 +162,7 @@ function renderProduk(id) {
         <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
       </div>
     </div>
+    ${(p.koleksi || []).map((k, ki) => renderKoleksi(p, k, ki)).join('')}
     <div class="kg">
       <div class="rv"><h3>Tampilan Premium</h3><span>Desain modern dan elegan.</span></div>
       <div class="rv" style="--d:.08s"><h3>Tahan Lama</h3><span>Kualitas terjaga bertahun-tahun.</span></div>
@@ -202,6 +203,39 @@ function renderProduk(id) {
     lightbox(list, Math.max(0, list.findIndex(x => x.src === cur)));
   });
 
+  // Koleksi: filter grup + klik motif → lightbox dengan tombol tanya harga
+  $$('.kol', v).forEach(el => {
+    const k = p.koleksi[el.dataset.k];
+    const semua = k.grup.flatMap(g => g.motif.map(m => ({ m, g })));
+    $$('.kol-f button', el).forEach(b => b.addEventListener('click', () => {
+      $$('.kol-f button', el).forEach(x => x.setAttribute('aria-pressed', x === b));
+      $$('.kol-g', el).forEach(g => {
+        const tampil = b.dataset.g === '*' || g.dataset.g === b.dataset.g;
+        g.hidden = !tampil;
+        if (tampil) { g.classList.remove('muncul'); void g.offsetWidth; g.classList.add('muncul'); }
+      });
+      // kembali ke awal daftar motif agar hasil filter langsung terlihat
+      const f = $('.kol-f', el), awal = $('.kol-g:not([hidden])', el).getBoundingClientRect().top + scrollY - f.offsetHeight - 110;
+      if (scrollY > awal) scrollTo({ top: awal, behavior: REDUCED ? 'instant' : 'smooth' });
+    }));
+    $$('.mv', el).forEach(c => c.addEventListener('click', async () => {
+      const list = [];
+      let start = 0;
+      for (const [i, { m, g }] of semua.entries()) {
+        const u = await cariFoto(m.foto);
+        if (!u) continue;
+        if (i === +c.dataset.i) start = list.length;
+        list.push({ src: u, cap: `${k.nama} · ${m.nama} — ${g.nama}`,
+          wa: `Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama} ${k.merek ? k.merek + ' ' : ''}${k.nama} motif ${m.nama}.` });
+      }
+      if (list.length) lightbox(list, start);
+    }));
+    $('.kol-kat', el)?.addEventListener('click', async () => {
+      const u = await cariFoto(k.katalog);
+      if (u) lightbox([{ src: u, cap: `Katalog ${k.nama}${k.merek ? ' — ' + k.merek : ''}` }]);
+    });
+  });
+
   // Galeri otomatis: foto/produk/<id>/galeri/1.jpg, 2.jpg, ...
   isiGaleri(p.galeri).then(urls => {
     if (!urls.length || !document.body.contains(v) || location.hash !== `#/produk/${p.id}`) return;
@@ -213,10 +247,31 @@ function renderProduk(id) {
   });
 }
 
+function renderKoleksi(p, k, ki) {
+  const total = k.grup.reduce((n, g) => n + g.motif.length, 0);
+  const chips = sp => sp && sp.length ? `<ul class="kol-sp">${sp.map(r => `<li><small>${esc(r[0])}</small>${esc(r[1])}</li>`).join('')}</ul>` : '';
+  const kata = k.nama.split(' ');
+  const judul = kata.length > 1 ? `${esc(kata.slice(0, -1).join(' '))} <em>${esc(kata.at(-1))}</em>` : `<em>${esc(k.nama)}</em>`;
+  let i = 0;
+  return `<section class="kol" data-k="${ki}">
+    <div class="kol-hd">
+      <div><div class="eb rv">Koleksi ${esc(p.nama)}${k.merek ? ' · ' + esc(k.merek) : ''}</div><h2 data-split>${judul}</h2></div>
+      <div class="kol-in rv"><p class="lead">${esc(k.deskripsi || '')}</p>${chips(k.spesifikasi)}
+        <div class="kol-meta"><span><b>${total}</b> motif</span>${k.katalog ? '<button type="button" class="ul kol-kat">Lihat katalog asli ↗</button>' : ''}</div></div>
+    </div>
+    ${k.grup.length > 1 ? `<div class="kol-f rv" role="group" aria-label="Filter motif"><button type="button" data-g="*" aria-pressed="true">Semua <sup>${total}</sup></button>${k.grup.map((g, gi) => `<button type="button" data-g="${gi}" aria-pressed="false">${esc(g.nama)} <sup>${g.motif.length}</sup></button>`).join('')}</div>` : ''}
+    ${k.grup.map((g, gi) => `<div class="kol-g" data-g="${gi}">
+      <div class="kol-gh rv"><h3>${esc(g.nama)}</h3><span>${g.motif.length} motif</span>${chips(g.spesifikasi)}</div>
+      <div class="mv-grid">${g.motif.map((m, mi) => `<button type="button" class="mv rv" style="--d:${(mi % 6) * .05}s" data-i="${i++}" data-cursor="Lihat">
+        <span class="mv-ph"><span class="foto tex stn" data-foto="${esc(m.foto)}" data-alt="${esc(k.nama + ' ' + m.nama)}"></span>${m.baru ? '<em class="mv-new">New</em>' : ''}</span>
+        <span class="mv-n">${esc(m.nama)}</span></button>`).join('')}</div></div>`).join('')}
+  </section>`;
+}
+
 /* =====================================================================
    LIGHTBOX
    ===================================================================== */
-const lb = $('#lb'), lbImg = $('img', lb), lbCap = $('figcaption', lb);
+const lb = $('#lb'), lbImg = $('img', lb), lbCap = $('figcaption', lb), lbWa = $('.lb-wa', lb);
 let lbList = [], lbI = 0;
 function lbShow() {
   const it = lbList[lbI];
@@ -224,6 +279,8 @@ function lbShow() {
   const im = new Image();
   im.onload = () => { lbImg.src = it.src; lbImg.alt = it.cap || ''; lbCap.textContent = it.cap || ''; lbImg.style.opacity = 1; };
   im.src = it.src;
+  lbWa.hidden = !it.wa;
+  if (it.wa) lbWa.href = waLink(it.wa);
   $$('.lb-nav', lb).forEach(b => b.hidden = lbList.length < 2);
 }
 function lightbox(list, i = 0) {
