@@ -110,7 +110,7 @@ const PENGATURAN = {
       sampul: 'foto/produk/wall-board/sampul',
       galeri: 'foto/produk/wall-board/galeri',
       tekstur: 'brd',
-      spesifikasi: [],
+      spesifikasi: [['Lebar', '60 cm'], ['Panjang', '300 cm'], ['Tebal', '9 mm']],
       /* MOTIF CHAMPION — tampil di bagian atas halaman Wall Board.
          Foto: foto/produk/wall-board/champion/mb01.jpg ... mb10.jpg  (kode huruf kecil) */
       motif: [
