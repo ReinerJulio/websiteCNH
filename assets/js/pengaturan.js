@@ -63,6 +63,44 @@ const PENGATURAN = {
         { nama: 'Walnut',    foto: 'foto/produk/wall-panel/motif/walnut', tekstur: 'wood wal' },
         { nama: 'Grey Wood', foto: 'foto/produk/wall-panel/motif/grey',   tekstur: 'wood gry' },
         { nama: 'Black Oak', foto: 'foto/produk/wall-panel/motif/black',  tekstur: 'wood blk' }
+      ],
+      /* KOLEKSI — format sama seperti Marble Series di Wall Board.
+         Tambahan khusus per grup (tipe):  foto = foto produk,  penampang = gambar penampang.
+         Motif boleh pakai  warna: '#kode'  — tampil sebagai kotak warna bergaris fluted
+         selama foto motif (mis. .../flt-175/dark-wood.jpg) belum ada. */
+      koleksi: [
+        {
+          nama: 'Fluted Panel',
+          merek: 'Mevvah',
+          satuan: 'warna',
+          deskripsi: 'Panel dinding bergaris (fluted) untuk aksen dinding yang modern dan berdimensi. Tersedia 3 tipe profil dengan pilihan warna kayu hingga warna solid.',
+          katalog: 'foto/produk/wall-panel/fluted/katalog',
+          spesifikasi: [],
+          grup: [
+            { nama: 'MVH.FLT-175', foto: 'foto/produk/wall-panel/fluted/flt-175', penampang: 'foto/produk/wall-panel/fluted/flt-175-penampang',
+              spesifikasi: [['Lebar', '17,5 cm'], ['Panjang', '290 cm'], ['Tebal', '2 cm']], motif: [
+              { nama: 'Dark Wood', warna: '#6a453b', foto: 'foto/produk/wall-panel/fluted/flt-175/dark-wood' },
+              { nama: 'Wood', warna: '#bc7647', foto: 'foto/produk/wall-panel/fluted/flt-175/wood' },
+              { nama: 'Light Wood', warna: '#ebcab3', foto: 'foto/produk/wall-panel/fluted/flt-175/light-wood' },
+              { nama: 'Blue', warna: '#3c8c9a', foto: 'foto/produk/wall-panel/fluted/flt-175/blue' },
+              { nama: 'Dark Grey', warna: '#7f7f7f', foto: 'foto/produk/wall-panel/fluted/flt-175/dark-grey' },
+              { nama: 'Grey', warna: '#bebebe', foto: 'foto/produk/wall-panel/fluted/flt-175/grey' },
+              { nama: 'Light Blue', warna: '#83a9d9', foto: 'foto/produk/wall-panel/fluted/flt-175/light-blue' }
+            ] },
+            { nama: 'MVH.FLT-195', foto: 'foto/produk/wall-panel/fluted/flt-195', penampang: 'foto/produk/wall-panel/fluted/flt-195-penampang',
+              spesifikasi: [['Lebar', '19,5 cm'], ['Panjang', '290 cm'], ['Tebal', '1,2 cm']], motif: [
+              { nama: 'Dark Wood', warna: '#6a453b', foto: 'foto/produk/wall-panel/fluted/flt-195/dark-wood' },
+              { nama: 'Wood', warna: '#bc7647', foto: 'foto/produk/wall-panel/fluted/flt-195/wood' },
+              { nama: 'Light Wood', warna: '#ebcab3', foto: 'foto/produk/wall-panel/fluted/flt-195/light-wood' }
+            ] },
+            { nama: 'MVH.FLT-202', foto: 'foto/produk/wall-panel/fluted/flt-202', penampang: 'foto/produk/wall-panel/fluted/flt-202-penampang',
+              spesifikasi: [['Lebar', '20,2 cm'], ['Panjang', '290 cm'], ['Tebal', '2,7 cm']], motif: [
+              { nama: 'Dark Wood', warna: '#6a453b', foto: 'foto/produk/wall-panel/fluted/flt-202/dark-wood' },
+              { nama: 'Wood', warna: '#bc7647', foto: 'foto/produk/wall-panel/fluted/flt-202/wood' },
+              { nama: 'Light Wood', warna: '#ebcab3', foto: 'foto/produk/wall-panel/fluted/flt-202/light-wood' }
+            ] }
+          ]
+        }
       ]
     },
     {

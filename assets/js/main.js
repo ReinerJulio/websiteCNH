@@ -222,13 +222,18 @@ function renderProduk(id) {
       const list = [];
       let start = 0;
       for (const [i, { m, g }] of semua.entries()) {
-        const u = await cariFoto(m.foto);
+        // motif tanpa foto (hanya warna) memakai foto produk tipenya
+        const u = await cariFoto(m.foto) || await cariFoto(g.foto);
         if (!u) continue;
         if (i === +c.dataset.i) start = list.length;
-        list.push({ src: u, cap: `${k.nama} · ${m.nama} — ${g.nama}`,
-          wa: `Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama} ${k.merek ? k.merek + ' ' : ''}${k.nama} motif ${m.nama}.` });
+        list.push({ src: u, cap: `${k.nama} · ${g.nama} — ${m.nama}`,
+          wa: `Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama} ${k.merek ? k.merek + ' ' : ''}${k.nama} ${g.nama} ${k.satuan || 'motif'} ${m.nama}.` });
       }
       if (list.length) lightbox(list, start);
+    }));
+    $$('[data-src-foto]', el).forEach(t => t.addEventListener('click', async () => {
+      const u = await cariFoto(t.dataset.srcFoto);
+      if (u) lightbox([{ src: u, cap: $('.foto', t).dataset.alt }]);
     }));
     $('.kol-kat', el)?.addEventListener('click', async () => {
       const u = await cariFoto(k.katalog);
@@ -249,6 +254,7 @@ function renderProduk(id) {
 
 function renderKoleksi(p, k, ki) {
   const total = k.grup.reduce((n, g) => n + g.motif.length, 0);
+  const sat = esc(k.satuan || 'motif');
   const chips = sp => sp && sp.length ? `<ul class="kol-sp">${sp.map(r => `<li><small>${esc(r[0])}</small>${esc(r[1])}</li>`).join('')}</ul>` : '';
   const kata = k.nama.split(' ');
   const judul = kata.length > 1 ? `${esc(kata.slice(0, -1).join(' '))} <em>${esc(kata.at(-1))}</em>` : `<em>${esc(k.nama)}</em>`;
@@ -257,14 +263,26 @@ function renderKoleksi(p, k, ki) {
     <div class="kol-hd">
       <div><div class="eb rv">Koleksi ${esc(p.nama)}${k.merek ? ' · ' + esc(k.merek) : ''}</div><h2 data-split>${judul}</h2></div>
       <div class="kol-in rv"><p class="lead">${esc(k.deskripsi || '')}</p>${chips(k.spesifikasi)}
-        <div class="kol-meta"><span><b>${total}</b> motif</span>${k.katalog ? '<button type="button" class="ul kol-kat">Lihat katalog asli ↗</button>' : ''}</div></div>
+        <div class="kol-meta"><span><b>${total}</b> ${sat}</span>${k.katalog ? '<button type="button" class="ul kol-kat">Lihat katalog asli ↗</button>' : ''}</div></div>
     </div>
     ${k.grup.length > 1 ? `<div class="kol-f rv" role="group" aria-label="Filter motif"><button type="button" data-g="*" aria-pressed="true">Semua <sup>${total}</sup></button>${k.grup.map((g, gi) => `<button type="button" data-g="${gi}" aria-pressed="false">${esc(g.nama)} <sup>${g.motif.length}</sup></button>`).join('')}</div>` : ''}
-    ${k.grup.map((g, gi) => `<div class="kol-g" data-g="${gi}">
-      <div class="kol-gh rv"><h3>${esc(g.nama)}</h3><span>${g.motif.length} motif</span>${chips(g.spesifikasi)}</div>
-      <div class="mv-grid">${g.motif.map((m, mi) => `<button type="button" class="mv rv" style="--d:${(mi % 6) * .05}s" data-i="${i++}" data-cursor="Lihat">
-        <span class="mv-ph"><span class="foto tex stn" data-foto="${esc(m.foto)}" data-alt="${esc(k.nama + ' ' + m.nama)}"></span>${m.baru ? '<em class="mv-new">New</em>' : ''}</span>
-        <span class="mv-n">${esc(m.nama)}</span></button>`).join('')}</div></div>`).join('')}
+    ${k.grup.map((g, gi) => {
+      const kotak = `<div class="mv-grid${g.foto ? ' kecil' : ''}">${g.motif.map((m, mi) => `<button type="button" class="mv rv" style="--d:${(mi % 6) * .05}s" data-i="${i++}" data-cursor="Lihat">
+        <span class="mv-ph${m.warna ? ' warna' : ''}"${m.warna ? ` style="--w:${esc(m.warna)}"` : ''}><span class="foto${m.warna ? '' : ' tex stn'}" data-foto="${esc(m.foto)}" data-alt="${esc(k.nama + ' ' + m.nama)}"></span>${m.baru ? '<em class="mv-new">New</em>' : ''}</span>
+        <span class="mv-n">${esc(m.nama)}</span></button>`).join('')}</div>`;
+      const kepala = `<div class="kol-gh rv"><h3>${esc(g.nama)}</h3><span>${g.motif.length} ${sat}</span>${g.foto ? '' : chips(g.spesifikasi)}</div>`;
+      if (!g.foto) return `<div class="kol-g" data-g="${gi}">${kepala}${kotak}</div>`;
+      // Tipe produk: foto produk + penampang + spesifikasi + pilihan warna
+      return `<div class="kol-g tipe" data-g="${gi}">${kepala}
+        <div class="tp">
+          <button type="button" class="tp-img rv-img" data-cursor="Perbesar" data-src-foto="${esc(g.foto)}"><span class="foto" data-foto="${esc(g.foto)}" data-alt="${esc(k.nama + ' ' + g.nama)}"></span></button>
+          <div class="tp-in">
+            ${chips(g.spesifikasi)}
+            ${g.penampang ? `<div class="tp-l rv">Penampang</div><button type="button" class="tp-sec rv" data-cursor="Perbesar" data-src-foto="${esc(g.penampang)}"><span class="foto" data-foto="${esc(g.penampang)}" data-alt="Penampang ${esc(g.nama)}"></span></button>` : ''}
+            <div class="tp-l rv">Pilihan ${sat}</div>${kotak}
+          </div>
+        </div></div>`;
+    }).join('')}
   </section>`;
 }
 

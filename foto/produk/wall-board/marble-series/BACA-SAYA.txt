@@ -9,8 +9,7 @@ Motif Marble   : new-york, nagoya, london, prague, moscow, alexandria, berlin,
 New Size       : zurich, santorini, montreal
 katalog.webp   : gambar katalog asli (tombol "Lihat katalog asli")
 
-Foto sudah versi tajam (dipotong dari katalog resolusi tinggi), KECUALI
-matt-concrete.jpg yang masih resolusi rendah.
+Semua foto sudah versi tajam.
 Ganti foto kapan saja dengan file baru memakai NAMA FILE YANG SAMA.
 Boleh .jpg / .png / .webp.
 

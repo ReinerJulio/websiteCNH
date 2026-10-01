@@ -1,0 +1,14 @@
+FLUTED PANEL — MEVVAH (Wall Panel)
+==================================
+flt-175.jpg, flt-195.jpg, flt-202.jpg              -> foto produk tiap tipe
+flt-175-penampang.jpg, ... flt-202-penampang.jpg  -> gambar penampang (section)
+katalog.webp                                      -> katalog asli (tombol "Lihat katalog asli")
+
+Pilihan warna saat ini tampil sebagai kotak warna bergaris (dari tabel katalog).
+Ingin pakai FOTO per warna? Buat subfolder sesuai tipe, lalu isi:
+  flt-175/  dark-wood, wood, light-wood, blue, dark-grey, grey, light-blue
+  flt-195/  dark-wood, wood, light-wood
+  flt-202/  dark-wood, wood, light-wood
+(mis. flt-175/dark-wood.jpg). Foto otomatis menggantikan kotak warna.
+
+Ubah ukuran/warna/tipe: bagian "koleksi" Wall Panel di assets/js/pengaturan.js
