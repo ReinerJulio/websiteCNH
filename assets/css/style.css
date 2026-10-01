@@ -344,6 +344,22 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 .sw .sw-ph{position:relative;height:58px;border-radius:11px;overflow:hidden;margin-bottom:7px}
 .sw button:hover{transform:translateY(-4px)}
 .sw button.on{border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 22%,transparent)}
+/* Halaman produk mode tipe (Wall Panel Fluted) */
+.big.gelap{background:#0f0e0d}
+.big.gelap .foto>img{object-fit:contain}
+.pd-sec{margin-top:22px}
+.pd-sec .tp-sec{max-width:none}
+.tps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0 6px}
+.tps button{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:14px 16px;cursor:pointer;transition:border-color .4s,box-shadow .4s,transform .5s var(--ease),background .4s,color .4s}
+.tps button b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.1;letter-spacing:-.01em}
+.tps button small{display:block;margin-top:4px;font-size:11px;font-weight:600;color:var(--mut);transition:color .4s}
+.tps button:hover{transform:translateY(-3px);border-color:var(--acc)}
+.tps button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tps button[aria-pressed="true"] small{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.sw-ph.warna,.mv-ph.warna{background:repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0 2px,rgba(255,255,255,.14) 2px 4px,transparent 4px 14px),linear-gradient(90deg,rgba(0,0,0,.06),rgba(255,255,255,.12) 50%,rgba(0,0,0,.08)),var(--w)}
+#t-spec td:last-child{transition:opacity .3s}
+@media (max-width:520px){.tps{grid-template-columns:repeat(3,1fr);gap:8px}.tps button{padding:12px 10px;border-radius:14px}.tps button b{font-size:14.5px}.tps button small{font-size:9.5px}}
+
 .kg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:100px}
 .kg div{padding:30px 26px;border-radius:20px;background:var(--bg2)}
 .kg h3{font-size:18px;margin-bottom:6px}

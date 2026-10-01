@@ -142,26 +142,13 @@ $('#slats').innerHTML = Array.from({ length: 18 }, (_, i) =>
    ===================================================================== */
 function renderProduk(id) {
   const p = CFG.produk.find(x => x.id === id) || CFG.produk[0];
-  const m0 = p.motif[0] || { nama: '-', foto: p.sampul, tekstur: p.tekstur };
+  const m0 = (p.motif || [])[0] || { nama: '-', foto: p.sampul, tekstur: p.tekstur };
   const lain = CFG.produk.filter(x => x.id !== p.id);
   const v = $('#v-produk');
   document.title = `${p.nama} — Central Niaga Hardware`;
   v.innerHTML = `<div class="wrap">
     <nav class="crumb"><a href="#/">Beranda</a><span>/</span><a href="#/produk-kami">Produk</a><span>/</span><span>${esc(p.nama)}</span></nav>
-    <div class="pd">
-      <div class="pd-media rv">
-        <div class="big" id="big" data-cursor="Perbesar"><div class="foto tex ${m0.tekstur}" id="big-f" data-foto="${esc(m0.foto)}" data-alt="${esc(p.nama + ' ' + m0.nama)}"></div><span class="big-tag" id="big-tag">${esc(m0.nama)}</span></div>
-      </div>
-      <div>
-        <div class="eb">${esc(p.nama)}</div>
-        <h1 data-split>${esc(p.tagline)}</h1>
-        <p class="lead rv">${esc(p.deskripsi)}</p>
-        <table class="spec rv">${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
-        <div class="rv"><div class="sw-l">Pilihan Motif &amp; Warna</div>
-        <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}</button>`).join('')}</div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
-      </div>
-    </div>
+    ${p.tipe ? atasTipe(p) : atasMotif(p, m0)}
     ${(p.koleksi || []).map((k, ki) => renderKoleksi(p, k, ki)).join('')}
     <div class="kg">
       <div class="rv"><h3>Tampilan Premium</h3><span>Desain modern dan elegan.</span></div>
@@ -174,34 +161,37 @@ function renderProduk(id) {
     <div class="more">${lain.map(x => `<a href="#/produk/${x.id}" class="rv" data-cursor="Lihat"><div class="foto tex ${x.tekstur}" data-foto="${esc(x.sampul)}" data-alt="${esc(x.nama)}"></div><div class="t"><h3>${esc(x.nama)}</h3><span class="go"><b>→</b></span></div></a>`).join('')}</div>
   </div>`;
 
-  const setWA = n => $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama} motif ${n}.`);
-  setWA(m0.nama);
+  if (p.tipe) pasangTipe(p, v);
+  else {
+    const setWA = n => $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama} motif ${n}.`);
+    setWA(m0.nama);
 
-  const bf = $('#big-f');
-  $$('.sw button', v).forEach(b => b.addEventListener('click', () => {
-    const m = p.motif[b.dataset.i];
-    $$('.sw button', v).forEach(x => { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
-    b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
-    bf.classList.add('swap');
-    setTimeout(() => {
-      bf.className = `foto tex ${m.tekstur} swap`;
-      bf.dataset.foto = m.foto;
-      bf.dataset.alt = `${p.nama} ${m.nama}`;
-      $('img', bf)?.remove(); $('.fcek', bf)?.remove();
-      pasangFoto(bf).finally(() => requestAnimationFrame(() => bf.classList.remove('swap')));
-    }, 380);
-    $('#m-n').textContent = m.nama; $('#big-tag').textContent = m.nama;
-    setWA(m.nama);
-  }));
+    const bf = $('#big-f');
+    $$('.sw button', v).forEach(b => b.addEventListener('click', () => {
+      const m = p.motif[b.dataset.i];
+      $$('.sw button', v).forEach(x => { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
+      b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
+      bf.classList.add('swap');
+      setTimeout(() => {
+        bf.className = `foto tex ${m.tekstur} swap`;
+        bf.dataset.foto = m.foto;
+        bf.dataset.alt = `${p.nama} ${m.nama}`;
+        $('img', bf)?.remove(); $('.fcek', bf)?.remove();
+        pasangFoto(bf).finally(() => requestAnimationFrame(() => bf.classList.remove('swap')));
+      }, 380);
+      $('#m-n').textContent = m.nama; $('#big-tag').textContent = m.nama;
+      setWA(m.nama);
+    }));
 
-  // Klik foto besar → lightbox semua motif yang sudah ada fotonya
-  $('#big').addEventListener('click', async () => {
-    const list = [];
-    for (const m of p.motif) { const u = await cariFoto(m.foto); if (u) list.push({ src: u, cap: `${p.nama} — ${m.nama}` }); }
-    if (!list.length) return;
-    const cur = bf.dataset.src;
-    lightbox(list, Math.max(0, list.findIndex(x => x.src === cur)));
-  });
+    // Klik foto besar → lightbox semua motif yang sudah ada fotonya
+    $('#big').addEventListener('click', async () => {
+      const list = [];
+      for (const m of p.motif) { const u = await cariFoto(m.foto); if (u) list.push({ src: u, cap: `${p.nama} — ${m.nama}` }); }
+      if (!list.length) return;
+      const cur = bf.dataset.src;
+      lightbox(list, Math.max(0, list.findIndex(x => x.src === cur)));
+    });
+  }
 
   // Koleksi: filter grup + klik motif → lightbox dengan tombol tanya harga
   $$('.kol', v).forEach(el => {
@@ -249,6 +239,102 @@ function renderProduk(id) {
     $('#gal-s').hidden = false;
     $$('a', g).forEach(a => a.addEventListener('click', () => lightbox(urls.map((src, i) => ({ src, cap: `${p.nama} — ${i + 1} / ${urls.length}` })), +a.dataset.i)));
     prepSplit(v); amati(); magnet(); kursorTarget();
+  });
+}
+
+function atasMotif(p, m0) {
+  return `    <div class="pd">
+      <div class="pd-media rv">
+        <div class="big" id="big" data-cursor="Perbesar"><div class="foto tex ${m0.tekstur}" id="big-f" data-foto="${esc(m0.foto)}" data-alt="${esc(p.nama + ' ' + m0.nama)}"></div><span class="big-tag" id="big-tag">${esc(m0.nama)}</span></div>
+      </div>
+      <div>
+        <div class="eb">${esc(p.nama)}</div>
+        <h1 data-split>${esc(p.tagline)}</h1>
+        <p class="lead rv">${esc(p.deskripsi)}</p>
+        <table class="spec rv">${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
+        <div class="rv"><div class="sw-l">Pilihan Motif &amp; Warna</div>
+        <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}</button>`).join('')}</div></div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
+      </div>
+    </div>`;
+}
+
+// Halaman produk mode TIPE (mis. Wall Panel Fluted): pilih tipe → foto, penampang, spesifikasi & warna
+function atasTipe(p) {
+  const t0 = p.tipe[0];
+  return `<div class="pd">
+      <div class="pd-media rv">
+        <div class="big gelap" id="big" data-cursor="Perbesar"><div class="foto" id="big-f" data-foto="${esc(t0.foto)}" data-alt="${esc(p.nama + ' ' + t0.nama)}"></div><span class="big-tag" id="big-tag">${esc(t0.nama)}</span></div>
+        ${t0.penampang ? `<div class="pd-sec"><div class="tp-l">Penampang</div><button type="button" class="tp-sec" id="t-sec" data-cursor="Perbesar"><span class="foto" id="t-sec-f" data-foto="${esc(t0.penampang)}" data-alt="Penampang ${esc(t0.nama)}"></span></button></div>` : ''}
+      </div>
+      <div>
+        <div class="eb">${esc(p.nama)}${p.merek ? ' · ' + esc(p.merek) : ''}${p.seri ? ' ' + esc(p.seri) : ''}</div>
+        <h1 data-split>${esc(p.tagline)}</h1>
+        <p class="lead rv">${esc(p.deskripsi)}</p>
+        <div class="rv"><div class="sw-l" style="margin-top:30px">Pilih Tipe</div>
+        <div class="tps" role="group" aria-label="Pilih tipe">${p.tipe.map((t, i) => `<button type="button" data-t="${i}" aria-pressed="${!i}"><b>${esc(t.nama)}</b><small>${esc((t.spesifikasi.find(r => /lebar/i.test(r[0])) || ['', ''])[1])} · ${t.warna.length} warna</small></button>`).join('')}</div></div>
+        <table class="spec rv" id="t-spec"></table>
+        <div class="rv"><div class="sw-l">Pilihan Warna</div><div class="sw" id="t-sw"></div></div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
+      </div>
+    </div>`;
+}
+
+function pasangTipe(p, v) {
+  let ti = 0, wi = 0;
+  const bf = $('#big-f'), sf = $('#t-sec-f');
+  const ganti = (el, path, alt) => {
+    if (!el || el.dataset.foto === path) return;
+    el.classList.add('swap');
+    setTimeout(() => {
+      el.dataset.foto = path; el.dataset.alt = alt;
+      $('img', el)?.remove(); $('.fcek', el)?.remove(); el.classList.remove('ok');
+      pasangFoto(el).finally(() => requestAnimationFrame(() => el.classList.remove('swap')));
+    }, 300);
+  };
+  const tampil = () => {
+    const t = p.tipe[ti], w = t.warna[wi];
+    $('#t-spec').innerHTML = `<tr><td>Tipe</td><td>${esc(t.nama)}</td></tr>` + t.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('') + `<tr><td>Warna</td><td>${esc(w.nama)}</td></tr>`;
+    $('#big-tag').textContent = `${t.nama} · ${w.nama}`;
+    $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama}${p.merek ? ' ' + p.merek : ''}${p.seri ? ' ' + p.seri : ''} tipe ${t.nama} warna ${w.nama}.`);
+    // foto warna jika ada, selain itu foto tipe
+    cariFoto(w.foto).then(u => ganti(bf, u ? w.foto : t.foto, `${p.nama} ${t.nama} ${w.nama}`));
+    if (t.penampang) ganti(sf, t.penampang, `Penampang ${t.nama}`);
+  };
+  const isiWarna = () => {
+    const t = p.tipe[ti];
+    $('#t-sw').innerHTML = t.warna.map((w, i) => `<button type="button" class="${i === wi ? 'on' : ''}" data-w="${i}" aria-pressed="${i === wi}"><div class="sw-ph warna" style="--w:${esc(w.warna || '#ccc')}"><div class="foto" data-foto="${esc(w.foto)}" data-alt=""></div></div>${esc(w.nama)}</button>`).join('');
+    semuaFoto($('#t-sw'));
+    $$('#t-sw button').forEach(b => b.addEventListener('click', () => {
+      wi = +b.dataset.w;
+      $$('#t-sw button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+      tampil();
+    }));
+    kursorTarget();
+  };
+  $$('.tps button', v).forEach(b => b.addEventListener('click', () => {
+    const lama = p.tipe[ti].warna[wi].nama;
+    ti = +b.dataset.t;
+    $$('.tps button', v).forEach(x => x.setAttribute('aria-pressed', x === b));
+    const j = p.tipe[ti].warna.findIndex(w => w.nama === lama);
+    wi = j < 0 ? 0 : j;      // pertahankan warna yang sama jika tersedia di tipe baru
+    isiWarna(); tampil();
+  }));
+  isiWarna(); tampil();
+
+  // Perbesar: semua tipe (foto produk) + penampang
+  $('#big').addEventListener('click', async () => {
+    const list = [];
+    for (const t of p.tipe) { const u = await cariFoto(t.foto); if (u) list.push({ src: u, cap: `${p.nama} ${t.nama}`, wa: `Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama}${p.merek ? ' ' + p.merek : ''}${p.seri ? ' ' + p.seri : ''} tipe ${t.nama}.` }); }
+    if (list.length) lightbox(list, Math.min(ti, list.length - 1));
+  });
+  $('#t-sec')?.addEventListener('click', async () => {
+    const u = await cariFoto(p.tipe[ti].penampang);
+    if (u) lightbox([{ src: u, cap: `Penampang ${p.tipe[ti].nama}` }]);
+  });
+  $('#t-kat')?.addEventListener('click', async () => {
+    const u = await cariFoto(p.katalogGambar);
+    if (u) lightbox([{ src: u, cap: `Katalog ${p.nama}${p.merek ? ' — ' + p.merek : ''}` }]);
   });
 }
 

@@ -11,4 +11,6 @@ Ingin pakai FOTO per warna? Buat subfolder sesuai tipe, lalu isi:
   flt-202/  dark-wood, wood, light-wood
 (mis. flt-175/dark-wood.jpg). Foto otomatis menggantikan kotak warna.
 
-Ubah ukuran/warna/tipe: bagian "koleksi" Wall Panel di assets/js/pengaturan.js
+Ubah ukuran/warna/tipe: bagian "tipe" Wall Panel di assets/js/pengaturan.js
+Semua ini tampil di bagian ATAS halaman Wall Panel (pilih tipe -> foto, penampang,
+spesifikasi & warna ikut berganti).
