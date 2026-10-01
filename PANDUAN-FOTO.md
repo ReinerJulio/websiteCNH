@@ -27,7 +27,7 @@ foto/
 ├── produk/
 │   ├── wall-panel/
 │   │   ├── sampul.jpg      ← kartu produk di beranda (portrait)
-│   │   ├── fluted/         ← Fluted Panel Mevvah: flt-175.png (transparan), flt-175-penampang.jpg, ... (lihat BACA-SAYA.txt)
+│   │   ├── fluted/         ← Fluted Panel Mevvah: flt-175.png, flt-195.png, flt-202.png (transparan) (lihat BACA-SAYA.txt)
 │   │   └── galeri/         ← 1.jpg, 2.jpg, 3.jpg, ... (hasil pemasangan)
 │   ├── wall-board/
 │   │   ├── sampul.jpg
@@ -62,7 +62,7 @@ Wall Board punya bagian **Koleksi** berisi Marble Series dari Mevvah: 23 motif d
   (nama motif huruf kecil, spasi jadi `-`, mis. `new-york.jpg`).
 - Untuk mengganti foto, **timpa file dengan nama yang sama**.
 - Halaman **Wall Panel** menampilkan **Fluted Panel** Mevvah langsung di bagian atas: pengunjung memilih
-  tipe (MVH.FLT-175, -195, -202) lalu warna; foto produk, gambar penampang, dan spesifikasi ikut berganti.
+  tipe (MVH.FLT-175, -195, -202) lalu warna; foto produk dan spesifikasi ikut berganti.
   Warna tampil sebagai kotak warna bergaris; taruh foto per warna (mis. `fluted/flt-175/dark-wood.jpg`)
   untuk menggantinya. Diatur di bagian `tipe` Wall Panel pada `assets/js/pengaturan.js`.
 - Menambah motif, grup, atau seri baru (juga untuk produk lain): edit bagian `koleksi`

@@ -3,7 +3,7 @@ FOTO PRODUK: wall-panel
 sampul.jpg  -> Foto kartu produk di beranda. Portrait, mis. 1200 x 1600 px.
 
 Subfolder:
-  fluted/  -> Fluted Panel Mevvah: foto tiap tipe, penampang, (opsional) foto per warna.
+  fluted/  -> Fluted Panel Mevvah: foto tiap tipe, (opsional) foto per warna.
               Lihat fluted/BACA-SAYA.txt
   galeri/  -> Foto hasil pemasangan: 1.jpg, 2.jpg, 3.jpg, ... (berurutan, jangan lompat nomor)
               Muncul otomatis sebagai galeri di halaman produk. Ukuran & rasio bebas.

@@ -59,17 +59,15 @@ const PENGATURAN = {
       sampul: 'foto/produk/wall-panel/sampul',
       galeri: 'foto/produk/wall-panel/galeri',
       tekstur: 'wood oak',
-      /* TIPE — tampil di bagian atas halaman produk: pilih tipe → foto, penampang,
+      /* TIPE — tampil di bagian atas halaman produk: pilih tipe → foto,
          spesifikasi & pilihan warna ikut berganti.
          foto       : foto produk tipe ini        (foto/produk/wall-panel/fluted/flt-175.jpg)
-         penampang  : gambar penampang/section    (foto/produk/wall-panel/fluted/flt-175-penampang.jpg)
          warna      : warna: '#kode' tampil sebagai kotak warna bergaris; jika foto warnanya ada
                       (mis. foto/produk/wall-panel/fluted/flt-175/dark-wood.jpg) foto itulah yang tampil. */
       tipe: [
         {
           nama: 'MVH.FLT-175',
           foto: 'foto/produk/wall-panel/fluted/flt-175',
-          penampang: 'foto/produk/wall-panel/fluted/flt-175-penampang',
           spesifikasi: [['Lebar', '17,5 cm'], ['Panjang', '290 cm'], ['Tebal', '2 cm']],
           warna: [
             { nama: 'Dark Wood', warna: '#6a453b', foto: 'foto/produk/wall-panel/fluted/flt-175/dark-wood' },
@@ -84,7 +82,6 @@ const PENGATURAN = {
         {
           nama: 'MVH.FLT-195',
           foto: 'foto/produk/wall-panel/fluted/flt-195',
-          penampang: 'foto/produk/wall-panel/fluted/flt-195-penampang',
           spesifikasi: [['Lebar', '19,5 cm'], ['Panjang', '290 cm'], ['Tebal', '1,2 cm']],
           warna: [
             { nama: 'Dark Wood', warna: '#6a453b', foto: 'foto/produk/wall-panel/fluted/flt-195/dark-wood' },
@@ -95,7 +92,6 @@ const PENGATURAN = {
         {
           nama: 'MVH.FLT-202',
           foto: 'foto/produk/wall-panel/fluted/flt-202',
-          penampang: 'foto/produk/wall-panel/fluted/flt-202-penampang',
           spesifikasi: [['Lebar', '20,2 cm'], ['Panjang', '290 cm'], ['Tebal', '2,7 cm']],
           warna: [
             { nama: 'Dark Wood', warna: '#6a453b', foto: 'foto/produk/wall-panel/fluted/flt-202/dark-wood' },
