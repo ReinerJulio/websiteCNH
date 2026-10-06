@@ -389,7 +389,9 @@ const GH_KEY = 'cnh-admin-github';
 function ghCfg() {
   let c = {}; try { c = JSON.parse(localStorage.getItem(GH_KEY) || '{}'); } catch {}
   let t = ''; try { t = sessionStorage.getItem(GH_KEY + '-token') || c.token || ''; } catch {}
-  return { owner: c.owner || 'ReinerJulio', repo: c.repo || 'websiteCNH', branch: c.branch || 'claude/jolly-babbage-8qlhtb', token: t, ingat: !!c.token };
+  // website kini di branch "main"; pengaturan lama yang masih memakai branch pengembangan ikut dipindah
+  const branch = !c.branch || c.branch === 'claude/jolly-babbage-8qlhtb' ? 'main' : c.branch;
+  return { owner: c.owner || 'ReinerJulio', repo: c.repo || 'websiteCNH', branch, token: t, ingat: !!c.token };
 }
 function simpanGhCfg(c) {
   try {
