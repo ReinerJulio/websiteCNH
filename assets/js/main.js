@@ -142,13 +142,14 @@ $('#slats').innerHTML = Array.from({ length: 18 }, (_, i) =>
    ===================================================================== */
 function renderProduk(id) {
   const p = CFG.produk.find(x => x.id === id) || CFG.produk[0];
+  p.motif = p.motif || []; p.spesifikasi = p.spesifikasi || [];   // aman untuk produk baru dari admin
   const m0 = (p.motif || [])[0] || { nama: '-', foto: p.sampul, tekstur: p.tekstur };
   const lain = CFG.produk.filter(x => x.id !== p.id);
   const v = $('#v-produk');
   document.title = `${p.nama} — Central Niaga Hardware`;
   v.innerHTML = `<div class="wrap">
     <nav class="crumb"><a href="#/">Beranda</a><span>/</span><a href="#/produk-kami">Produk</a><span>/</span><span>${esc(p.nama)}</span></nav>
-    ${p.tipe ? atasTipe(p) : atasMotif(p, m0)}
+    ${p.tipe && p.tipe.length ? atasTipe(p) : atasMotif(p, m0)}
     ${(p.koleksi || []).map((k, ki) => renderKoleksi(p, k, ki)).join('')}
     <div class="kg">
       <div class="rv"><h3>Tampilan Premium</h3><span>Desain modern dan elegan.</span></div>
@@ -161,7 +162,7 @@ function renderProduk(id) {
     <div class="more">${lain.map(x => `<a href="#/produk/${x.id}" class="rv" data-cursor="Lihat"><div class="foto tex ${x.tekstur}" data-foto="${esc(x.sampul)}" data-alt="${esc(x.nama)}"></div><div class="t"><h3>${esc(x.nama)}</h3><span class="go"><b>→</b></span></div></a>`).join('')}</div>
   </div>`;
 
-  if (p.tipe) pasangTipe(p, v);
+  if (p.tipe && p.tipe.length) pasangTipe(p, v);
   else {
     const setWA = n => $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama}${p.merek ? ' ' + p.merek : ''} motif ${n}.`);
     setWA(labelMotif(m0));
@@ -256,7 +257,7 @@ function atasMotif(p, m0) {
         <table class="spec rv">${p.merek ? `<tr><td>Merek</td><td>${esc(p.merek)}</td></tr>` : ''}${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}${m0.kode ? `<tr><td>Kode</td><td id="m-k">${esc(m0.kode)}</td></tr>` : ''}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
         <div class="rv"><div class="sw-l">Pilihan Motif &amp; Warna</div>
         <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}${m.kode ? `<small class="sw-k">${esc(m.kode)}</small>` : ''}</button>`).join('')}</div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(p.katalog || CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
       </div>
     </div>`;
 }
@@ -277,7 +278,7 @@ function atasTipe(p) {
         <div class="tps" role="group" aria-label="Pilih tipe">${p.tipe.map((t, i) => `<button type="button" data-t="${i}" aria-pressed="${!i}"><b>${esc(t.nama)}</b><small>${esc((t.spesifikasi.find(r => /lebar/i.test(r[0])) || ['', ''])[1])} · ${t.warna.length} warna</small></button>`).join('')}</div></div>
         <table class="spec rv" id="t-spec"></table>
         <div class="rv"><div class="sw-l">Pilihan Warna</div><div class="sw" id="t-sw"></div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(p.katalog || CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
       </div>
     </div>`;
 }
@@ -295,7 +296,7 @@ function pasangTipe(p, v) {
     }, 300);
   };
   const tampil = () => {
-    const t = p.tipe[ti], w = t.warna[wi];
+    const t = p.tipe[ti], w = t.warna[wi] || { nama: '-', warna: '#ccc', foto: '' };
     $('#t-spec').innerHTML = `<tr><td>Tipe</td><td>${esc(t.nama)}</td></tr>` + t.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('') + `<tr><td>Warna</td><td>${esc(w.nama)}</td></tr>`;
     $('#big-tag').textContent = `${t.nama} · ${w.nama}`;
     $('#p-wa').href = waLink(`Halo Central Niaga Hardware, saya ingin tanya harga ${p.nama}${p.merek ? ' ' + p.merek : ''}${p.seri ? ' ' + p.seri : ''} tipe ${t.nama} warna ${w.nama}.`);
@@ -315,7 +316,7 @@ function pasangTipe(p, v) {
     kursorTarget();
   };
   $$('.tps button', v).forEach(b => b.addEventListener('click', () => {
-    const lama = p.tipe[ti].warna[wi].nama;
+    const lama = (p.tipe[ti].warna[wi] || {}).nama;
     ti = +b.dataset.t;
     $$('.tps button', v).forEach(x => x.setAttribute('aria-pressed', x === b));
     const j = p.tipe[ti].warna.findIndex(w => w.nama === lama);

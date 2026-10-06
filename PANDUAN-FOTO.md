@@ -1,5 +1,8 @@
 # Panduan Memasukkan Foto
 
+> **Cara termudah:** buka **`admin.html`** — tambah produk/motif dan unggah foto langsung dari browser,
+> nama file & folder diatur otomatis. Panduan di bawah ini untuk cara manual (menaruh file sendiri).
+
 Website ini dibuat agar Anda **cukup menaruh foto di folder yang tepat dengan nama yang tepat** — tanpa mengedit kode.
 
 ## Langkah singkat

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Central Niaga Hardware</title>
+<link rel="icon" type="image/png" href="foto/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html" title="Buka website"><img src="foto/logo/logo.png" alt=""><span><b>CENTRAL NIAGA</b><small>Halaman Admin</small></span></a>
+  <div class="top-st" id="st-mode"></div>
+  <div class="top-act">
+    <span class="dirty" id="dirty" hidden></span>
+    <button class="b ghost" id="b-zip" type="button">Unduh ZIP</button>
+    <button class="b acc" id="b-save" type="button">Simpan ke GitHub</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side">
+    <div class="side-l">Produk</div>
+    <nav id="nav-produk"></nav>
+    <button class="b line wide" type="button" data-act="produk-baru">+ Produk baru</button>
+    <div class="side-l">Pengaturan</div>
+    <nav>
+      <a data-tab="katalog">Katalog</a>
+      <a data-tab="kontak">Kontak</a>
+      <a data-tab="github">Koneksi GitHub</a>
+      <a data-tab="panduan">Panduan</a>
+    </nav>
+  </aside>
+  <main id="main"></main>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<div class="modal" id="modal" hidden><div class="modal-in"><h3 id="m-t"></h3><div id="m-b"></div><div class="modal-act" id="m-a"></div></div></div>
+<input type="file" id="file-in" hidden>
+
+<script src="assets/js/pengaturan.js"></script>
+<script src="assets/vendor/jszip.min.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>
