@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 7/10/2026, 04.04.04.
+   File ini diperbarui oleh halaman admin (/admin/) — 7/10/2026, 04.05.32.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -227,7 +227,7 @@ const PENGATURAN = {
   blog: [
     {
       label: "Segera Hadir",
-      judul: "Cara Memilih Wall Panel yang Tepattttttttttttttt",
+      judul: "Cara Memilih Wall Panel yang Tepat",
       ringkas: "Panduan motif, warna, dan ukuran untuk setiap ruangan.",
       id: "cara-memilih-wall-panel-yang-tepat"
     },
