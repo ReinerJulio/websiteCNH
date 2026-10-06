@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 6/10/2026, 19.13.19.
+   File ini diperbarui oleh halaman admin (/admin/) — 7/10/2026, 04.02.48.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -23,7 +23,7 @@ const PENGATURAN = {
   produk: [
     {
       id: "wall-panel",
-      nama: "Wall Panel",
+      nama: "WALL PANEL",
       merek: "Mevvah",
       seri: "Fluted Panel",
       tagline: "Transform your wall. Elevate your space.",
@@ -228,17 +228,20 @@ const PENGATURAN = {
     {
       label: "Segera Hadir",
       judul: "Cara Memilih Wall Panel yang Tepat",
-      ringkas: "Panduan motif, warna, dan ukuran untuk setiap ruangan."
+      ringkas: "Panduan motif, warna, dan ukuran untuk setiap ruangan.",
+      id: "cara-memilih-wall-panel-yang-tepat"
     },
     {
       label: "Segera Hadir",
       judul: "Wall Board vs HPL: Apa Bedanya?",
-      ringkas: "Perbandingan fungsi, ketahanan, dan penggunaan."
+      ringkas: "Perbandingan fungsi, ketahanan, dan penggunaan.",
+      id: "wall-board-vs-hpl-apa-bedanya"
     },
     {
       label: "Segera Hadir",
       judul: "Tren Interior Kayu Modern",
-      ringkas: "Ide penerapan material kayu untuk hunian dan kantor."
+      ringkas: "Ide penerapan material kayu untuk hunian dan kantor.",
+      id: "tren-interior-kayu-modern"
     }
   ]
 };
