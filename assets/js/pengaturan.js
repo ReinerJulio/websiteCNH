@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (admin.html) — 6/10/2026, 18.54.32.
+   File ini diperbarui oleh halaman admin (admin.html) — 6/10/2026, 19.13.19.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -18,7 +18,7 @@ const PENGATURAN = {
     jam: "Senin – Minggu, 07.00 – 18.00",
     maps: "https://share.google/HbRGai5cvOndSn72E"
   },
-  katalog: "katalog/katalog.pdf",
+  katalog: "https://drive.google.com/file/d/1GGWT_loI6mL0cCGUkQRsLZre-zpTAthS/view?usp=sharing",
   foto: { logo: "foto/logo/logo", hero: "foto/beranda/hero", tentang: "foto/beranda/tentang", konsultasi: "foto/beranda/konsultasi" },
   produk: [
     {
