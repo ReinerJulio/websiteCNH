@@ -12,6 +12,7 @@ assets/
   css/style.css            ← tampilan & animasi (warna utama di bagian :root)
   js/pengaturan.js         ← ✏️ EDIT DI SINI: kontak, teks produk, motif, portofolio, blog
   js/main.js               ← logika website (tidak perlu diedit)
+  js/asisten.js            ← asisten chat (jawab dari data website, harga → WhatsApp)
   js/admin.js, css/admin.css ← halaman admin
   vendor/jszip.min.js      ← pustaka ZIP untuk tombol "Unduh ZIP" (MIT)
 foto/                      ← 📷 TARUH FOTO DI SINI (lihat PANDUAN-FOTO.md)
@@ -43,6 +44,18 @@ Menyimpan perubahan:
 
 Token hanya disimpan di browser Anda. Halaman admin tidak bisa mengubah website tanpa token
 (website ini statis), dan sudah ditandai `noindex` agar tidak muncul di mesin pencari.
+
+## Asisten chat (gratis)
+
+Tombol chat di pojok kanan bawah menjawab pertanyaan pelanggan langsung dari data website
+(`assets/js/pengaturan.js`) — tanpa AI berbayar, tanpa akun tambahan:
+
+- produk, motif & kode (mis. "MB05"), tipe & warna, koleksi, ukuran/spesifikasi
+- alamat, jam buka, Instagram, nomor WhatsApp, katalog, pengiriman, konsultasi
+- **pertanyaan harga** → otomatis membuka WhatsApp dengan pesan berisi produk/motif yang ditanyakan;
+  pertanyaan stok dan yang tidak terjawab juga diarahkan ke WhatsApp
+
+Produk baru yang ditambahkan lewat admin otomatis dikenali. Logikanya ada di `assets/js/asisten.js`.
 
 ## Memasukkan foto
 

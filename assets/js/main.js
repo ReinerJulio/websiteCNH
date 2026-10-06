@@ -740,4 +740,7 @@ else (function naik(t) {
   setTimeout(() => $('#loader').remove(), 1400);
 })(t0);
 
+// Dipakai asisten chat (assets/js/asisten.js)
+window.CNH = { cariFoto, waLink, esc };
+
 })();
