@@ -44,7 +44,7 @@ foto/
 │
 └── portofolio/             ← 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg (portrait)
 
-katalog/katalog.pdf         ← file untuk tombol "Download Katalog"
+Katalog: link Google Drive, diatur di admin.html → menu Katalog
 ```
 
 Setiap folder juga berisi file `BACA-SAYA.txt` sebagai pengingat.

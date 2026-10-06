@@ -321,7 +321,7 @@ function editorKatalog() {
   <div class="note info"><b>Link Google Drive:</b> buka file di Drive → <b>Bagikan</b> → ubah akses menjadi <b>“Siapa saja yang memiliki link”</b> → <b>Salin link</b>, lalu tempel di sini.
     PDF besar (lebih dari ±25 MB) sebaiknya lewat Google Drive agar website tetap cepat.</div>
   <section class="card"><h2>Katalog utama</h2><p class="sub">Dipakai semua produk yang tidak punya katalog khusus.</p>
-    <div class="row"><input type="text" data-p="katalog" value="${esc(S.katalog || '')}" placeholder="katalog/katalog.pdf atau https://drive.google.com/…">
+    <div class="row"><input type="text" data-p="katalog" value="${esc(S.katalog || '')}" placeholder="https://drive.google.com/file/d/…/view">
       <button type="button" class="b ghost sm" data-act="pdf" data-p="katalog">Unggah PDF</button>
       ${S.katalog ? `<a class="b ghost sm" href="${esc(S.katalog)}" target="_blank" rel="noopener">Buka ↗</a>` : ''}</div></section>
   <section class="card"><h2>Katalog per produk</h2><p class="sub">Kosongkan untuk memakai katalog utama.</p>

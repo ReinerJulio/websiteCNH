@@ -18,7 +18,7 @@ foto/                      ← 📷 TARUH FOTO DI SINI (lihat PANDUAN-FOTO.md)
   beranda/                 ← hero, tentang, konsultasi
   produk/<produk>/         ← sampul, motif/, galeri/
   portofolio/              ← 1.jpg, 2.jpg, ...
-katalog/katalog.pdf        ← file katalog untuk tombol "Download Katalog"
+katalog/                   ← (opsional) PDF yang diunggah lewat admin; katalog utama memakai link Google Drive
 ```
 
 ## Halaman admin (input produk & katalog)
