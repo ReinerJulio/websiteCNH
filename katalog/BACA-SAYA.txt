@@ -1,2 +1,3 @@
-Taruh file katalog di sini dengan nama: katalog.pdf
-Tombol "Download Katalog" di halaman produk akan membuka file ini.
+Folder ini untuk PDF katalog yang diunggah lewat halaman admin (opsional).
+Katalog utama sekarang memakai link Google Drive — atur di halaman admin (/admin/) → menu Katalog.
+PDF besar sebaiknya tetap di Google Drive agar website ringan.

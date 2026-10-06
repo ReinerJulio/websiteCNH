@@ -1,0 +1,8 @@
+LOGO
+====
+logo.png      -> Emblem logo (PNG latar transparan). Tampil di header, footer & layar pembuka.
+                 Tulisan "CENTRAL NIAGA / HARDWARE" di sebelahnya dibuat otomatis oleh website.
+favicon.png   -> Ikon kecil di tab browser (persegi, mis. 96 x 96 px).
+logo-asli.jpg -> File logo asli (arsip, tidak dipakai website).
+
+Ingin ganti logo? Timpa logo.png dengan file baru bernama sama.

@@ -1,0 +1,13 @@
+WALL BOARD CHAMPION
+===================
+Foto motif, nama file = kode motif (huruf kecil):
+
+  mb01.jpg  Pearl Beige      mb06.jpg  Golden Hickory
+  mb02.jpg  Vanilla Cloud    mb07.jpg  Schatt Walnut
+  mb03.jpg  Linen Touch      mb08.jpg  White Marble
+  mb04.jpg  Dove Feather     mb09.jpg  White Beige
+  mb05.jpg  Natural Maple    mb10.jpg  Vanilla Brown
+
+Saran: persegi, minimal 1200 x 1200 px. Boleh .jpg / .png / .webp.
+Tampil di bagian ATAS halaman Wall Board (foto besar + pilihan motif).
+Ubah nama/kode/tambah motif: bagian "motif" Wall Board di assets/js/pengaturan.js

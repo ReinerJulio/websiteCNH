@@ -7,16 +7,55 @@ Cukup buka `index.html` di browser, atau unggah seluruh folder ke hosting (GitHu
 
 ```
 index.html                 ← halaman utama (tidak perlu diedit)
+admin/                     ← halaman admin (index.html, admin.js, admin.css, jszip.min.js)
 assets/
   css/style.css            ← tampilan & animasi (warna utama di bagian :root)
   js/pengaturan.js         ← ✏️ EDIT DI SINI: kontak, teks produk, motif, portofolio, blog
   js/main.js               ← logika website (tidak perlu diedit)
+  js/asisten.js            ← asisten chat (jawab dari data website, harga → WhatsApp)
 foto/                      ← 📷 TARUH FOTO DI SINI (lihat PANDUAN-FOTO.md)
   beranda/                 ← hero, tentang, konsultasi
   produk/<produk>/         ← sampul, motif/, galeri/
   portofolio/              ← 1.jpg, 2.jpg, ...
-katalog/katalog.pdf        ← file katalog untuk tombol "Download Katalog"
+katalog/                   ← (opsional) PDF yang diunggah lewat admin; katalog utama memakai link Google Drive
 ```
+
+## Halaman admin (input produk & katalog)
+
+Buka **`/admin/`** (mis. `https://domain-anda.com/admin/`) untuk mengelola isi website tanpa mengedit kode:
+
+- **Produk** — tambah/ubah/hapus produk, merek, tagline, deskripsi, spesifikasi, motif (dengan kode),
+  tipe + pilihan warna, koleksi/seri, dan foto galeri. Foto cukup diunggah — otomatis dikecilkan
+  (maks. 1600 px), dikompres, dan disimpan di folder yang rapi dengan nama sesuai kode/nama motif.
+- **Katalog** — link Google Drive atau unggah PDF, untuk katalog utama maupun per produk.
+- **Portofolio** — tambah/ubah/hapus/urutkan foto hasil pemasangan beserta judul & kategori.
+- **Blog** — tulis artikel (judul, label, tanggal, ringkasan, foto sampul, isi). Artikel yang punya isi
+  bisa dibuka sebagai halaman sendiri (`#/blog/<judul-artikel>`).
+- **Kontak** — nomor WhatsApp, Instagram, alamat, jam buka, Google Maps.
+
+Menyimpan perubahan:
+
+1. **Simpan ke GitHub** (disarankan) — hubungkan sekali di menu *Koneksi GitHub* dengan
+   *fine-grained personal access token* (akses hanya ke repo ini, izin **Contents: Read and write**).
+   Semua data & foto tersimpan dalam satu commit; file foto lama yang diganti/dihapus ikut dibersihkan.
+2. **Unduh ZIP** — tanpa token: ekstrak ke folder website (timpa file lama), ikuti `BACA-DULU.txt`, lalu push.
+
+Memasang website online + mengunci halaman admin (hanya email tertentu): lihat **[PANDUAN-ONLINE.md](PANDUAN-ONLINE.md)**.
+
+Token hanya disimpan di browser Anda. Halaman admin tidak bisa mengubah website tanpa token
+(website ini statis), dan sudah ditandai `noindex` agar tidak muncul di mesin pencari.
+
+## Asisten chat (gratis)
+
+Tombol chat di pojok kanan bawah menjawab pertanyaan pelanggan langsung dari data website
+(`assets/js/pengaturan.js`) — tanpa AI berbayar, tanpa akun tambahan:
+
+- produk, motif & kode (mis. "MB05"), tipe & warna, koleksi, ukuran/spesifikasi
+- alamat, jam buka, Instagram, nomor WhatsApp, katalog, pengiriman, konsultasi
+- **pertanyaan harga** → otomatis membuka WhatsApp dengan pesan berisi produk/motif yang ditanyakan;
+  pertanyaan stok dan yang tidak terjawab juga diarahkan ke WhatsApp
+
+Produk baru yang ditambahkan lewat admin otomatis dikenali. Logikanya ada di `assets/js/asisten.js`.
 
 ## Memasukkan foto
 

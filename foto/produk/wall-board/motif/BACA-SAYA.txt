@@ -1,3 +1,0 @@
-Foto motif: natural.jpg, white.jpg, grey.jpg
-Rasio persegi (1:1), mis. 1400 x 1400 px.
-Nama motif bisa diubah di assets/js/pengaturan.js

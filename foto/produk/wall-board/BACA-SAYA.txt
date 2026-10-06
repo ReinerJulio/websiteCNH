@@ -3,7 +3,8 @@ FOTO PRODUK: wall-board
 sampul.jpg  -> Foto kartu produk di beranda. Portrait, mis. 1200 x 1600 px.
 
 Subfolder:
-  motif/   -> Foto tiap motif/warna: natural.jpg, white.jpg, grey.jpg
-              Tampil di halaman produk saat motif dipilih. Persegi (1:1), mis. 1400 x 1400 px.
+  champion/ -> Motif Wall Board Champion (bagian atas halaman): mb01.jpg ... mb10.jpg
+               Lihat champion/BACA-SAYA.txt
+  marble-series/ -> Koleksi Marble Series Mevvah (bagian bawah halaman)
   galeri/  -> Foto hasil pemasangan: 1.jpg, 2.jpg, 3.jpg, ... (berurutan, jangan lompat nomor)
               Muncul otomatis sebagai galeri di halaman produk. Ukuran & rasio bebas.
