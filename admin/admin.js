@@ -559,7 +559,7 @@ function buatFileData() {
   return `/* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (admin.html) — ${new Date().toLocaleString('id-ID')}.
+   File ini diperbarui oleh halaman admin (/admin/) — ${new Date().toLocaleString('id-ID')}.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 

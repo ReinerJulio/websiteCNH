@@ -7,14 +7,12 @@ Cukup buka `index.html` di browser, atau unggah seluruh folder ke hosting (GitHu
 
 ```
 index.html                 ← halaman utama (tidak perlu diedit)
-admin.html                 ← halaman admin: input produk, katalog & kontak
+admin/                     ← halaman admin (index.html, admin.js, admin.css, jszip.min.js)
 assets/
   css/style.css            ← tampilan & animasi (warna utama di bagian :root)
   js/pengaturan.js         ← ✏️ EDIT DI SINI: kontak, teks produk, motif, portofolio, blog
   js/main.js               ← logika website (tidak perlu diedit)
   js/asisten.js            ← asisten chat (jawab dari data website, harga → WhatsApp)
-  js/admin.js, css/admin.css ← halaman admin
-  vendor/jszip.min.js      ← pustaka ZIP untuk tombol "Unduh ZIP" (MIT)
 foto/                      ← 📷 TARUH FOTO DI SINI (lihat PANDUAN-FOTO.md)
   beranda/                 ← hero, tentang, konsultasi
   produk/<produk>/         ← sampul, motif/, galeri/
@@ -24,7 +22,7 @@ katalog/                   ← (opsional) PDF yang diunggah lewat admin; katalog
 
 ## Halaman admin (input produk & katalog)
 
-Buka **`admin.html`** (mis. `https://domain-anda.com/admin.html`) untuk mengelola isi website tanpa mengedit kode:
+Buka **`/admin/`** (mis. `https://domain-anda.com/admin/`) untuk mengelola isi website tanpa mengedit kode:
 
 - **Produk** — tambah/ubah/hapus produk, merek, tagline, deskripsi, spesifikasi, motif (dengan kode),
   tipe + pilihan warna, koleksi/seri, dan foto galeri. Foto cukup diunggah — otomatis dikecilkan
@@ -41,6 +39,8 @@ Menyimpan perubahan:
    *fine-grained personal access token* (akses hanya ke repo ini, izin **Contents: Read and write**).
    Semua data & foto tersimpan dalam satu commit; file foto lama yang diganti/dihapus ikut dibersihkan.
 2. **Unduh ZIP** — tanpa token: ekstrak ke folder website (timpa file lama), ikuti `BACA-DULU.txt`, lalu push.
+
+Memasang website online + mengunci halaman admin (hanya email tertentu): lihat **[PANDUAN-ONLINE.md](PANDUAN-ONLINE.md)**.
 
 Token hanya disimpan di browser Anda. Halaman admin tidak bisa mengubah website tanpa token
 (website ini statis), dan sudah ditandai `noindex` agar tidak muncul di mesin pencari.

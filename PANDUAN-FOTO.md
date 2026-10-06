@@ -1,6 +1,6 @@
 # Panduan Memasukkan Foto
 
-> **Cara termudah:** buka **`admin.html`** — tambah produk/motif dan unggah foto langsung dari browser,
+> **Cara termudah:** buka **halaman admin** (`/admin/`) — tambah produk/motif dan unggah foto langsung dari browser,
 > nama file & folder diatur otomatis. Panduan di bawah ini untuk cara manual (menaruh file sendiri).
 
 Website ini dibuat agar Anda **cukup menaruh foto di folder yang tepat dengan nama yang tepat** — tanpa mengedit kode.
@@ -44,7 +44,7 @@ foto/
 │
 └── portofolio/             ← 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg (portrait)
 
-Katalog: link Google Drive, diatur di admin.html → menu Katalog
+Katalog: link Google Drive, diatur di halaman admin (/admin/) → menu Katalog
 ```
 
 Setiap folder juga berisi file `BACA-SAYA.txt` sebagai pengingat.
