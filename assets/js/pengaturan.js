@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (admin.html) — 6/10/2026, 18.44.19.
+   File ini diperbarui oleh halaman admin (admin.html) — 6/10/2026, 18.51.45.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -184,19 +184,33 @@ const PENGATURAN = {
       seri: "Legion",
       tipe: [
         {
+          nama: "Legion 80.01",
+          foto: "foto/produk/pintu/tipe/legion-80-01",
+          spesifikasi: [
+            ["Lebar", "80 cm"],
+            ["Tinggi ", "200 cm"],
+            ["Tebal", "4 cm"],
+            ["Ketebalan Panel", "0.3 mm"],
+            ["Ketebalan Kusen", "0.6 mm"]
+          ],
+          warna: [
+            { nama: "Putih", warna: "#ffffff", foto: "foto/produk/pintu/tipe/legion-80-01/putih" },
+            { nama: "Urat Kayu", warna: "#674113", foto: "foto/produk/pintu/tipe/legion-80-01/urat-kayu" }
+          ]
+        },
+        {
           nama: "Legion 80.02",
           foto: "foto/produk/pintu/tipe/legion-80-02",
           spesifikasi: [
             ["Lebar", "80 cm"],
             ["Tinggi", "200 cm"],
             ["Tebal", "4 cm"],
-            ["Warna", "Putih"],
             ["Ketebalan Panel", "0.3 mm"],
             ["Ketebalan Kusen", "0.6 mm"]
           ],
           warna: [
             { nama: "Putih", warna: "#ffffff", foto: "foto/produk/pintu/tipe/legion-80-02/putih" },
-            { nama: "Urat Kayu", warna: "#c8a070", foto: "foto/produk/pintu/tipe/legion-80-02/urat-kayu" }
+            { nama: "Urat Kayu", warna: "#674113", foto: "foto/produk/pintu/tipe/legion-80-02/urat-kayu" }
           ]
         }
       ]
