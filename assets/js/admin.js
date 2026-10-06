@@ -45,6 +45,8 @@ const TPL = {
   koleksi: () => ({ nama: 'Koleksi Baru', merek: '', deskripsi: '', spesifikasi: [], grup: [] }),
   grup: () => ({ nama: 'Grup Baru', spesifikasi: [], motif: [] }),
   gmotif: () => ({ nama: '', foto: '' }),
+  portofolio: () => ({ judul: '', kategori: '', foto: '', tekstur: 'wood oak' }),
+  blog: () => ({ id: '', label: 'Tips', judul: '', tanggal: new Date().toISOString().slice(0, 10), ringkas: '', foto: '', isi: '' }),
 };
 const TEKSTUR = [['stn', 'Batu / abu'], ['wht', 'Putih'], ['brd', 'Krem'], ['hpl', 'Abu terang'], ['wood oak', 'Kayu terang'], ['wood wal', 'Kayu gelap'], ['wood gry', 'Kayu abu'], ['wood blk', 'Kayu hitam']];
 
@@ -329,6 +331,46 @@ function editorKatalog() {
       ${p.katalog ? `<a class="b ghost sm" href="${esc(p.katalog)}" target="_blank" rel="noopener">Buka ↗</a>` : ''}</div></div>`).join('')}</section>`;
 }
 
+/* ---------- Portofolio ---------- */
+function editorPortofolio() {
+  const list = S.portofolio || (S.portofolio = []);
+  return `<div class="hd"><div><div class="eb">Konten</div><h1>Portofolio</h1></div>
+    <div class="hd-act"><a class="b ghost sm" href="index.html#/portofolio" target="_blank" rel="noopener">Lihat di website ↗</a></div></div>
+  <p class="lead">Foto hasil pemasangan di bagian <b>Portofolio</b> beranda (bergulir ke samping). Urutan di sini = urutan di website. Saran foto: potret (tegak), mis. 1200×1500 px.</p>
+  <datalist id="dl-kat">${S.produk.map(p => `<option value="${esc(p.nama)}">`).join('')}</datalist>
+  <div class="items pf">${list.map((x, i) => `<div class="it">
+      ${thumb(`portofolio.${i}`, 'foto', { dir: 'foto/portofolio', slug: 'judul', cls: 'potret', max: 1800 })}
+      <input type="text" data-p="portofolio.${i}.judul" value="${esc(x.judul)}" placeholder="Judul (mis. Rumah Tinggal)">
+      <input type="text" data-p="portofolio.${i}.kategori" value="${esc(x.kategori || '')}" placeholder="Kategori / produk" list="dl-kat">
+      ${aksiItem(`portofolio.${i}`)}</div>`).join('') || '<p class="empty">Belum ada portofolio.</p>'}</div>
+  <button type="button" class="b line" data-act="add" data-p="portofolio" data-tpl="portofolio">+ Tambah portofolio</button>
+  <p class="hint">Isi judul dulu, lalu klik kotak foto untuk mengunggah.</p>`;
+}
+
+/* ---------- Blog ---------- */
+function editorBlog() {
+  const list = S.blog || (S.blog = []);
+  return `<div class="hd"><div><div class="eb">Konten</div><h1>Blog</h1></div>
+    <div class="hd-act"><a class="b ghost sm" href="index.html#/blog" target="_blank" rel="noopener">Lihat di website ↗</a></div></div>
+  <p class="lead">Artikel yang <b>punya isi</b> bisa diklik dan dibuka sebagai halaman sendiri. Artikel tanpa isi tampil sebagai kartu “segera hadir”.</p>
+  <div class="note info"><b>Format isi artikel:</b>
+    <ul><li>Baris kosong = paragraf baru</li><li><code>## Judul bagian</code> = subjudul</li><li><code>- teks</code> = daftar berpoin</li><li><code>**teks**</code> = <b>tebal</b></li></ul></div>
+  ${list.map((b, i) => { const B = `blog.${i}`; return `<section class="card blog-it">
+    <div class="row" style="margin-bottom:14px"><input type="text" data-p="${B}.judul" value="${esc(b.judul)}" placeholder="Judul artikel" style="font-weight:700;font-size:15px">${aksiItem(B)}</div>
+    <div class="blog-g">
+      <div>${thumb(B, 'foto', { dir: 'foto/blog', slug: 'judul', label: 'Foto sampul (opsional)', max: 1800 })}
+        ${b.isi?.trim() && b.id ? `<a class="b ghost sm wide" style="margin-top:10px" href="index.html#/blog/${esc(b.id)}" target="_blank" rel="noopener">Buka artikel ↗</a>` : ''}</div>
+      <div class="grid">
+        ${inp(`${B}.label`, 'Label', { ph: 'mis. Tips / Inspirasi / Segera Hadir' })}
+        ${inp(`${B}.tanggal`, 'Tanggal', { type: 'date' })}
+        ${inp(`${B}.ringkas`, 'Ringkasan', { full: true, area: true, rows: 2, hint: 'tampil di kartu' })}
+      </div>
+    </div>
+    <div class="f" style="margin-top:14px"><label>Isi artikel <em>kosongkan jika belum siap</em></label><textarea data-p="${B}.isi" rows="10" placeholder="Tulis isi artikel di sini…">${esc(b.isi || '')}</textarea></div>
+  </section>`; }).join('') || '<p class="empty">Belum ada artikel.</p>'}
+  <button type="button" class="b line" data-act="add" data-p="blog" data-tpl="blog">+ Tambah artikel</button>`;
+}
+
 /* ---------- Kontak ---------- */
 function editorKontak() {
   return `<div class="hd"><div><div class="eb">Pengaturan</div><h1>Kontak</h1></div></div>
@@ -406,12 +448,13 @@ function editorPanduan() {
 function renderNav() {
   $('#nav-produk').innerHTML = S.produk.map((p, i) => `<a data-tab="produk" data-i="${i}" class="${view.tab === 'produk' && view.i === i ? 'on' : ''}"><span>${esc(p.nama || 'Tanpa nama')}</span><small>${p.tipe ? 'tipe' : (p.motif || []).length + ' motif'}</small></a>`).join('');
   $$('.side nav a[data-tab]:not([data-i])').forEach(a => a.classList.toggle('on', view.tab === a.dataset.tab));
+  $('#n-pf').textContent = (S.portofolio || []).length; $('#n-blog').textContent = (S.blog || []).length;
 }
 function render() {
   const y = scrollY;
   const m = $('#main');
   if (view.tab === 'produk') { view.i = Math.min(view.i, S.produk.length - 1); m.innerHTML = S.produk.length ? editorProduk(view.i) : '<div class="hd"><h1>Belum ada produk</h1></div>'; }
-  else m.innerHTML = { katalog: editorKatalog, kontak: editorKontak, github: editorGithub, panduan: editorPanduan }[view.tab]();
+  else m.innerHTML = { katalog: editorKatalog, kontak: editorKontak, portofolio: editorPortofolio, blog: editorBlog, github: editorGithub, panduan: editorPanduan }[view.tab]();
   renderNav(); isiThumb(m); perbaruiStatus();
   if (view.tab === 'produk' && S.produk.length) isiGaleri(view.i);
   scrollTo(0, y);
@@ -504,7 +547,7 @@ function tulis(v, ind = '') {
     : `{\n${Object.entries(bersih).map(([k, x]) => `${di}${kunci(k)}: ${tulis(x, di)}`).join(',\n')}\n${ind}}`;
 }
 function bersihkan(o) {   // buang nilai kosong yang tidak perlu (string kosong opsional, flag false)
-  const OPS = new Set(['merek', 'seri', 'katalog', 'kode', 'satuan', 'baru']);
+  const OPS = new Set(['merek', 'seri', 'katalog', 'kode', 'satuan', 'baru', 'isi', 'tanggal']);
   if (Array.isArray(o)) return o.map(bersihkan);
   if (o && typeof o === 'object') { const r = {}; for (const [k, v] of Object.entries(o)) { if (v === undefined || (OPS.has(k) && (v === '' || v === false))) continue; r[k] = bersihkan(v); } return r; }
   return o;
@@ -526,8 +569,20 @@ const PENGATURAN = ${tulis(data)};
 `;
 }
 
+// Alamat artikel blog (#/blog/<id>) dibuat dari judul, unik, dan tidak berubah setelah dibuat
+function lengkapiBlog() {
+  const dipakai = new Set();
+  (S.blog || []).forEach(b => {
+    let id = b.id || slug(b.judul) || 'artikel', n = 2; const dasar = id;
+    while (dipakai.has(id)) id = `${dasar}-${n++}`;
+    b.id = id; dipakai.add(id);
+  });
+}
 function validasi() {
+  lengkapiBlog();
   const err = [], ids = new Set();
+  (S.blog || []).forEach((b, i) => { if (!b.judul?.trim()) err.push(`Blog: artikel ke-${i + 1} belum punya judul.`); });
+  (S.portofolio || []).forEach((x, i) => { if (!x.judul?.trim()) err.push(`Portofolio ke-${i + 1} belum punya judul.`); });
   S.produk.forEach((p, i) => {
     if (!p.nama?.trim()) err.push(`Produk ke-${i + 1} belum punya nama.`);
     if (ids.has(p.id)) err.push(`Alamat halaman “${p.id}” dipakai dua produk.`); ids.add(p.id);

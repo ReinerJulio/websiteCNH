@@ -29,6 +29,9 @@ Buka **`admin.html`** (mis. `https://domain-anda.com/admin.html`) untuk mengelol
   tipe + pilihan warna, koleksi/seri, dan foto galeri. Foto cukup diunggah — otomatis dikecilkan
   (maks. 1600 px), dikompres, dan disimpan di folder yang rapi dengan nama sesuai kode/nama motif.
 - **Katalog** — link Google Drive atau unggah PDF, untuk katalog utama maupun per produk.
+- **Portofolio** — tambah/ubah/hapus/urutkan foto hasil pemasangan beserta judul & kategori.
+- **Blog** — tulis artikel (judul, label, tanggal, ringkasan, foto sampul, isi). Artikel yang punya isi
+  bisa dibuka sebagai halaman sendiri (`#/blog/<judul-artikel>`).
 - **Kontak** — nomor WhatsApp, Instagram, alamat, jam buka, Google Maps.
 
 Menyimpan perubahan:
