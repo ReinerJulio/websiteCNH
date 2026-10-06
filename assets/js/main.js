@@ -10,12 +10,6 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-// Link Google Drive "…/file/d/ID/view" diubah jadi link unduhan langsung
-// (pratinjau Drive gagal untuk PDF besar: "file terlalu besar untuk dilihat")
-const linkKatalog = u => {
-  const m = String(u || '').match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:[^#]*&)?id=)([\w-]{10,})/);
-  return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : u;
-};
 const waLink = t => `https://wa.me/${CFG.kontak.wa}?text=${encodeURIComponent(t)}`;
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -267,7 +261,7 @@ function atasMotif(p, m0) {
         <table class="spec rv">${p.merek ? `<tr><td>Merek</td><td>${esc(p.merek)}</td></tr>` : ''}${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}${m0.kode ? `<tr><td>Kode</td><td id="m-k">${esc(m0.kode)}</td></tr>` : ''}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
         <div class="rv"><div class="sw-l">Pilihan Motif &amp; Warna</div>
         <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}${m.kode ? `<small class="sw-k">${esc(m.kode)}</small>` : ''}</button>`).join('')}</div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(linkKatalog(p.katalog || CFG.katalog))}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(p.katalog || CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
       </div>
     </div>`;
 }
@@ -288,7 +282,7 @@ function atasTipe(p) {
         <div class="tps" role="group" aria-label="Pilih tipe">${p.tipe.map((t, i) => `<button type="button" data-t="${i}" aria-pressed="${!i}"><b>${esc(t.nama)}</b><small>${esc((t.spesifikasi.find(r => /lebar/i.test(r[0])) || ['', ''])[1])} · ${t.warna.length} warna</small></button>`).join('')}</div></div>
         <table class="spec rv" id="t-spec"></table>
         <div class="rv"><div class="sw-l">Pilihan Warna</div><div class="sw" id="t-sw"></div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(linkKatalog(p.katalog || CFG.katalog))}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(p.katalog || CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
       </div>
     </div>`;
 }
