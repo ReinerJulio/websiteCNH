@@ -10,6 +10,12 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// Link Google Drive "…/file/d/ID/view" diubah jadi link unduhan langsung
+// (pratinjau Drive gagal untuk PDF besar: "file terlalu besar untuk dilihat")
+const linkKatalog = u => {
+  const m = String(u || '').match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:[^#]*&)?id=)([\w-]{10,})/);
+  return m ? `https://drive.google.com/uc?export=download&id=${m[1]}` : u;
+};
 const waLink = t => `https://wa.me/${CFG.kontak.wa}?text=${encodeURIComponent(t)}`;
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -109,11 +115,12 @@ function pasangWA(root = document) {
   $$('[data-wa]', root).forEach(e => { e.href = waLink(e.dataset.wa); e.target = '_blank'; e.rel = 'noopener'; });
 }
 
-// Kartu produk beranda
+// Kartu produk beranda — berjajar (≤ 5 produk) atau grid kartu (> 5 produk)
+$('#p-grid').classList.toggle('kartu', CFG.produk.length > 5);
 $('#p-grid').innerHTML = CFG.produk.map((p, i) => `
   <a class="p" href="#/produk/${p.id}" data-cursor="Lihat">
     <div class="foto tex ${p.tekstur}" data-foto="${esc(p.sampul)}" data-alt="${esc(p.nama)}"></div>
-    <div class="t"><div class="n">${String(i + 1).padStart(2, '0')} — ${String(CFG.produk.length).padStart(2, '0')}</div>
+    <div class="t"${CFG.produk.length > 5 ? ` style="--d:${(i % 3) * .06}s"` : ''}><div class="n">${String(i + 1).padStart(2, '0')} — ${String(CFG.produk.length).padStart(2, '0')}</div>
     <h3>${esc(p.nama)}</h3><p>${esc(p.deskripsi)}</p><span class="go"><b>→</b>Lihat Produk</span></div>
   </a>`).join('');
 
@@ -144,7 +151,9 @@ function renderProduk(id) {
   const p = CFG.produk.find(x => x.id === id) || CFG.produk[0];
   p.motif = p.motif || []; p.spesifikasi = p.spesifikasi || [];   // aman untuk produk baru dari admin
   const m0 = (p.motif || [])[0] || { nama: '-', foto: p.sampul, tekstur: p.tekstur };
-  const lain = CFG.produk.filter(x => x.id !== p.id);
+  // Produk lainnya: maksimal 4, dimulai dari produk sesudah produk ini (berputar)
+  const pi = CFG.produk.indexOf(p), MAKS_LAIN = 4;
+  const lain = CFG.produk.slice(pi + 1).concat(CFG.produk.slice(0, pi)).slice(0, MAKS_LAIN);
   const v = $('#v-produk');
   document.title = `${p.nama} — Central Niaga Hardware`;
   v.innerHTML = `<div class="wrap">
@@ -159,7 +168,8 @@ function renderProduk(id) {
     </div>
     <section class="gal-s" id="gal-s" hidden><div class="eb">Galeri</div><h2 data-split>${esc(p.nama)} <em>terpasang</em></h2><div class="gal" id="gal"></div></section>
     <div class="eb rv">Produk Lainnya</div>
-    <div class="more">${lain.map(x => `<a href="#/produk/${x.id}" class="rv" data-cursor="Lihat"><div class="foto tex ${x.tekstur}" data-foto="${esc(x.sampul)}" data-alt="${esc(x.nama)}"></div><div class="t"><h3>${esc(x.nama)}</h3><span class="go"><b>→</b></span></div></a>`).join('')}</div>
+    <div class="more${lain.length % 2 ? ' ganjil' : ''}">${lain.map(x => `<a href="#/produk/${x.id}" class="rv" data-cursor="Lihat"><div class="foto tex ${x.tekstur}" data-foto="${esc(x.sampul)}" data-alt="${esc(x.nama)}"></div><div class="t"><h3>${esc(x.nama)}</h3><span class="go"><b>→</b></span></div></a>`).join('')}</div>
+    ${CFG.produk.length - 1 > MAKS_LAIN ? `<div class="more-all rv"><a class="btn line mag" href="#/produk-kami"><span>Lihat semua ${CFG.produk.length} produk</span><i>→</i></a></div>` : ''}
   </div>`;
 
   if (p.tipe && p.tipe.length) pasangTipe(p, v);
@@ -257,7 +267,7 @@ function atasMotif(p, m0) {
         <table class="spec rv">${p.merek ? `<tr><td>Merek</td><td>${esc(p.merek)}</td></tr>` : ''}${p.spesifikasi.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}${m0.kode ? `<tr><td>Kode</td><td id="m-k">${esc(m0.kode)}</td></tr>` : ''}<tr><td>Motif</td><td id="m-n">${esc(m0.nama)}</td></tr><tr><td>Pilihan</td><td>${p.motif.length} motif / warna</td></tr></table>
         <div class="rv"><div class="sw-l">Pilihan Motif &amp; Warna</div>
         <div class="sw">${p.motif.map((m, i) => `<button type="button" class="${i ? '' : 'on'}" data-i="${i}" aria-pressed="${!i}"><div class="sw-ph"><div class="foto tex ${m.tekstur}" data-foto="${esc(m.foto)}" data-alt=""></div></div>${esc(m.nama)}${m.kode ? `<small class="sw-k">${esc(m.kode)}</small>` : ''}</button>`).join('')}</div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(p.katalog || CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a><a class="btn line mag" href="${esc(linkKatalog(p.katalog || CFG.katalog))}" target="_blank" rel="noopener"><span>Download Katalog</span></a></div>
       </div>
     </div>`;
 }
@@ -278,7 +288,7 @@ function atasTipe(p) {
         <div class="tps" role="group" aria-label="Pilih tipe">${p.tipe.map((t, i) => `<button type="button" data-t="${i}" aria-pressed="${!i}"><b>${esc(t.nama)}</b><small>${esc((t.spesifikasi.find(r => /lebar/i.test(r[0])) || ['', ''])[1])} · ${t.warna.length} warna</small></button>`).join('')}</div></div>
         <table class="spec rv" id="t-spec"></table>
         <div class="rv"><div class="sw-l">Pilihan Warna</div><div class="sw" id="t-sw"></div></div>
-        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(p.katalog || CFG.katalog)}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
+        <div class="cta rv"><a class="btn dark mag" id="p-wa" target="_blank" rel="noopener"><span>Tanya Harga via WhatsApp</span><i>→</i></a>${p.katalogGambar ? '<button type="button" class="btn line mag" id="t-kat"><span>Lihat Katalog</span></button>' : `<a class="btn line mag" href="${esc(linkKatalog(p.katalog || CFG.katalog))}" target="_blank" rel="noopener"><span>Download Katalog</span></a>`}</div>
       </div>
     </div>`;
 }

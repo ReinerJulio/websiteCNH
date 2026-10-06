@@ -249,6 +249,14 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 .go{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
 .go b{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;transition:.6s var(--ease)}
 .pacc .p:hover .go b{background:var(--acc);border-color:var(--acc);transform:rotate(-45deg)}
+/* Grid kartu saat produk > 5: 3 kolom desktop, 2 kolom ponsel */
+.pacc.kartu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;height:auto}
+.pacc.kartu .p,.pacc.kartu:hover .p,.pacc.kartu .p:hover{flex:none;aspect-ratio:4/5;height:auto}
+.pacc.kartu .t{left:26px;right:26px;bottom:26px}
+.pacc.kartu h3{font-size:clamp(26px,2.6vw,40px);white-space:normal;line-height:1.05}
+.pacc.kartu .p:hover{transform:translateY(-6px)}
+.pacc.kartu .p{transition:transform .8s var(--ease),box-shadow .8s var(--ease)}
+.pacc.kartu .p:hover{box-shadow:0 30px 50px -30px rgba(20,12,4,.55)}
 @media (max-width:980px){.pacc{flex-direction:column;height:auto}.pacc .p,.pacc:hover .p,.pacc .p:hover{flex:none;height:min(420px,70vw)}.pacc .t{left:24px;right:24px;bottom:24px}.pacc .t p{max-height:90px;opacity:1;margin-bottom:14px}}
 
 /* ---------- Tentang ---------- */
@@ -376,6 +384,9 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 .gal img{width:100%;height:auto;transition:transform 1.2s var(--ease)}
 .gal a:hover img{transform:scale(1.05)}
 .more{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:40px 0 120px}
+.more.ganjil>a:last-child{grid-column:1/-1}
+.more:has(+.more-all){margin-bottom:0}
+.more-all{display:flex;justify-content:center;margin:30px 0 120px}
 .more a{position:relative;height:300px;border-radius:22px;overflow:hidden;color:#fff;isolation:isolate}
 .more a::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(transparent 30%,rgba(12,11,9,.85))}
 .more a .foto{transition:transform 1.4s var(--ease)}.more a:hover .foto{transform:scale(1.06)}
@@ -523,4 +534,14 @@ footer h4{color:var(--on-dk);font-size:10px;letter-spacing:.26em;text-transform:
   .rv-img>.foto{clip-path:none!important}
   .big-txt .w{opacity:1}
   #loader,#curtain,#cur,#dot{display:none}
+}
+@media (max-width:980px){
+  .pacc.kartu{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .pacc.kartu .p,.pacc.kartu:hover .p,.pacc.kartu .p:hover{height:auto;aspect-ratio:3/4}
+  .pacc.kartu .t{left:14px;right:14px;bottom:14px}
+  .pacc.kartu .n{font-size:9px;letter-spacing:.16em}
+  .pacc.kartu h3{font-size:clamp(19px,5.4vw,28px);margin:4px 0 8px}
+  .pacc.kartu .t p{display:none}
+  .pacc.kartu .go{font-size:9.5px;gap:8px}
+  .pacc.kartu .go b{width:32px;height:32px}
 }
