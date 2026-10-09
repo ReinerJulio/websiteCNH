@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 14.10.09.
+   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 14.12.55.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -228,7 +228,11 @@ const PENGATURAN = {
       seri: "Cat Jotun",
       motif: [
         { kode: "INTERIOR", nama: "MAJESTIC SENSE", foto: "foto/produk/jotun/motif/interior", tekstur: "wht" },
-        { kode: "INTERIOR", nama: "MAJESTIC PURE COLOR", foto: "foto/produk/jotun/motif/interrior", tekstur: "wht" }
+        { kode: "INTERIOR", nama: "MAJESTIC PURE COLOR", foto: "foto/produk/jotun/motif/interrior", tekstur: "wht" },
+        { kode: "INTERIOR", nama: "MAJESTIC SHEEN", foto: "foto/produk/jotun/motif/interior-2", tekstur: "wht" },
+        { kode: "INTERIOR ", nama: "MAJESTIC MATT", foto: "foto/produk/jotun/motif/interior-3", tekstur: "wht" },
+        { kode: "EXTERIOR", nama: "JOTASHIELD INFINITY", foto: "foto/produk/jotun/motif/exterior", tekstur: "wht" },
+        { kode: "EXTERIOR", nama: "JOTASHIELD ULTRA CLEAN ", foto: "foto/produk/jotun/motif/exterior-2", tekstur: "wht" }
       ],
       koleksi: []
     }
