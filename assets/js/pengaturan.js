@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 14.28.07.
+   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 15.28.06.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -242,6 +242,51 @@ const PENGATURAN = {
             ]
           ],
           warna: [{ nama: "7236 - CHI", warna: "#fffaf5", foto: "foto/produk/jotun/tipe/majestic-pure-color/chi" }]
+        },
+        {
+          nama: "MAJESTIC SENSE",
+          foto: "foto/produk/jotun/tipe/majestic-sense",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Cat interior terbaik yang tak hanya memberikan hasil akhir mulus dan mewah, tapi juga memurnikan udara dalam ruangan dengan Clean Air Technology."
+            ],
+            [
+              "",
+              "Untuk kecantikan sempurna & rumah yang sehat  Clean Air Technology  Odour-Less Comfort  Luxuriously Smooth  Covers Hairline Cracks  Superior Washability"
+            ]
+          ],
+          warna: [{ nama: "7236 - CHI", warna: "#f7f3ed", foto: "foto/produk/jotun/tipe/majestic-sense/7236-chi" }]
+        },
+        {
+          nama: "MAJESTIC TRUE BEAUTY SHEEN",
+          foto: "foto/produk/jotun/tipe/majestic-sheen",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Tingkatkan keanggunan ruangan dengan sentuhan mewah yang tahan lama. Majestic True Beauty menghadirkan warna-warna indah dan hidup yang tahan lama."
+            ],
+            [
+              "",
+              "Untuk tampilan cantik dan tahan lama  True Colour Experience  Luxurious Smooth Finish  Superior Easy Clean  Low Odour  Anti Bacteria & Anti Fungal"
+            ]
+          ],
+          warna: [{ nama: "7236 - CHI", warna: "#fbf3ea", foto: "foto/produk/jotun/tipe/majestic-sheen/7236-chi" }]
+        },
+        {
+          nama: "MAJESTIC TRUE BEAUTY MATT",
+          foto: "foto/produk/jotun/tipe/majestic-true-beauty-matt",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Tingkatkan keanggunan ruangan dengan sentuhan mewah yang tahan lama. Majestic True Beauty menghadirkan warna-warna indah dan hidup yang tahan lama."
+            ],
+            [
+              "",
+              "Untuk tampilan cantik dan tahan lama  True Colour Experience  Luxurious Smooth Finish  Superior Easy Clean  Low Odour  Anti Bacteria & Anti Fungal"
+            ]
+          ],
+          warna: [{ nama: "7236 - CHI", warna: "#f1e9df", foto: "foto/produk/jotun/tipe/majestic-true-beauty-matt/7236-chi" }]
         }
       ]
     }
