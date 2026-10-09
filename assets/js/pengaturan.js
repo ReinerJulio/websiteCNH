@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 15.28.06.
+   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 15.39.07.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -287,6 +287,21 @@ const PENGATURAN = {
             ]
           ],
           warna: [{ nama: "7236 - CHI", warna: "#f1e9df", foto: "foto/produk/jotun/tipe/majestic-true-beauty-matt/7236-chi" }]
+        },
+        {
+          nama: "MAJESTIC PRIMER",
+          foto: "foto/produk/jotun/tipe/majestic-primer",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Cat dasar akrilik premium berbahan dasar air untuk menahan alkali, dirancang khusus sebagai primer cat interior untuk kecantikan yang tahan lama."
+            ],
+            [
+              "",
+              "Mempercantik dan meningkatkan ketahanan warna  Enhances Beautiful Colours  Improves Colour Last  Low Odour  Alkaline & Water Resistant  Good Adhesion"
+            ]
+          ],
+          warna: [{ nama: "Cat Dasar - Putih ", warna: "#ffffff", foto: "foto/produk/jotun/tipe/majestic-primer/cat-dasar-putih" }]
         }
       ]
     }
