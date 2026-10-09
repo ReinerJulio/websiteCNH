@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 15.44.41.
+   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 15.56.28.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -302,6 +302,27 @@ const PENGATURAN = {
             ]
           ],
           warna: [{ nama: "Cat Dasar - Putih ", warna: "#ffffff", foto: "foto/produk/jotun/tipe/majestic-primer/cat-dasar-putih" }]
+        },
+        {
+          nama: "MAJESTIC SUPREME FINISH GLOSS",
+          foto: "foto/produk/jotun/tipe/majestic-supreme-finish-gloss",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Cat kayu dan besi berbahan dasar air yang memberikan hasil akhir yang indah dan sempurna untuk kesan abadi."
+            ],
+            [
+              "",
+              "Rumah indah melalui detail yang lebih halus  Beautiful Flawless Finish  Superior Easy Clean  Low Odour  Rust Resistance  Fast Drying Time"
+            ]
+          ],
+          warna: [
+            {
+              nama: "1032 - IRON GREY",
+              warna: "#7d7d7d",
+              foto: "foto/produk/jotun/tipe/majestic-supreme-finish-gloss/1032-iron-grey"
+            }
+          ]
         }
       ]
     }
