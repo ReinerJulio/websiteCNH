@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 12.49.06.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 13.05.08.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -449,6 +449,33 @@ const PENGATURAN = {
             ]
           ],
           warna: [{ nama: "7037 - SOUR ONION", warna: "#d1d9cc", foto: "foto/produk/jotun/tipe/waterguard/7037-sour-onion" }]
+        },
+        {
+          nama: "JOTASHIELD PRIMER",
+          foto: "foto/produk/jotun/tipe/jotashield-primer",
+          spesifikasi: [
+            [
+              "EKSTERIOR",
+              "Cat dasar akrilik premium berbahan dasar air yang berfungsi sebagai lapisan dasar sistem cat Jotashield untuk hasil terbaik"
+            ],
+            ["", "Memberikan daya rekat yang luar biasa untuk lapisan atas dan substrat"]
+          ],
+          warna: [{ nama: "PUTIH", warna: "#ffffff", foto: "foto/produk/jotun/tipe/jotashield-primer/putih" }]
+        },
+        {
+          nama: "ULTRA PRIMER",
+          foto: "foto/produk/jotun/tipe/ultra-primer",
+          spesifikasi: [
+            [
+              "EKSTERIOR & INTERIOR",
+              "Meningkatkan daya rekat cat dan memperpanjang daya tahan sistem cat premium pada permukaan beton baru, mengatasi masalah dinding seperti pengelupasan, efflorescence, dan serangan alkali"
+            ],
+            [
+              "",
+              "Dapat langsung diaplikasikan sebagai fondasi pada beton baru setelah 3 hari pengeringan/curing dengan ventilasi dan kondisi cuaca yang baik, dimana tingkat kelembaban di bawah 25% dan pH di bawah 11"
+            ]
+          ],
+          warna: [{ nama: "PUTIH", warna: "#ffffff", foto: "foto/produk/jotun/tipe/ultra-primer/putih" }]
         }
       ]
     }
