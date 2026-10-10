@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 17.22.42.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 17.45.02.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -493,9 +493,51 @@ const PENGATURAN = {
       motif: [
         {
           kode: "GS0504",
-          nama: "GLASS STICKER RONA",
+          nama: "GLASS STICKER RONA 90cm",
           foto: "foto/produk/glass-sticker/motif/glass-sticker-rona",
           tekstur: "wht"
+        },
+        { kode: "GS0504", nama: "GLASS STICKER RONA 90cm", foto: "foto/produk/glass-sticker/motif/gs", tekstur: "wht" },
+        {
+          kode: "GS1207",
+          nama: "GLASS STICKER RONA 120cm",
+          foto: "foto/produk/glass-sticker/motif/glass-sticker-rona-120cm",
+          tekstur: "wht"
+        },
+        {
+          kode: "GS1209",
+          nama: "GLASS STICKER RONA 120cm",
+          foto: "foto/produk/glass-sticker/motif/glass-sticker-rona-120cm-2",
+          tekstur: "wht"
+        },
+        {
+          kode: "GS0506",
+          nama: "GLASS STICKER RONA 90cm",
+          foto: "foto/produk/glass-sticker/motif/glass-sticker-rona-90cm",
+          tekstur: "wht"
+        },
+        {
+          kode: "GS1205",
+          nama: "GLASS STICKER RONA 120cm",
+          foto: "foto/produk/glass-sticker/motif/glass-sticker-rona-120cm-3",
+          tekstur: "wht"
+        },
+        {
+          kode: "GS1203",
+          nama: "GLASS STICKER RONA 120cm",
+          foto: "foto/produk/glass-sticker/motif/glass-sticker-rona-120cm-4",
+          tekstur: "wht"
+        },
+        { kode: "GS0505", nama: "GLASS STICKER RONA 90cm", foto: "foto/produk/glass-sticker/motif/gs0505", tekstur: "wht" },
+        { kode: "GS1210", nama: "GLASS STICKER RONA 120cm", foto: "foto/produk/glass-sticker/motif/gs1210", tekstur: "wht" },
+        { kode: "GS0521", nama: "GLASS STICKER RONA 90cm", foto: "foto/produk/glass-sticker/motif/gs0521", tekstur: "wht" },
+        { kode: "GS0609", nama: "GLASS STICKER RONA 90cm", foto: "foto/produk/glass-sticker/motif/gs0609", tekstur: "wht" },
+        { kode: "GS0509", nama: "GLASS STICKER RONA 90cm", foto: "foto/produk/glass-sticker/motif/gs0509", tekstur: "wht" },
+        {
+          kode: "GS0605 CUTTING",
+          nama: "GLASS STICKER SOOKU 1.2M",
+          foto: "foto/produk/glass-sticker/motif/gs0605-cutting",
+          tekstur: "stn"
         }
       ]
     }
