@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 12.17.39.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 12.49.06.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -359,6 +359,96 @@ const PENGATURAN = {
             ]
           ],
           warna: [{ nama: "PUTIH ", warna: "#fefdfb", foto: "foto/produk/jotun/tipe/majestic-primer-for-wood-and-metal/putih" }]
+        },
+        {
+          nama: "JOTASHIELD INFINITY",
+          foto: "foto/produk/jotun/tipe/jotashield-infinity",
+          spesifikasi: [
+            ["EKSTERIOR", "Sebagai perlindungan terbaik yang terbukti melindungi rumah yang menghadapi iklim ekstrem"],
+            [
+              "",
+              "Menawarkan warna yang tahan lama, daya tahan unggul, dan ketahanan terhadap kotoran yang luar biasa, formulasi premium ini dibuat untuk pemilik rumah yang menginginkan hasil yang terbaik"
+            ]
+          ],
+          warna: [{ nama: "7052 - GREEN SMOKE", warna: "#7b7e69", foto: "foto/produk/jotun/tipe/jotashield-infinity/7052-green-smoke" }]
+        },
+        {
+          nama: "JOTASHIELD ULTRA CLEAN",
+          foto: "foto/produk/jotun/tipe/jotashield-ultra-clean",
+          spesifikasi: [
+            ["EKSTERIOR", "Cat anti-kotor canggih yang dapat bersih mandiri dengan hujan, menjaga eksterior tampak baru"],
+            ["", "Memberikan perlindungan selama 8 tahun. Rumah Anda akan terlihat bersih untuk waktu yang lebih lama"]
+          ],
+          warna: [{ nama: "4011 - MISTRAL", warna: "#d7dcdf", foto: "foto/produk/jotun/tipe/jotashield-ultra-clean/4011-mistral" }]
+        },
+        {
+          nama: "JOTASHIELD FLEX",
+          foto: "foto/produk/jotun/tipe/jotashield-flex",
+          spesifikasi: [
+            [
+              "EKSTERIOR",
+              "Cat elastomer eksterior berkualitas tinggi yang dirancang untuk menutup retak rambut dan memberikan perlindungan kedap air"
+            ],
+            ["", " Jotashield Flex memiliki hingga 2X UV Protected Colours yang bertahan lebih lama dibandingkan cat lainnya"]
+          ],
+          warna: [{ nama: "2011 - ANTIQUE BRASS", warna: "#bc9683", foto: "foto/produk/jotun/tipe/jotashield-flex/2011-antique-brass" }]
+        },
+        {
+          nama: "JOTASHIELD ANTIFADE COLOURS",
+          foto: "foto/produk/jotun/tipe/jotashield-antifade-colours",
+          spesifikasi: [
+            [
+              "EKSTERIOR",
+              "Jotashield AntiFade Colours dibuat dengan Jotun Pigment Technology yang memastikan rumah Anda tetap terlindungi dengan warna tahan lama"
+            ],
+            ["", "ormulasinya dapat memantulkan sinar matahari dan mengurangi suhu"]
+          ],
+          warna: [
+            {
+              nama: "1032 - IRON GREY",
+              warna: "#aaa79e",
+              foto: "foto/produk/jotun/tipe/jotashield-antifade-colours/1032-iron-grey"
+            }
+          ]
+        },
+        {
+          nama: "TOUGH SHIELD MAX",
+          foto: "foto/produk/jotun/tipe/tough-shield-max",
+          spesifikasi: [
+            [
+              "EKSTERIOR",
+              "Tough Shield Max memberi rumah Anda jaminan kualitas warna yang tahan lama sambil menawarkan perlindungan tahan cuaca dan UV yang kuat terhadap kondisi yang sulit"
+            ],
+            [
+              "",
+              "Pengecatan kini menjadi lebih mudah dengan peningkatan aliran dan perataan yang menyebar lebih konsisten untuk hasil akhir yang halus dan rata"
+            ]
+          ],
+          warna: [{ nama: "10235 - SUMMER SUN", warna: "#eace8d", foto: "foto/produk/jotun/tipe/tough-shield-max/10235-summer-sun" }]
+        },
+        {
+          nama: "TOUGH SHIELD",
+          foto: "foto/produk/jotun/tipe/tough-shield",
+          spesifikasi: [
+            ["EKSTERIOR", "Dilengkapi dengan warna yang tahan lama dan perlindungan dari cuaca"],
+            ["", "Dapat memperkuat rumah Anda agar terlihat baru dan menyegarkan."]
+          ],
+          warna: [{ nama: "8044 - AUTUMN LEAF", warna: "#6d6c5a", foto: "foto/produk/jotun/tipe/tough-shield/8044-autumn-leaf" }]
+        },
+        {
+          nama: "WATERGUARD",
+          foto: "foto/produk/jotun/tipe/waterguard",
+          spesifikasi: [
+            [
+              "EKSTERIOR",
+              "WaterGuard membentuk pelindung yang menjaga dinding luar tetap kering dan terlindung dari hujan dan kelembapan sepanjang tahun"
+            ],
+            [
+              "",
+              "Diformulasikan dengan sifat kedap air yang lebih baik untuk mencegah rembesan air, kemudahan pengaplikasian, dan ketahanan terhadap kotoran yang lebih baik"
+            ]
+          ],
+          warna: [{ nama: "7037 - SOUR ONION", warna: "#d1d9cc", foto: "foto/produk/jotun/tipe/waterguard/7037-sour-onion" }]
         }
       ]
     }
