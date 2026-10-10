@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 13.05.08.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 17.22.42.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -476,6 +476,26 @@ const PENGATURAN = {
             ]
           ],
           warna: [{ nama: "PUTIH", warna: "#ffffff", foto: "foto/produk/jotun/tipe/ultra-primer/putih" }]
+        }
+      ]
+    },
+    {
+      id: "glass-sticker",
+      nama: "GLASS STICKER",
+      merek: "RONA & SOOKU",
+      tagline: "Stiker kaca",
+      deskripsi: "Lapisan film atau stiker khusus yang dipasang pada permukaan kaca - seperti jendela, pintu kaca, partisi kantor, atau etalase untuk memberikan efek privasi, dekorasi, atau perlindungan.",
+      sampul: "foto/produk/glass-sticker/sampul",
+      galeri: "foto/produk/glass-sticker/galeri",
+      tekstur: "wht",
+      spesifikasi: [],
+      seri: "STIKER KACA",
+      motif: [
+        {
+          kode: "GS0504",
+          nama: "GLASS STICKER RONA",
+          foto: "foto/produk/glass-sticker/motif/glass-sticker-rona",
+          tekstur: "wht"
         }
       ]
     }
