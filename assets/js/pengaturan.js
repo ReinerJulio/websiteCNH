@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 9/10/2026, 15.56.28.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 10.22.37.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -217,7 +217,7 @@ const PENGATURAN = {
     },
     {
       id: "jotun",
-      nama: "JOTUN",
+      nama: "Jotun",
       merek: "JOTUN ",
       tagline: "JOTUN INTERIOR & EXTERIOR",
       deskripsi: "JOTUN merupakan merek cat berkualitas untuk kebutuhan interior dan eksterior yang membantu memperindah serta melindungi bangunan Anda. Tersedia berbagai pilihan warna dan produk cat untuk dinding dalam maupun luar ruangan, sehingga Anda dapat menciptakan hunian yang nyaman, elegan, dan tahan lama.\n\nTemukan berbagai pilihan cat JOTUN di Central Niaga Hardware – Jotun Studio Pandaan, mitra kebutuhan cat untuk rumah, bangunan, dan proyek Anda.",
@@ -323,6 +323,42 @@ const PENGATURAN = {
               foto: "foto/produk/jotun/tipe/majestic-supreme-finish-gloss/1032-iron-grey"
             }
           ]
+        },
+        {
+          nama: "MAJESTIC SUPREME FINISH SILKY MATT",
+          foto: "foto/produk/jotun/tipe/majestic-supreme-finish-silky-matt",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Cat kayu dan besi berbahan dasar air yang memberikan hasil akhir yang indah dan sempurna untuk kesan abadi."
+            ],
+            [
+              "",
+              "Rumah indah melalui detail yang lebih halus  Beautiful Flawless Finish  Superior Easy Clean  Low Odour  Rust Resistance  Fast Drying Time"
+            ]
+          ],
+          warna: [
+            {
+              nama: "1974 - GOLDEN WALNUT",
+              warna: "#c8a070",
+              foto: "foto/produk/jotun/tipe/majestic-supreme-finish-silky-matt/1974-golden-walnut"
+            }
+          ]
+        },
+        {
+          nama: "MAJESTIC PRIMER FOR WOOD AND METAL",
+          foto: "foto/produk/jotun/tipe/majestic-primer-for-wood-and-metal",
+          spesifikasi: [
+            [
+              "INTERIOR",
+              "Primer akrilik berbahan dasar air premium dan ramah lingkungan yang meningkatkan daya rekat luar biasa pada substrat kayu and besi."
+            ],
+            [
+              "",
+              "Memperjelas warna-warna dan adhesi yang baik  Memperjelas warna-warna yang indah  Rendah bau  Adhesi yang baik"
+            ]
+          ],
+          warna: [{ nama: "PUTIH ", warna: "#fefdfb", foto: "foto/produk/jotun/tipe/majestic-primer-for-wood-and-metal/putih" }]
         }
       ]
     }
