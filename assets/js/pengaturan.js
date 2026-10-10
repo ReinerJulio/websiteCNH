@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 11.00.39.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 11.09.16.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -378,7 +378,9 @@ const PENGATURAN = {
       label: "Segera Hadir",
       judul: "Cara Memilih Wall Panel yang Tepat",
       ringkas: "Panduan motif, warna, dan ukuran untuk setiap ruangan.",
-      id: "cara-memilih-wall-panel-yang-tepat"
+      id: "cara-memilih-wall-panel-yang-tepat",
+      foto: "foto/blog/cara-memilih-wall-panel-yang-tepat",
+      isi: "Cara Memilih Wall Panel yang Tepat untuk Hunian Anda\n\nWall panel merupakan salah satu elemen dekorasi interior yang dapat membuat ruangan terlihat lebih modern, elegan, dan menarik. Selain memperindah tampilan dinding, wall panel juga dapat memberikan kesan ruangan yang lebih berkarakter.\n\nNamun, sebelum memilih wall panel, ada beberapa hal yang perlu diperhatikan agar hasil pemasangan sesuai dengan konsep ruangan dan kebutuhan Anda.\n\n1. Sesuaikan dengan Konsep Interior\n\nPilih wall panel sesuai dengan gaya interior yang diinginkan. Untuk konsep minimalis, Anda dapat memilih panel dengan motif sederhana dan warna netral. Sementara itu, untuk tampilan mewah dan elegan, motif marmer atau kombinasi panel dengan aksen garis dapat menjadi pilihan.\n\n2. Perhatikan Warna dan Motif\n\nWarna wall panel sebaiknya disesuaikan dengan warna cat dinding, lantai, furnitur, dan pencahayaan ruangan. Warna abu-abu, putih, krem, dan motif kayu sering digunakan karena mudah dipadukan dengan berbagai desain interior.\n\n3. Pilih Bahan yang Sesuai\n\nSetiap jenis wall panel memiliki karakteristik yang berbeda. Ada panel berbahan PVC, WPC, dan material dekoratif lainnya. Pertimbangkan lokasi pemasangan, kondisi kelembapan, kemudahan perawatan, serta petunjuk penggunaan dari produsen.\n\n4. Ukur Luas Dinding dengan Tepat\n\nSebelum membeli, ukur panjang dan tinggi dinding yang akan dipasang panel. Perhitungan yang tepat membantu menentukan jumlah material yang dibutuhkan dan mengurangi sisa bahan. Pertimbangkan juga pola sambungan serta kebutuhan pemotongan.\n\n5. Sesuaikan dengan Fungsi Ruangan\n\nUntuk ruang tamu, wall panel dapat digunakan sebagai aksen dinding utama atau area belakang televisi. Untuk kamar tidur, panel dapat menjadi dekorasi dinding belakang tempat tidur. Pastikan material yang dipilih sesuai dengan kondisi dan fungsi ruangan.\n\n6. Perhatikan Perawatan dan Pemasangan\n\nPilih material yang mudah dirawat dan sesuai dengan kondisi dinding. Pastikan permukaan dinding serta metode pemasangan mengikuti rekomendasi produsen agar hasilnya rapi dan tahan lama.\n\nKesimpulan\n\nMemilih wall panel yang tepat tidak hanya soal tampilan, tetapi juga tentang bahan, ukuran, fungsi, dan perawatan. Dengan perencanaan yang baik, wall panel dapat menjadi elemen dekorasi yang mempercantik ruangan sekaligus mendukung konsep interior rumah Anda.\n\nKunjungi Central Niaga Hardware untuk mendapatkan pilihan material dan perlengkapan bangunan yang sesuai dengan kebutuhan proyek Anda."
     },
     {
       label: "Segera Hadir",
