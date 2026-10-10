@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 10.22.37.
+   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 10.51.08.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -369,7 +369,8 @@ const PENGATURAN = {
     { judul: "Kantor", kategori: "Wall Board", foto: "foto/portofolio/3", tekstur: "wood gry" },
     { judul: "Commercial Space", kategori: "Wall Panel", foto: "foto/portofolio/4", tekstur: "wood blk" },
     { judul: "Ruang Keluarga", kategori: "Wall Panel", foto: "foto/portofolio/5", tekstur: "brd" },
-    { judul: "Kafe & Resto", kategori: "HPL", foto: "foto/portofolio/6", tekstur: "stn" }
+    { judul: "Kafe & Resto", kategori: "HPL", foto: "foto/portofolio/6", tekstur: "stn" },
+    { judul: "Kamar Tidur ", kategori: "Jotun", foto: "", tekstur: "wood oak" }
   ],
   blog: [
     {
