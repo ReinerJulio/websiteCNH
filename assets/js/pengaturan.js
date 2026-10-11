@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 10/10/2026, 17.45.02.
+   File ini diperbarui oleh halaman admin (/admin/) — 11/10/2026, 16.21.13.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -540,6 +540,19 @@ const PENGATURAN = {
           tekstur: "stn"
         }
       ]
+    },
+    {
+      id: "rumput-sintetis",
+      nama: "RUMPUT SINTETIS",
+      merek: "ARTGRASS",
+      tagline: "Rumput sintetis",
+      deskripsi: "",
+      sampul: "foto/produk/rumput-sintetis/sampul",
+      galeri: "foto/produk/rumput-sintetis/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      motif: [{ kode: "R12", nama: "RI SWISS 2", foto: "foto/produk/rumput-sintetis/motif/r12", tekstur: "stn" }],
+      seri: "rumput sintetis"
     }
   ],
   portofolio: [
