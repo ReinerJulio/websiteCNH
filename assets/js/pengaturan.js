@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 08.10.11.
+   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 09.33.40.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -562,6 +562,19 @@ const PENGATURAN = {
         { kode: "RIGF", nama: "RI GOL FIFA", foto: "foto/produk/rumput-sintetis/motif/rigf", tekstur: "stn" }
       ],
       seri: "rumput sintetis"
+    },
+    {
+      id: "tanaman-hias",
+      nama: "TANAMAN HIAS",
+      merek: "ARTVERTICAL",
+      tagline: "TANAMAN HIAS",
+      deskripsi: "Semua jenis tumbuhan yang ditanam untuk dinikmati keindahan, bentuk, warna, atau wangi demi menciptakan kesan estetis. Tanaman ini juga bisa untuk memperindah ruangan, menyaring udara, menyehatkan mental.",
+      sampul: "foto/produk/tanaman-hias/sampul",
+      galeri: "foto/produk/tanaman-hias/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      motif: [],
+      seri: "tanaman hias"
     }
   ],
   portofolio: [
