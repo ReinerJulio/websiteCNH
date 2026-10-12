@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 11/10/2026, 16.21.13.
+   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 07.56.39.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -546,7 +546,7 @@ const PENGATURAN = {
       nama: "RUMPUT SINTETIS",
       merek: "ARTGRASS",
       tagline: "Rumput sintetis",
-      deskripsi: "",
+      deskripsi: "Permukaan buatan yang terbuat dari serat plastik (seperti polietilena, polipropilena, atau nilon) yang dirancang agar tampak dan terasa menyerupai rumput alami.",
       sampul: "foto/produk/rumput-sintetis/sampul",
       galeri: "foto/produk/rumput-sintetis/galeri",
       tekstur: "stn",
