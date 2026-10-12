@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 09.33.40.
+   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 12.04.37.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -573,8 +573,33 @@ const PENGATURAN = {
       galeri: "foto/produk/tanaman-hias/galeri",
       tekstur: "stn",
       spesifikasi: [],
-      motif: [],
-      seri: "tanaman hias"
+      seri: "tanaman hias",
+      koleksi: [{ nama: "Koleksi Baru", deskripsi: "", spesifikasi: [], grup: [] }],
+      motif: [
+        { kode: "WB", nama: "ARTVER WB", foto: "foto/produk/tanaman-hias/motif/wb", tekstur: "wood oak" },
+        { kode: "WBX", nama: "ARTVER WBX", foto: "foto/produk/tanaman-hias/motif/wbx", tekstur: "stn" },
+        { kode: "YBX", nama: "ARTVER YBX", foto: "foto/produk/tanaman-hias/motif/ybx", tekstur: "stn" },
+        { kode: "PBX", nama: "ARTVER PBX", foto: "foto/produk/tanaman-hias/motif/pbx", tekstur: "stn" },
+        { kode: "RHO", nama: "ARTVER RHO", foto: "foto/produk/tanaman-hias/motif/rho", tekstur: "stn" },
+        { kode: "BOX", nama: "ARTVER BOX", foto: "foto/produk/tanaman-hias/motif/box", tekstur: "stn" },
+        { kode: "PT", nama: "ARTVER PT", foto: "foto/produk/tanaman-hias/motif/pt", tekstur: "stn" },
+        { kode: "MS", nama: "ARTVER MS", foto: "foto/produk/tanaman-hias/motif/ms", tekstur: "stn" },
+        { kode: "GAR", nama: "ARTVER GAR", foto: "foto/produk/tanaman-hias/motif/gar", tekstur: "stn" },
+        { kode: "CHA", nama: "ARTVER CHA", foto: "foto/produk/tanaman-hias/motif/cha", tekstur: "stn" },
+        { kode: "FER", nama: "ARTVER FER", foto: "foto/produk/tanaman-hias/motif/fer", tekstur: "stn" },
+        { kode: "BER", nama: "ARTVER BER", foto: "foto/produk/tanaman-hias/motif/ber", tekstur: "stn" },
+        { kode: "MOS", nama: "ARTVER MOS", foto: "foto/produk/tanaman-hias/motif/mos", tekstur: "stn" },
+        { kode: "PEA", nama: "ARTVER PEA", foto: "foto/produk/tanaman-hias/motif/pea", tekstur: "stn" },
+        { kode: "MF", nama: "ARTVER MF", foto: "foto/produk/tanaman-hias/motif/mf", tekstur: "stn" },
+        { kode: "EUC", nama: "ARTVER EUC", foto: "foto/produk/tanaman-hias/motif/euc", tekstur: "stn" },
+        { kode: "PR", nama: "ARTVER PR", foto: "foto/produk/tanaman-hias/motif/pr", tekstur: "stn" },
+        { kode: "YR", nama: "ARTVER YR", foto: "foto/produk/tanaman-hias/motif/yr", tekstur: "stn" },
+        { kode: "DM", nama: "ARTVER DM", foto: "foto/produk/tanaman-hias/motif/dm", tekstur: "stn" },
+        { kode: "LM", nama: "ARTVER LM", foto: "foto/produk/tanaman-hias/motif/lm", tekstur: "stn" },
+        { kode: "WS", nama: "ARTVER WS", foto: "foto/produk/tanaman-hias/motif/ws", tekstur: "stn" },
+        { kode: "AE", nama: "ARTVER AE", foto: "foto/produk/tanaman-hias/motif/ae", tekstur: "stn" },
+        { kode: "RC", nama: "ARTVER RC", foto: "foto/produk/tanaman-hias/motif/rc", tekstur: "stn" }
+      ]
     }
   ],
   portofolio: [
