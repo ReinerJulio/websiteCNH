@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 07.56.39.
+   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 08.10.11.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -551,7 +551,16 @@ const PENGATURAN = {
       galeri: "foto/produk/rumput-sintetis/galeri",
       tekstur: "stn",
       spesifikasi: [],
-      motif: [{ kode: "R12", nama: "RI SWISS 2", foto: "foto/produk/rumput-sintetis/motif/r12", tekstur: "stn" }],
+      motif: [
+        { kode: "R12", nama: "RI SWISS 2", foto: "foto/produk/rumput-sintetis/motif/r12", tekstur: "stn" },
+        { kode: "R13", nama: "RI SWISS 3", foto: "foto/produk/rumput-sintetis/motif/ri-swiss-3", tekstur: "stn" },
+        { kode: "RIH", nama: "RI HIJAU", foto: "foto/produk/rumput-sintetis/motif/rih", tekstur: "stn" },
+        { kode: "RIJ", nama: "RI JEPANG", foto: "foto/produk/rumput-sintetis/motif/rij", tekstur: "stn" },
+        { kode: "RIP", nama: "RI PREMIUM", foto: "foto/produk/rumput-sintetis/motif/rip", tekstur: "stn" },
+        { kode: "RI1", nama: "RI SATU", foto: "foto/produk/rumput-sintetis/motif/ri-satu", tekstur: "stn" },
+        { kode: "RIG", nama: "RI GOL", foto: "foto/produk/rumput-sintetis/motif/rig", tekstur: "stn" },
+        { kode: "RIGF", nama: "RI GOL FIFA", foto: "foto/produk/rumput-sintetis/motif/rigf", tekstur: "stn" }
+      ],
       seri: "rumput sintetis"
     }
   ],
