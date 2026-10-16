@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 12/10/2026, 12.04.37.
+   File ini diperbarui oleh halaman admin (/admin/) — 16/10/2026, 11.22.45.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -599,6 +599,46 @@ const PENGATURAN = {
         { kode: "WS", nama: "ARTVER WS", foto: "foto/produk/tanaman-hias/motif/ws", tekstur: "stn" },
         { kode: "AE", nama: "ARTVER AE", foto: "foto/produk/tanaman-hias/motif/ae", tekstur: "stn" },
         { kode: "RC", nama: "ARTVER RC", foto: "foto/produk/tanaman-hias/motif/rc", tekstur: "stn" }
+      ]
+    },
+    {
+      id: "generator",
+      nama: "GENERATOR",
+      merek: "TAGAWA",
+      tagline: "Generator",
+      deskripsi: "Generator bekerja dengan memutar kumparan kawat di dalam medan magnet atau memutar magnet di dekat kumparan kawat.",
+      sampul: "foto/produk/generator/sampul",
+      galeri: "foto/produk/generator/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      seri: "Gensest",
+      koleksi: [],
+      motif: [
+        { kode: "R6000D", nama: "GENSET TAGAWA R6000D", foto: "foto/produk/generator/motif/r6000d", tekstur: "stn" },
+        {
+          kode: "TJ3500EL",
+          nama: "GENSET TAGAWA TJ3500EL",
+          foto: "foto/produk/generator/motif/genset-tagawa-tj3500el",
+          tekstur: "stn"
+        },
+        {
+          kode: "TJ6500EL",
+          nama: "GENSET TAGAWA  TJ6500EL",
+          foto: "foto/produk/generator/motif/genset-tagawa-tj6500el",
+          tekstur: "stn"
+        },
+        {
+          kode: "TJ7500EL",
+          nama: "GENSET TAGAWA TJ7500EL",
+          foto: "foto/produk/generator/motif/genset-tagawa-tj7500el",
+          tekstur: "stn"
+        },
+        {
+          kode: " TJ9000EL",
+          nama: "GENSET TAGAWA TJ9000EL",
+          foto: "foto/produk/generator/motif/genset-tagawa-tj9000el",
+          tekstur: "stn"
+        }
       ]
     }
   ],
