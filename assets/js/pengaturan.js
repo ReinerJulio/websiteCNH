@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 23/10/2026, 14.26.00.
+   File ini diperbarui oleh halaman admin (/admin/) — 23/10/2026, 14.36.03.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -662,6 +662,26 @@ const PENGATURAN = {
         { kode: "3001 H", nama: "REVOLUTION", foto: "foto/produk/sepatu-safety/motif/vj", tekstur: "stn" }
       ],
       seri: "Sepatu"
+    },
+    {
+      id: "helm-safety",
+      nama: "HELM SAFETY",
+      merek: "Ideku",
+      tagline: "Helm Safety",
+      deskripsi: "Alat Pelindung Diri (APD) wajib di area kerja untuk melindungi kepala dari benturan, benda jatuh, dan bahaya listrik.",
+      sampul: "foto/produk/helm-safety/sampul",
+      galeri: "foto/produk/helm-safety/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      motif: [
+        { nama: "PUTIH", foto: "foto/produk/helm-safety/motif/putih", tekstur: "stn" },
+        { nama: "BIRU", foto: "foto/produk/helm-safety/motif/biru", tekstur: "stn" },
+        { nama: "ORANGE", foto: "foto/produk/helm-safety/motif/orange", tekstur: "stn" },
+        { nama: "MERAH", foto: "foto/produk/helm-safety/motif/merah", tekstur: "stn" },
+        { nama: "HIJAU", foto: "foto/produk/helm-safety/motif/hijau", tekstur: "stn" },
+        { nama: "KUNING", foto: "foto/produk/helm-safety/motif/kuning", tekstur: "stn" }
+      ],
+      seri: "Helm"
     }
   ],
   portofolio: [
