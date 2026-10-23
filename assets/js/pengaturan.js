@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 23/10/2026, 09.00.04.
+   File ini diperbarui oleh halaman admin (/admin/) — 23/10/2026, 14.06.16.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -640,6 +640,28 @@ const PENGATURAN = {
           tekstur: "stn"
         }
       ]
+    },
+    {
+      id: "sepatu-safety",
+      nama: "SEPATU SAFETY",
+      merek: "CHEETAH",
+      tagline: "Sepatu safety",
+      deskripsi: "Alat pelindung diri (APD) yang wajib digunakan di lingkungan kerja berisiko tinggi seperti konstruksi, pertambangan, manufaktur, dan migas untuk melindungi kaki dari benturan, tusukan, dan kondisi licin.",
+      sampul: "foto/produk/sepatu-safety/sampul",
+      galeri: "foto/produk/sepatu-safety/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      motif: [
+        { kode: "2001 H", nama: "NITRILE", foto: "foto/produk/sepatu-safety/motif/2001-h", tekstur: "stn" },
+        { kode: "2002 H", nama: "NITRILE", foto: "foto/produk/sepatu-safety/motif/2002-h", tekstur: "stn" },
+        { kode: "2288 H", nama: "NITRILE", foto: "foto/produk/sepatu-safety/motif/2180-h", tekstur: "stn" },
+        { kode: "2180 H ", nama: "NITRILE", foto: "foto/produk/sepatu-safety/motif/hgug", tekstur: "stn" },
+        { kode: "3002 H", nama: "REVOLUTION", foto: "foto/produk/sepatu-safety/motif/2288-c", tekstur: "stn" },
+        { kode: "2288 C", nama: "NITRILE", foto: "foto/produk/sepatu-safety/motif/2290", tekstur: "stn" },
+        { kode: "2290 H", nama: "NITRILE", foto: "foto/produk/sepatu-safety/motif/2290-2", tekstur: "stn" },
+        { kode: "3001 H", nama: "REVOLUTION", foto: "foto/produk/sepatu-safety/motif/vj", tekstur: "stn" }
+      ],
+      seri: "Sepatu"
     }
   ],
   portofolio: [
