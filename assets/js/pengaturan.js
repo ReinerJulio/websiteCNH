@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 6/11/2026, 09.55.28.
+   File ini diperbarui oleh halaman admin (/admin/) — 6/11/2026, 12.10.35.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -701,6 +701,32 @@ const PENGATURAN = {
       ],
       seri: "ROMPI",
       koleksi: []
+    },
+    {
+      id: "alat-ukur-laser",
+      nama: "ALAT UKUR LASER",
+      merek: "Wipro - Digital",
+      tagline: "ALAT UKUR LASER",
+      deskripsi: "Alat pengukur digital yang menggunakan sinar laser untuk menentukan jarak antara alat dan objek target. Berbeda dengan pengukur konvensional seperti pita ukur atau meteran manual, meteran laser mampu memberikan hasil yang cepat, akurat, dan mudah dibaca, bahkan di area yang sulit dijangkau.",
+      sampul: "foto/produk/alat-ukur-laser/sampul",
+      galeri: "foto/produk/alat-ukur-laser/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      motif: [
+        {
+          kode: "ZL-07",
+          nama: "Waterpass Laser 3in1",
+          foto: "foto/produk/alat-ukur-laser/motif/waterpass-laser-3in1",
+          tekstur: "stn"
+        },
+        {
+          kode: "100277",
+          nama: "Inclinometer Digital Laser",
+          foto: "foto/produk/alat-ukur-laser/motif/inclinometer-digital-laser",
+          tekstur: "stn"
+        }
+      ],
+      seri: "Alat  ukur"
     }
   ],
   portofolio: [
