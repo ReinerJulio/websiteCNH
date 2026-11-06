@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 30/10/2026, 17.37.33.
+   File ini diperbarui oleh halaman admin (/admin/) — 6/11/2026, 09.32.21.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -686,7 +686,7 @@ const PENGATURAN = {
     {
       id: "rompi-proyek-safety",
       nama: "ROMPI PROYEK SAFETY",
-      merek: "VPRO - ENZO -XENON - ALDO",
+      merek: "GOSAVE - ENZO -ENGO - ALDO",
       tagline: "ROMPI PROYEK",
       deskripsi: "Jenis rompi yang dilengkapi dengan reflektor, bahan yang dapat berpendar jika terkena cahaya. Rompi proyek biasanya dipakai oleh para pekerja di bidang industri, konstruksi, pertanian, otomotif, atau militer. Rompi proyek berfungsi sebagai alat pelindung diri (APD) yang dapat mencegah dan melindungi pekerja dari kecelakaan.",
       sampul: "foto/produk/rompi-proyek-safety/sampul",
@@ -694,9 +694,9 @@ const PENGATURAN = {
       tekstur: "stn",
       spesifikasi: [],
       motif: [
-        { kode: "VPRO", nama: "ROMPI POLYSTER ", foto: "foto/produk/rompi-proyek-safety/motif/rompi-vpro", tekstur: "stn" },
+        { kode: "GOSAVE", nama: "ROMPI POLYSTER ", foto: "foto/produk/rompi-proyek-safety/motif/rompi-vpro", tekstur: "stn" },
         { kode: "ENZO", nama: "ROMPI JARING", foto: "foto/produk/rompi-proyek-safety/motif/rompi-enzo", tekstur: "stn" },
-        { kode: "XENON", nama: "ROMPI JARING", foto: "foto/produk/rompi-proyek-safety/motif/rompi-jaring", tekstur: "stn" },
+        { kode: "ENGO", nama: "ROMPI JARING", foto: "foto/produk/rompi-proyek-safety/motif/rompi-jaring", tekstur: "stn" },
         { kode: "ALDO", nama: "ROMPI JARING SAKU", foto: "foto/produk/rompi-proyek-safety/motif/rompi-polyster", tekstur: "stn" }
       ],
       seri: "ROMPI",
