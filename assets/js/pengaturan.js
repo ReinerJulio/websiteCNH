@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 6/11/2026, 09.32.21.
+   File ini diperbarui oleh halaman admin (/admin/) — 6/11/2026, 09.36.08.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -666,7 +666,7 @@ const PENGATURAN = {
     {
       id: "helm-safety",
       nama: "HELM SAFETY",
-      merek: "Ideku",
+      merek: "ENZO",
       tagline: "Helm Safety",
       deskripsi: "Alat Pelindung Diri (APD) wajib di area kerja untuk melindungi kepala dari benturan, benda jatuh, dan bahaya listrik.",
       sampul: "foto/produk/helm-safety/sampul",
@@ -674,12 +674,12 @@ const PENGATURAN = {
       tekstur: "stn",
       spesifikasi: [],
       motif: [
-        { nama: "PUTIH", foto: "foto/produk/helm-safety/motif/putih", tekstur: "stn" },
-        { nama: "BIRU", foto: "foto/produk/helm-safety/motif/biru", tekstur: "stn" },
-        { nama: "ORANGE", foto: "foto/produk/helm-safety/motif/orange", tekstur: "stn" },
-        { nama: "MERAH", foto: "foto/produk/helm-safety/motif/merah", tekstur: "stn" },
-        { nama: "HIJAU", foto: "foto/produk/helm-safety/motif/hijau", tekstur: "stn" },
-        { nama: "KUNING", foto: "foto/produk/helm-safety/motif/kuning", tekstur: "stn" }
+        { nama: "PUTIH", foto: "foto/produk/helm-safety/motif/putih", tekstur: "stn", kode: "ENZ0028" },
+        { nama: "BIRU", foto: "foto/produk/helm-safety/motif/biru", tekstur: "stn", kode: "ENZ0029" },
+        { nama: "ORANGE", foto: "foto/produk/helm-safety/motif/orange", tekstur: "stn", kode: "ENZ0026" },
+        { nama: "MERAH", foto: "foto/produk/helm-safety/motif/merah", tekstur: "stn", kode: "ENZ0030" },
+        { nama: "HIJAU", foto: "foto/produk/helm-safety/motif/hijau", tekstur: "stn", kode: "ENZ0027" },
+        { nama: "KUNING", foto: "foto/produk/helm-safety/motif/kuning", tekstur: "stn", kode: "ENZ0031" }
       ],
       seri: "Helm"
     },
