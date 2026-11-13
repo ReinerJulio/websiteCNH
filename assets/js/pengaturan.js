@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 6/11/2026, 12.10.35.
+   File ini diperbarui oleh halaman admin (/admin/) — 13/11/2026, 12.29.40.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -727,6 +727,22 @@ const PENGATURAN = {
         }
       ],
       seri: "Alat  ukur"
+    },
+    {
+      id: "pemadam-kebakaran-otomatis",
+      nama: "PEMADAM KEBAKARAN OTOMATIS",
+      merek: "SUMATO",
+      tagline: "PEMADAM KEBAKARAN OTOMATIS SUMATO",
+      deskripsi: "Pada sistem pemadam kebakaran otomatis, alat yang dipakai biasanya tersambung secara sistematis dan saling berinteraksi satu sama lain untuk memastikan deteksi dan pemadaman yang cepat.",
+      sampul: "foto/produk/pemadam-kebakaran-otomatis/sampul",
+      galeri: "foto/produk/pemadam-kebakaran-otomatis/galeri",
+      tekstur: "stn",
+      spesifikasi: [],
+      motif: [
+        { kode: "SM-10", nama: "1 LITER", foto: "foto/produk/pemadam-kebakaran-otomatis/motif/1-liter", tekstur: "stn" },
+        { kode: "SM-40", nama: "4 LITER", foto: "foto/produk/pemadam-kebakaran-otomatis/motif/4-liter", tekstur: "stn" }
+      ],
+      seri: "PEMADAM KEBAKARAN OTOMATIS"
     }
   ],
   portofolio: [
