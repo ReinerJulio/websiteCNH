@@ -113,7 +113,7 @@ function pasangWA(root = document) {
 // Kartu produk beranda — berjajar (≤ 5 produk) atau grid kartu (> 5 produk)
 $('#p-grid').classList.toggle('kartu', CFG.produk.length > 5);
 $('#p-grid').innerHTML = CFG.produk.map((p, i) => `
-  <a class="p" href="#/produk/${p.id}" data-cursor="Lihat">
+  <a class="p" href="/produk/${p.id}/" data-cursor="Lihat">
     <div class="foto tex ${p.tekstur}" data-foto="${esc(p.sampul)}" data-alt="${esc(p.nama)}"></div>
     <div class="t"${CFG.produk.length > 5 ? ` style="--d:${(i % 3) * .06}s"` : ''}><div class="n">${String(i + 1).padStart(2, '0')} — ${String(CFG.produk.length).padStart(2, '0')}</div>
     <h3>${esc(p.nama)}</h3><p>${esc(p.deskripsi)}</p><span class="go"><b>→</b>Lihat Produk</span></div>
@@ -129,9 +129,9 @@ $('#pf-track').innerHTML = CFG.portofolio.map((x, i) => `
 $('#hs-n').textContent = String(CFG.portofolio.length).padStart(2, '0');
 
 // Footer, form, blog
-$('#ft-p').innerHTML = CFG.produk.map(p => `<a href="#/produk/${p.id}">${esc(p.nama)}</a>`).join('');
+$('#ft-p').innerHTML = CFG.produk.map(p => `<a href="/produk/${p.id}/">${esc(p.nama)}</a>`).join('');
 $('#f-k').innerHTML = CFG.produk.map(p => `<option>${esc(p.nama)}</option>`).join('') + '<option>Konsultasi Umum</option>';
-// Blog: artikel yang punya isi bisa dibuka di #/blog/<id>
+// Blog: artikel yang punya isi bisa dibuka di /blog/<id>
 const BLOG = (CFG.blog || []).map(b => ({ ...b, id: b.id || slugify(b.judul) }));
 const tglID = t => { const d = t && new Date(t + 'T00:00:00'); return d && !isNaN(d) ? d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : ''; };
 const adaIsi = b => !!(b.isi && b.isi.trim());
@@ -140,7 +140,7 @@ $('#posts').innerHTML = BLOG.map((b, i) => {
   const ft = b.foto ? `<div class="post-ft"><div class="foto tex stn" data-foto="${esc(b.foto)}" data-alt="${esc(b.judul)}"></div></div>` : '';
   const isi = `${ft}<div class="post-in">${meta}<h3>${esc(b.judul)}</h3><p>${esc(b.ringkas || '')}</p>${adaIsi(b) ? '<span class="post-go">Baca artikel <i>→</i></span>' : ''}</div>`;
   return adaIsi(b)
-    ? `<a class="post rv${b.foto ? ' bergambar' : ''}" style="--d:${(i % 3) * .08}s" href="#/blog/${esc(b.id)}" data-cursor="Baca">${isi}</a>`
+    ? `<a class="post rv${b.foto ? ' bergambar' : ''}" style="--d:${(i % 3) * .08}s" href="/blog/${esc(b.id)}/" data-cursor="Baca">${isi}</a>`
     : `<article class="post rv${b.foto ? ' bergambar' : ''}" style="--d:${(i % 3) * .08}s">${isi}</article>`;
 }).join('');
 $('#blog-note').hidden = BLOG.some(adaIsi);
@@ -164,17 +164,17 @@ function formatIsi(t) {
 }
 function renderArtikel(id) {
   const v = $('#v-artikel'), i = BLOG.findIndex(b => b.id === id && adaIsi(b)), b = BLOG[i];
-  if (!b) { v.innerHTML = `<div class="wrap art"><p class="lead">Artikel tidak ditemukan.</p><p style="margin:30px 0 120px"><a class="btn line" href="#/blog"><span>Kembali ke Blog</span></a></p></div>`; document.title = 'Blog — Central Niaga Hardware'; return; }
+  if (!b) { v.innerHTML = `<div class="wrap art"><p class="lead">Artikel tidak ditemukan.</p><p style="margin:30px 0 120px"><a class="btn line" href="/blog/"><span>Kembali ke Blog</span></a></p></div>`; document.title = 'Blog — Central Niaga Hardware'; return; }
   document.title = `${b.judul} — Central Niaga Hardware`;
   const lain = BLOG.filter((x, j) => j !== i && adaIsi(x)).slice(0, 3);
   v.innerHTML = `<article class="wrap art">
-    <nav class="crumb"><a href="#/">Beranda</a><span>/</span><a href="#/blog">Blog</a><span>/</span><span>${esc(b.judul)}</span></nav>
+    <nav class="crumb"><a href="/">Beranda</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>${esc(b.judul)}</span></nav>
     <header class="art-hd"><div class="eb">${esc(b.label || 'Blog')}${b.tanggal ? ' · ' + esc(tglID(b.tanggal)) : ''}</div><h1 data-split>${esc(b.judul)}</h1>${b.ringkas ? `<p class="lead rv">${esc(b.ringkas)}</p>` : ''}</header>
     ${b.foto ? `<div class="art-ft rv-img"><div class="foto tex stn" data-foto="${esc(b.foto)}" data-alt="${esc(b.judul)}"></div></div>` : ''}
     <div class="art-isi rv">${formatIsi(b.isi)}</div>
     <div class="art-cta rv"><p>Butuh saran memilih material?</p><a class="btn dark mag" data-wa="Halo Central Niaga Hardware, saya membaca artikel “${esc(b.judul)}” dan ingin konsultasi."><span>Konsultasi via WhatsApp</span><i>→</i></a></div>
   </article>
-  ${lain.length ? `<section class="wrap art-lain"><div class="eb rv">Artikel lainnya</div><div class="posts">${lain.map(x => `<a class="post rv" href="#/blog/${esc(x.id)}" data-cursor="Baca"><div class="post-in"><small>${esc(x.label || '')}</small><h3>${esc(x.judul)}</h3><p>${esc(x.ringkas || '')}</p><span class="post-go">Baca artikel <i>→</i></span></div></a>`).join('')}</div></section>` : '<div style="height:60px"></div>'}`;
+  ${lain.length ? `<section class="wrap art-lain"><div class="eb rv">Artikel lainnya</div><div class="posts">${lain.map(x => `<a class="post rv" href="/blog/${esc(x.id)}/" data-cursor="Baca"><div class="post-in"><small>${esc(x.label || '')}</small><h3>${esc(x.judul)}</h3><p>${esc(x.ringkas || '')}</p><span class="post-go">Baca artikel <i>→</i></span></div></a>`).join('')}</div></section>` : '<div style="height:60px"></div>'}`;
 }
 
 // Bilah kayu hero (tampil saat foto hero belum ada)
@@ -193,9 +193,9 @@ function renderProduk(id) {
   const pi = CFG.produk.indexOf(p), MAKS_LAIN = 4;
   const lain = CFG.produk.slice(pi + 1).concat(CFG.produk.slice(0, pi)).slice(0, MAKS_LAIN);
   const v = $('#v-produk');
-  document.title = `${p.nama} — Central Niaga Hardware`;
+  document.title = `${String(p.nama).trim()} Pandaan & Pasuruan — Central Niaga Hardware`.replace(/\s+/g, ' ');
   v.innerHTML = `<div class="wrap">
-    <nav class="crumb"><a href="#/">Beranda</a><span>/</span><a href="#/produk-kami">Produk</a><span>/</span><span>${esc(p.nama)}</span></nav>
+    <nav class="crumb"><a href="/">Beranda</a><span>/</span><a href="/produk-kami/">Produk</a><span>/</span><span>${esc(p.nama)}</span></nav>
     ${p.tipe && p.tipe.length ? atasTipe(p) : atasMotif(p, m0)}
     ${(p.koleksi || []).map((k, ki) => renderKoleksi(p, k, ki)).join('')}
     <div class="kg">
@@ -206,8 +206,8 @@ function renderProduk(id) {
     </div>
     <section class="gal-s" id="gal-s" hidden><div class="eb">Galeri</div><h2 data-split>${esc(p.nama)} <em>terpasang</em></h2><div class="gal" id="gal"></div></section>
     <div class="eb rv">Produk Lainnya</div>
-    <div class="more${lain.length % 2 ? ' ganjil' : ''}">${lain.map(x => `<a href="#/produk/${x.id}" class="rv" data-cursor="Lihat"><div class="foto tex ${x.tekstur}" data-foto="${esc(x.sampul)}" data-alt="${esc(x.nama)}"></div><div class="t"><h3>${esc(x.nama)}</h3><span class="go"><b>→</b></span></div></a>`).join('')}</div>
-    ${CFG.produk.length - 1 > MAKS_LAIN ? `<div class="more-all rv"><a class="btn line mag" href="#/produk-kami"><span>Lihat semua ${CFG.produk.length} produk</span><i>→</i></a></div>` : ''}
+    <div class="more${lain.length % 2 ? ' ganjil' : ''}">${lain.map(x => `<a href="/produk/${x.id}/" class="rv" data-cursor="Lihat"><div class="foto tex ${x.tekstur}" data-foto="${esc(x.sampul)}" data-alt="${esc(x.nama)}"></div><div class="t"><h3>${esc(x.nama)}</h3><span class="go"><b>→</b></span></div></a>`).join('')}</div>
+    ${CFG.produk.length - 1 > MAKS_LAIN ? `<div class="more-all rv"><a class="btn line mag" href="/produk-kami/"><span>Lihat semua ${CFG.produk.length} produk</span><i>→</i></a></div>` : ''}
   </div>`;
 
   if (p.tipe && p.tipe.length) pasangTipe(p, v);
@@ -282,7 +282,7 @@ function renderProduk(id) {
 
   // Galeri otomatis: foto/produk/<id>/galeri/1.jpg, 2.jpg, ...
   isiGaleri(p.galeri).then(urls => {
-    if (!urls.length || !document.body.contains(v) || location.hash !== `#/produk/${p.id}`) return;
+    if (!urls.length || !document.body.contains(v) || jalur() !== `produk/${p.id}`) return;
     const g = $('#gal');
     g.innerHTML = urls.map((u, i) => `<a class="rv" style="--d:${(i % 3) * .08}s" data-i="${i}" data-cursor="Buka"><img src="${u}" alt="${esc(p.nama)} — galeri ${i + 1}" loading="lazy" decoding="async"></a>`).join('');
     $('#gal-s').hidden = false;
@@ -640,14 +640,17 @@ burger.addEventListener('click', () => {
 });
 
 /* =====================================================================
-   NAVIGASI (hash: #/, #/produk/wall-panel, #/blog, #/kontak, #/tentang ...)
+   NAVIGASI (alamat: /, /produk/wall-panel, /blog, /blog/<id>, /kontak, /tentang ...)
    ===================================================================== */
 const curtain = $('#curtain');
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
+// Alamat asli (/produk/jotun) — bagus untuk Google. Link lama (#/produk/jotun) otomatis dialihkan.
+const dariHash = h => { const j = h.replace(/^#\/?/, '').replace(/\/+$/, ''); return '/' + (j ? j + '/' : ''); };
+if (/^#\/./.test(location.hash) || location.hash === '#/') history.replaceState(null, '', dariHash(location.hash));
+const jalur = () => decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g, '').replace(/(^|\/)index\.html$/, '');
 function parse() {
-  const h = location.hash.replace(/^#\/?/, '');
-  const [a, b] = h.split('/');
+  const [a, b] = jalur().split('/');
   if (a === 'produk' && b) return { v: 'produk', id: b };
   if (a === 'blog' && b) return { v: 'artikel', id: b };
   if (a === 'blog' || a === 'kontak') return { v: a };
@@ -660,13 +663,25 @@ function gulirKe(id, smooth) {
   scrollTo({ top, behavior: smooth && !REDUCED ? 'smooth' : 'instant' });
 }
 
+// Judul & deskripsi sama dengan yang dibuat seo/build.mjs untuk Google
+const MERK = 'Central Niaga Hardware';
+const JUDUL = { home: `${MERK} Pandaan — Jotun Studio, Wall Panel, WPC & Material Bangunan`, blog: `Blog & Tips Material Bangunan — ${MERK}`, kontak: `Kontak & Lokasi Toko — ${MERK} Pandaan` };
+const DESK_AWAL = (!jalur() && document.querySelector('meta[name="description"]')?.content) || 'Toko material bangunan & interior di Pandaan, Pasuruan: cat Jotun, wall panel, wall board, HPL, pintu dan lainnya. Konsultasi gratis via WhatsApp.';
+function setMeta(r, desk) {
+  const m = document.querySelector('meta[name="description"]'), c = document.querySelector('link[rel="canonical"]');
+  if (m) m.content = desk ? String(desk).replace(/\s+/g, ' ').trim().slice(0, 160) : DESK_AWAL;
+  const j = r.v === 'home' ? '' : jalur();
+  if (c) c.href = new URL(c.href).origin + '/' + (j ? j + '/' : '');
+}
 function tampilkan(r) {
   ['home', 'produk', 'blog', 'artikel', 'kontak'].forEach(x => $('#v-' + x).hidden = x !== r.v);
   view = r.v;
   document.body.classList.toggle('on-light', r.v !== 'home');
+  const pr = r.v === 'produk' && CFG.produk.find(x => x.id === r.id), ar = r.v === 'artikel' && BLOG.find(x => x.id === r.id);
+  setMeta(r, pr ? pr.deskripsi : ar ? ar.ringkas : r.v === 'home' ? null : JUDUL[r.v]);
   if (r.v === 'produk') renderProduk(r.id);
   else if (r.v === 'artikel') renderArtikel(r.id);
-  else document.title = { home: 'Central Niaga Hardware — Material Bangunan & Interior', blog: 'Blog — Central Niaga Hardware', kontak: 'Kontak — Central Niaga Hardware' }[r.v];
+  else document.title = JUDUL[r.v];
   $$('.links a').forEach(a => a.classList.toggle('on', a.dataset.link === (r.v === 'home' ? r.sec : r.v === 'artikel' ? 'blog' : r.v)));
   prepSplit(); pasangWA(); semuaFoto($('#v-' + r.v)); amati(); magnet(); kursorTarget();
   hd.classList.remove('hide');
@@ -692,13 +707,22 @@ async function route(first) {
   busy = false;
   if (parse().v !== r.v || parse().id !== r.id) route();
 }
-addEventListener('hashchange', () => route());
-// Klik tautan ke hash yang sama (mis. "Produk" dua kali) tetap menggulir
+function pergi(href) {
+  const j = href.split(/[?#]/)[0].replace(/^\/+|\/+$/g, ''), tujuan = '/' + (j ? j + '/' : '');
+  if (tujuan.replace(/\/+$/, '') !== location.pathname.replace(/\/+$/, '')) history.pushState(null, '', tujuan);
+  route();
+}
+addEventListener('popstate', () => route());
+addEventListener('hashchange', () => { if (/^#\//.test(location.hash)) { history.replaceState(null, '', dariHash(location.hash)); route(); } });
+// Tautan internal dibuka tanpa memuat ulang halaman (klik tautan yang sama tetap menggulir)
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#/"]');
-  if (a && a.getAttribute('href') === location.hash) { e.preventDefault(); route(); }
+  const a = e.target.closest('a[href^="/"]');
+  if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank' || a.hasAttribute('download')) return;
+  const href = a.getAttribute('href');
+  if (/^\/(admin|foto|assets|katalog)(\/|$)/.test(href) || /\.[a-z0-9]{2,5}$/i.test(href)) return;
+  e.preventDefault(); pergi(href);
 });
-$('#totop').addEventListener('click', e => { e.preventDefault(); if (view === 'home') gulirKe(null, true); else location.hash = '#/'; });
+$('#totop').addEventListener('click', e => { e.preventDefault(); if (view === 'home') gulirKe(null, true); else pergi('/'); });
 
 /* =====================================================================
    FORMULIR → WHATSAPP

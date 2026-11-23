@@ -41,6 +41,7 @@ Menyimpan perubahan:
 2. **Unduh ZIP** — tanpa token: ekstrak ke folder website (timpa file lama), ikuti `BACA-DULU.txt`, lalu push.
 
 Memasang website online + mengunci halaman admin (hanya email tertentu): lihat **[PANDUAN-ONLINE.md](PANDUAN-ONLINE.md)**.
+Domain centralniagahardware.com + SEO (alamat halaman asli, sitemap, Google Search Console): lihat **[PANDUAN-DOMAIN-SEO.md](PANDUAN-DOMAIN-SEO.md)**.
 
 Token hanya disimpan di browser Anda. Halaman admin tidak bisa mengubah website tanpa token
 (website ini statis), dan sudah ditandai `noindex` agar tidak muncul di mesin pencari.
