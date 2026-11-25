@@ -1,0 +1,5 @@
+# dibuat otomatis oleh seo/build.mjs saat deploy
+/produk/
+/blog/
+/kontak/
+/sitemap.xml

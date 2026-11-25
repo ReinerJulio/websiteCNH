@@ -91,7 +91,7 @@ function infoProduk(p) {
 }
 
 function jawabEntri(h) {
-  const p = h.p, href = `#/produk/${p.id}`;
+  const p = h.p, href = `/produk/${p.id}/`;
   const tHarga = label => tombolWA('Tanya harga via WhatsApp', `Halo Central Niaga Hardware, saya ingin tanya harga ${label}.`);
   switch (h.jenis) {
     case 'motif': return { teks: `<b>${esc(labelMotif(h.m))}</b> tersedia di <b>${esc(namaLengkap(p))}</b>.${p.spesifikasi?.length ? '<br>Ukuran: ' + spekTeks(p.spesifikasi) : ''}`,
@@ -114,7 +114,7 @@ function jawabEntri(h) {
 const daftarProduk = () => ({
   teks: `Kami punya ${CFG.produk.length} kategori produk:`,
   aksi: tombolWA('Cari produk lain? Tanya kami', 'Halo Central Niaga Hardware, apakah tersedia produk '),
-  kartu: CFG.produk.map(p => kartu(namaLengkap(p), esc(String(p.deskripsi || '').replace(/\s+/g, ' ').slice(0, 70)), p.sampul, `#/produk/${p.id}`)).join(''),
+  kartu: CFG.produk.map(p => kartu(namaLengkap(p), esc(String(p.deskripsi || '').replace(/\s+/g, ' ').slice(0, 70)), p.sampul, `/produk/${p.id}/`)).join(''),
 });
 
 let konteks = null;   // produk/motif yang terakhir dibicarakan
@@ -162,20 +162,20 @@ function jawab(tanya) {
       : konteks.g?.spesifikasi?.length ? `<b>${esc(konteks.g.nama)}</b>: ${spekTeks(konteks.g.spesifikasi)}`
       : p.tipe?.length ? p.tipe.map(x => `• <b>${esc(x.nama)}</b>: ${spekTeks(x.spesifikasi)}`).join('<br>')
       : p.spesifikasi?.length ? spekTeks(p.spesifikasi) : '';
-    return sp ? { teks: `Ukuran ${esc(namaLengkap(p))}:<br>${sp}`, aksi: tombol('Lihat produk →', '#/produk/' + p.id) }
+    return sp ? { teks: `Ukuran ${esc(namaLengkap(p))}:<br>${sp}`, aksi: tombol('Lihat produk →', '/produk/' + p.id + '/') }
       : { teks: `Detail ukuran ${esc(p.nama)} belum tercantum di website. Tim kami siap membantu.`, aksi: tombolWA('Tanya ukuran', `Halo, saya ingin tanya ukuran ${namaLengkap(p)}.`) };
   }
   // 5. Produk / motif yang disebut
   if (terbaik) {
     const sejenis = cocok.filter(c => c.skor === terbaik.skor && ['motif', 'kmotif', 'warna'].includes(c.jenis) && c.jenis === terbaik.jenis);
-    if (sejenis.length > 1) return { teks: `Saya menemukan beberapa pilihan untuk “${esc(tanya.trim())}”:`, kartu: sejenis.slice(0, 6).map(c => c.m ? kartu(c.m.kode ? labelMotif(c.m) : c.m.nama, esc(c.k ? c.k.nama + ' · ' + c.p.nama : namaLengkap(c.p)), c.m.foto, '#/produk/' + c.p.id) : kartu(`${c.w.nama} — ${c.t.nama}`, esc(namaLengkap(c.p)), c.t.foto, '#/produk/' + c.p.id)).join('') };
+    if (sejenis.length > 1) return { teks: `Saya menemukan beberapa pilihan untuk “${esc(tanya.trim())}”:`, kartu: sejenis.slice(0, 6).map(c => c.m ? kartu(c.m.kode ? labelMotif(c.m) : c.m.nama, esc(c.k ? c.k.nama + ' · ' + c.p.nama : namaLengkap(c.p)), c.m.foto, '/produk/' + c.p.id + '/') : kartu(`${c.w.nama} — ${c.t.nama}`, esc(namaLengkap(c.p)), c.t.foto, '/produk/' + c.p.id + '/')).join('') };
     return jawabEntri(terbaik);
   }
   // 6. Daftar produk
   if (ada(t, 'produk', 'jual', 'menjual', 'barang', 'apa saja', 'apa aja', 'kategori', 'material', 'koleksi', 'motif', 'pilihan')) return daftarProduk();
   // 7. Artikel blog
   const art = ARTIKEL.map(a => ({ a, n: t.trim().split(' ').filter(w => w.length > 3 && a.kunci.includes(' ' + w + ' ')).length })).sort((x, y) => y.n - x.n)[0];
-  if (art && art.n >= 2) return { teks: 'Mungkin artikel ini membantu:', kartu: kartu(art.a.b.judul, esc(art.a.b.ringkas || ''), art.a.b.foto, '#/blog/' + art.a.id) };
+  if (art && art.n >= 2) return { teks: 'Mungkin artikel ini membantu:', kartu: kartu(art.a.b.judul, esc(art.a.b.ringkas || ''), art.a.b.foto, '/blog/' + art.a.id + '/') };
   // 8. Sapaan
   if (ada(t, 'halo', 'hai', 'hi', 'hello', 'pagi', 'siang', 'sore', 'malam', 'permisi', 'assalamualaikum', 'p')) return { teks: 'Halo! 👋 Ada yang bisa kami bantu? Anda bisa bertanya tentang produk, motif, ukuran, alamat toko, atau jam buka.' };
   if (ada(t, 'terima kasih', 'makasih', 'thanks', 'thank', 'trims', 'ok', 'oke', 'sip', 'siap')) return { teks: 'Sama-sama! 😊 Jika ada pertanyaan lain, silakan tanyakan kapan saja.' };
@@ -240,7 +240,7 @@ fab.addEventListener('click', () => buka(!dibuka));
 panel.querySelector('.as-x').addEventListener('click', () => buka(false));
 form.addEventListener('submit', e => { e.preventDefault(); kirim(q.value); q.value = ''; });
 $('#as-sug').addEventListener('click', e => { const b = e.target.closest('button'); if (b) kirim(b.textContent); });
-log.addEventListener('click', e => { if (e.target.closest('a[href^="#/"]') && innerWidth < 640) buka(false); });
+log.addEventListener('click', e => { if (e.target.closest('a[href^="/"]') && innerWidth < 640) buka(false); });
 addEventListener('keydown', e => { if (e.key === 'Escape' && dibuka) buka(false); });
 
 // untuk pengujian / pengembangan
