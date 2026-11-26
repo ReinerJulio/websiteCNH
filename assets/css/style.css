@@ -637,6 +637,26 @@ body:has(.wa-float.on) .as-fab,body:has(.wa-float.on) .as-panel{--naik:70px}
 }
 @media (prefers-reduced-motion:reduce){.as-tip{display:none}}
 
+/* ===== Ulasan Google ===== */
+.rev-sum{display:flex;align-items:center;gap:16px;padding:14px 22px 14px 18px;border:1px solid var(--line);border-radius:20px;background:var(--card);transition:border-color .4s,transform .5s var(--ease)}
+a.rev-sum:hover{border-color:var(--acc);transform:translateY(-3px)}
+.rev-sum b{font-family:var(--serif);font-size:54px;line-height:1;font-weight:400}
+.rev-sum span{display:flex;flex-direction:column;gap:4px}
+.rev-sum small{font-size:13px;color:var(--mut)}
+.rev-st{font-style:normal;color:#f2b21b;letter-spacing:3px;font-size:17px;line-height:1}
+.rev-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.rev-g:empty{display:none}
+.rev{margin:0;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 26px;display:flex;flex-direction:column;gap:18px;transition:transform .6s var(--ease),border-color .5s}
+.rev:hover{transform:translateY(-6px);border-color:var(--acc)}
+.rev blockquote{margin:0;font-size:15px;line-height:1.7;color:var(--ink);flex:1;display:-webkit-box;-webkit-line-clamp:7;-webkit-box-orient:vertical;overflow:hidden}
+.rev blockquote::before{content:"“";font-family:var(--serif);font-size:44px;line-height:0;vertical-align:-16px;margin-right:4px;color:var(--acc)}
+.rev figcaption{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
+.rev-av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--acc-ink);font-weight:800;flex:none}
+.rev figcaption b{display:block;font-size:14.5px}
+.rev figcaption small{font-size:12.5px;color:var(--mut)}
+.rev-more{margin-top:36px;display:flex;justify-content:center}
+@media (max-width:520px){.rev-sum{width:100%}.rev-sum b{font-size:46px}}
+
 /* ===== Performa scroll =====
    #hd memakai layer GPU sendiri; di HP/tablet efek blur (backdrop-filter) yang berat
    diganti latar padat agar gulir tetap 60fps. */

@@ -104,7 +104,7 @@ for (const p of P.produk) {
 
 // Blog
 const blog = (P.blog || []).map(b => ({ ...b, id: b.id || slug(b.judul) }));
-peta.push({ url: halaman({ jalur: 'blog', judul: `Blog & Tips Material Bangunan — ${BRAND}`, desk: rapikan(`Tips memilih cat Jotun, wall panel, WPC, HPL dan inspirasi interior dari ${BRAND} Pandaan.`), gambar: LOGO }), prioritas: '0.7' });
+peta.push({ url: halaman({ jalur: 'blog', judul: `Blog & Tips Material Bangunan — ${BRAND}`, desk: rapikan(`Tips memilih cat Jotun, wall panel, WPC dan inspirasi interior dari ${BRAND} Pandaan.`), gambar: LOGO }), prioritas: '0.7' });
 for (const b of blog.filter(x => x.isi)) {
   const gambar = foto(b.foto);
   peta.push({ url: halaman({

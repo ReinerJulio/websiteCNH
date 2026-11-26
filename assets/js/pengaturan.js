@@ -413,22 +413,6 @@ const PENGATURAN = {
       ]
     },
     {
-      id: "hpl",
-      nama: "HPL",
-      tagline: "Permukaan kuat. Tampilan abadi.",
-      deskripsi: "High Pressure Laminate tahan lama, mudah dirawat, dengan ragam motif.",
-      sampul: "foto/produk/hpl/sampul",
-      galeri: "foto/produk/hpl/galeri",
-      tekstur: "hpl",
-      spesifikasi: [],
-      motif: [
-        { nama: "Wood", foto: "foto/produk/hpl/motif/wood", tekstur: "wood oak" },
-        { nama: "Stone", foto: "foto/produk/hpl/motif/stone", tekstur: "stn" },
-        { nama: "Solid White", foto: "foto/produk/hpl/motif/white", tekstur: "wht" },
-        { nama: "Charcoal", foto: "foto/produk/hpl/motif/charcoal", tekstur: "wood blk" }
-      ]
-    },
-    {
       id: "pintu",
       nama: "Pintu",
       merek: "Fortress",
@@ -745,6 +729,12 @@ const PENGATURAN = {
       seri: "PEMADAM KEBAKARAN OTOMATIS"
     }
   ],
+  ulasan: {
+    rating: "4,9",
+    jumlah: "1.792",
+    link: "https://share.google/HbRGai5cvOndSn72E",
+    daftar: []
+  },
   portofolio: [
     { judul: "Rumah Tinggal", kategori: "Wall Panel", foto: "foto/portofolio/1", tekstur: "wood oak" },
     { judul: "Apartemen", kategori: "HPL", foto: "foto/portofolio/2", tekstur: "wood wal" },
