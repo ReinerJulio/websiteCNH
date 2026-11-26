@@ -106,7 +106,7 @@ em{font-family:var(--serif);font-style:italic;color:var(--acc)}
 #curtain.out i{transform-origin:top;transform:scaleY(0)}
 
 /* ---------- Kursor ---------- */
-#cur,#dot{position:fixed;left:0;top:0;pointer-events:none;z-index:180;border-radius:50%;opacity:0}
+#cur,#dot{position:fixed;left:0;top:0;pointer-events:none;z-index:180;border-radius:50%;opacity:0;will-change:transform;backface-visibility:hidden}
 #cur{width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid var(--acc);display:grid;place-items:center;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),background .4s,border-color .4s,opacity .3s}
 #dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--acc);transition:opacity .3s,transform .3s}
 #cur-t{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .3s}
@@ -117,7 +117,7 @@ body.cur-view #cur-t{opacity:1}
 body.cur-view #dot,body.cur-hover #dot{transform:scale(0)}
 @media (pointer:coarse),(hover:none){#cur,#dot{display:none}}
 
-#progress{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(0);z-index:120}
+#progress{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(0);z-index:120;will-change:transform;pointer-events:none}
 
 /* ---------- Header ---------- */
 #hd{position:fixed;left:0;right:0;top:0;z-index:100;padding-top:env(safe-area-inset-top,0px);transition:transform .6s var(--ease),background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid transparent;color:#fff}
@@ -165,7 +165,7 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;background:var(--dk);color:#fff;display:flex;align-items:flex-end;overflow:hidden;padding:130px 0 100px}
-.hero-media{position:absolute;inset:-6% 0 0 0;will-change:transform}
+.hero-media{position:absolute;inset:-6% 0 0 0;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
 .slats{position:absolute;inset:0;display:flex}
 .slat{flex:1;transform-origin:bottom;animation:rise 1.6s var(--ease) both;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.08) 45%,rgba(0,0,0,.5)),var(--c)}
 @keyframes rise{from{transform:scaleY(0)}}
@@ -286,7 +286,7 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 .hs-hd h2{font-size:clamp(40px,5.4vw,80px);margin:14px 0 0}
 .hs-count{font-family:var(--serif);font-size:28px;color:#a39a8e;white-space:nowrap}
 .hs-count b{font-weight:400;color:var(--on-dk);font-size:44px}
-.hs-track{display:flex;gap:22px;padding:40px clamp(16px,4vw,40px) 34px max(clamp(16px,4vw,40px),calc((100vw - 1280px) / 2 + 40px));will-change:transform;flex:none}
+.hs-track{display:flex;gap:22px;padding:40px clamp(16px,4vw,40px) 34px max(clamp(16px,4vw,40px),calc((100vw - 1280px) / 2 + 40px));will-change:transform;flex:none;transform:translate3d(0,0,0);backface-visibility:hidden}
 .gi{position:relative;flex:none;width:clamp(260px,30vw,420px);height:min(52vh,540px);border-radius:22px;overflow:hidden;cursor:pointer;isolation:isolate}
 .gi:nth-child(even){margin-top:50px}
 .gi .foto{transition:transform 1.4s var(--ease)}
@@ -321,7 +321,7 @@ body.menu-open .menu-in a:nth-child(1){transition-delay:.25s}body.menu-open .men
 
 /* ---------- Band CTA ---------- */
 .band{position:relative;overflow:hidden;background:var(--dk);color:#fff;text-align:center;padding:clamp(120px,16vw,210px) 0}
-.band-bg{position:absolute;inset:-10% 0;will-change:transform}
+.band-bg{position:absolute;inset:-10% 0;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden}
 .band-bg::after{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse at center,rgba(18,16,14,.55),rgba(18,16,14,.9))}
 .band-in{position:relative;z-index:3}
 .band .eb{color:#e2c29e}
@@ -509,6 +509,8 @@ footer{background:var(--dk);color:#a39a8e;padding:100px 0 30px;font-size:14px;ov
 footer h4{color:var(--on-dk);font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:16px}
 .ft>div>a,#ft-p a{display:block;margin:8px 0;width:fit-content;transition:color .3s,transform .4s var(--ease)}
 .ft>div>a:hover,#ft-p a:hover{color:var(--on-dk);transform:translateX(5px)}
+#ft-p a.ft-all{margin-top:14px;color:var(--acc);font-weight:700}
+#ft-p a.ft-all:hover{color:#e2c29e}
 .mega{grid-column:1/-1;font-weight:800;font-size:clamp(44px,11.6vw,176px);letter-spacing:-.05em;line-height:.85;white-space:nowrap;margin-top:50px;color:transparent;-webkit-text-stroke:1px rgba(242,237,229,.16);background:linear-gradient(90deg,var(--acc),#e2c29e) 0 0/0% 100% no-repeat;-webkit-background-clip:text;background-clip:text;transition:background-size 1.6s var(--ease-io)}
 .mega.in{background-size:100% 100%}
 .copy{grid-column:1/-1;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);font-size:12px}
@@ -634,3 +636,14 @@ body:has(.wa-float.on) .as-fab,body:has(.wa-float.on) .as-panel{--naik:70px}
   .as-tip{display:none}
 }
 @media (prefers-reduced-motion:reduce){.as-tip{display:none}}
+
+/* ===== Performa scroll =====
+   #hd memakai layer GPU sendiri; di HP/tablet efek blur (backdrop-filter) yang berat
+   diganti latar padat agar gulir tetap 60fps. */
+#hd{will-change:transform;backface-visibility:hidden}
+@media (max-width:980px),(pointer:coarse){
+  #hd.solid{backdrop-filter:none;-webkit-backdrop-filter:none;background:color-mix(in srgb,var(--bg) 96%,transparent)}
+  .kol-f{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+  .big-tag{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(18,16,14,.78)}
+}
+@media (prefers-reduced-motion:reduce){.hero-media,.band-bg,.hs-track{will-change:auto}}
