@@ -719,7 +719,7 @@ document.addEventListener('click', e => {
   const a = e.target.closest('a[href^="/"]');
   if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank' || a.hasAttribute('download')) return;
   const href = a.getAttribute('href');
-  if (/^\/(admin|foto|assets|katalog)(\/|$)/.test(href) || /\.[a-z0-9]{2,5}$/i.test(href)) return;
+  if (/^\/(admin|foto|assets|katalog|privasi)(\/|$)/.test(href) || /\.[a-z0-9]{2,5}$/i.test(href)) return;
   e.preventDefault(); pergi(href);
 });
 $('#totop').addEventListener('click', e => { e.preventDefault(); if (view === 'home') gulirKe(null, true); else pergi('/'); });
