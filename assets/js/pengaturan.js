@@ -3,7 +3,7 @@
    ---------------------------------------------------------------------
    File ini diperbarui oleh halaman admin (/admin/) — 26/11/2026, 14.28.49.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
-   langsung juga boleh (lihat PANDUAN-FOTO.md).
+   langsung juga boleh (lihat panduan/foto.md).
 
    Foto: tulis path TANPA ekstensi — .jpg/.jpeg/.png/.webp dikenali otomatis.
    Buka index.html?cekfoto untuk melihat foto yang sudah/belum ada.

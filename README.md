@@ -1,78 +1,82 @@
 # Website Central Niaga Hardware
 
-Website toko material interior (Wall Panel, Wall Board, HPL) — satu halaman statis, tanpa build tool.
-Cukup buka `index.html` di browser, atau unggah seluruh folder ke hosting (GitHub Pages, Netlify, cPanel, dll).
+Website toko **Central Niaga Hardware**, Pandaan: cat Jotun, wall panel, wall board, HPL, pintu,
+perlengkapan safety, dan lainnya. Alamat: **https://centralniagahardware.com**
 
-## Struktur folder
+## Cara kerja singkat
 
 ```
-index.html                 ← halaman utama (tidak perlu diedit)
-admin/                     ← halaman admin (index.html, admin.js, admin.css, jszip.min.js)
+Admin (/admin/) atau edit file  →  branch main di GitHub  →  Cloudflare otomatis memperbarui website (±1–2 menit)
+```
+
+- **`main` adalah satu-satunya branch yang penting.** Isinya = website yang sedang tayang.
+- Branch lain (mis. `claude/...`) hanya tempat kerja sementara untuk perubahan dari Claude.
+  Setelah pull request di-*merge* ke `main`, branch itu boleh dihapus (lihat bagian *Merapikan branch*).
+
+## Peta folder
+
+```
+index.html            Halaman utama website (tidak perlu diedit)
 assets/
-  css/style.css            ← tampilan & animasi (warna utama di bagian :root)
-  js/pengaturan.js         ← ✏️ EDIT DI SINI: kontak, teks produk, motif, portofolio, blog
-  js/main.js               ← logika website (tidak perlu diedit)
-  js/asisten.js            ← asisten chat (jawab dari data website, harga → WhatsApp)
-foto/                      ← 📷 TARUH FOTO DI SINI (lihat PANDUAN-FOTO.md)
-  beranda/                 ← hero, tentang, konsultasi
-  produk/<produk>/         ← sampul, motif/, galeri/
-  portofolio/              ← 1.jpg, 2.jpg, ...
-katalog/                   ← (opsional) PDF yang diunggah lewat admin; katalog utama memakai link Google Drive
+  js/pengaturan.js    ✏️ SEMUA ISI WEBSITE: kontak, produk, motif, portofolio, blog (diubah lewat admin)
+  js/main.js          Logika & animasi website
+  js/asisten.js       Asisten chat (jawab dari data website, harga → WhatsApp)
+  css/style.css       Tampilan & warna
+foto/                 📷 Semua foto (diatur otomatis oleh admin)
+  logo/               Logo & ikon tab browser
+  beranda/            Foto besar halaman depan
+  produk/<produk>/    sampul, motif/, tipe/, galeri/ per produk
+  portofolio/         Foto hasil pemasangan
+  blog/               Foto sampul artikel
+katalog/              PDF katalog (opsional; katalog utama memakai link Google Drive)
+admin/                Halaman admin, dikunci login email (Cloudflare Access)
+privasi/              Halaman Kebijakan Privasi
+seo/build.mjs         Dijalankan otomatis oleh Cloudflare: membuat halaman produk/blog/kontak + sitemap untuk Google
+robots.txt            Aturan untuk mesin pencari
+panduan/              📘 Panduan untuk pemilik website (lihat di bawah)
 ```
 
-## Halaman admin (input produk & katalog)
+## Panduan
 
-Buka **`/admin/`** (mis. `https://domain-anda.com/admin/`) untuk mengelola isi website tanpa mengedit kode:
+| Perlu apa? | Baca |
+|---|---|
+| Menambah/mengganti foto secara manual | [panduan/foto.md](panduan/foto.md) |
+| Hosting Cloudflare & mengunci halaman admin | [panduan/online-cloudflare.md](panduan/online-cloudflare.md) |
+| Domain, redirect www & pages.dev, Google Search Console | [panduan/domain-seo.md](panduan/domain-seo.md) |
 
-- **Produk** — tambah/ubah/hapus produk, merek, tagline, deskripsi, spesifikasi, motif (dengan kode),
-  tipe + pilihan warna, koleksi/seri, dan foto galeri. Foto cukup diunggah — otomatis dikecilkan
-  (maks. 1600 px), dikompres, dan disimpan di folder yang rapi dengan nama sesuai kode/nama motif.
-- **Katalog** — link Google Drive atau unggah PDF, untuk katalog utama maupun per produk.
-- **Portofolio** — tambah/ubah/hapus/urutkan foto hasil pemasangan beserta judul & kategori.
-- **Blog** — tulis artikel (judul, label, tanggal, ringkasan, foto sampul, isi). Artikel yang punya isi
-  bisa dibuka sebagai halaman sendiri (`#/blog/<judul-artikel>`).
-- **Kontak** — nomor WhatsApp, Instagram, alamat, jam buka, Google Maps.
+## Halaman admin
 
-Menyimpan perubahan:
+Buka **https://centralniagahardware.com/admin/** (login dengan email yang diizinkan, kode dikirim ke email).
 
-1. **Simpan ke GitHub** (disarankan) — hubungkan sekali di menu *Koneksi GitHub* dengan
-   *fine-grained personal access token* (akses hanya ke repo ini, izin **Contents: Read and write**).
-   Semua data & foto tersimpan dalam satu commit; file foto lama yang diganti/dihapus ikut dibersihkan.
-2. **Unduh ZIP** — tanpa token: ekstrak ke folder website (timpa file lama), ikuti `BACA-DULU.txt`, lalu push.
+- **Produk**: tambah/ubah/hapus produk, merek, tagline, deskripsi, spesifikasi, motif (dengan kode),
+  tipe + pilihan warna, koleksi/seri, foto galeri. Foto otomatis dikecilkan, dikompres, dan disimpan di folder yang benar.
+- **Katalog**: link Google Drive atau unggah PDF.
+- **Portofolio**: foto hasil pemasangan beserta judul & kategori.
+- **Blog**: artikel (judul, label, tanggal, ringkasan, foto sampul, isi), tayang di `/blog/<judul-artikel>/`.
+- **Kontak**: WhatsApp, Instagram, alamat, jam buka, Google Maps.
 
-Memasang website online + mengunci halaman admin (hanya email tertentu): lihat **[PANDUAN-ONLINE.md](PANDUAN-ONLINE.md)**.
-Domain centralniagahardware.com + SEO (alamat halaman asli, sitemap, Google Search Console): lihat **[PANDUAN-DOMAIN-SEO.md](PANDUAN-DOMAIN-SEO.md)**.
+Simpan dengan **Simpan ke GitHub** (sekali hubungkan token di menu *Koneksi GitHub*). Website ikut
+terbarui sendiri ±1–2 menit kemudian. Token hanya disimpan di browser Anda.
 
-Token hanya disimpan di browser Anda. Halaman admin tidak bisa mengubah website tanpa token
-(website ini statis), dan sudah ditandai `noindex` agar tidak muncul di mesin pencari.
+> Setelah update, jika website masih tampak lama: tekan **Ctrl + Shift + R** (HP: buka di tab penyamaran).
 
-## Asisten chat (gratis)
+## Merapikan branch
 
-Tombol chat di pojok kanan bawah menjawab pertanyaan pelanggan langsung dari data website
-(`assets/js/pengaturan.js`) — tanpa AI berbayar, tanpa akun tambahan:
-
-- produk, motif & kode (mis. "MB05"), tipe & warna, koleksi, ukuran/spesifikasi
-- alamat, jam buka, Instagram, nomor WhatsApp, katalog, pengiriman, konsultasi
-- **pertanyaan harga** → otomatis membuka WhatsApp dengan pesan berisi produk/motif yang ditanyakan;
-  pertanyaan stok dan yang tidak terjawab juga diarahkan ke WhatsApp
-
-Produk baru yang ditambahkan lewat admin otomatis dikenali. Logikanya ada di `assets/js/asisten.js`.
-
-## Memasukkan foto
-
-Taruh foto dengan nama yang sesuai di folder `foto/` — tidak perlu mengubah kode.
-Panduan lengkap: **[PANDUAN-FOTO.md](PANDUAN-FOTO.md)**.
-Buka `index.html?cekfoto` untuk melihat foto mana yang sudah/belum ada.
-
-> Catatan: beberapa browser membatasi pemuatan file saat `index.html` dibuka langsung dari
-> komputer. Jika foto tidak muncul, jalankan server lokal sederhana, misalnya
-> `python -m http.server` di folder ini, lalu buka `http://localhost:8000`.
+Agar branch lama tidak menumpuk: GitHub → repo ini → **Settings → General → Pull Requests** →
+centang **Automatically delete head branches**. Setelah itu setiap branch otomatis terhapus begitu
+pull request-nya di-merge.
 
 ## Fitur
 
-- Loader, transisi halaman bertirai, kursor kustom, tombol magnetik
-- Judul muncul per kata, teks intro "menyala" saat di-scroll, efek parallax
-- Portofolio bergulir horizontal (desktop) / geser (ponsel)
-- Galeri produk otomatis + lightbox (bisa geser di ponsel & pakai tombol panah keyboard)
-- Formulir kontak & tombol harga langsung ke WhatsApp
-- Mode gelap otomatis, responsif, dan menghormati pengaturan "kurangi animasi"
+- Loader, transisi halaman, kursor kustom, tombol magnetik
+- Teks "menyala" saat di-scroll, efek parallax, portofolio bergulir horizontal (desktop) / geser (HP)
+- Scroll ringan: animasi diproses GPU, listener pasif, tanpa efek blur berat di HP
+- Galeri produk + lightbox (bisa digeser di HP)
+- Asisten chat gratis, formulir & tombol harga langsung ke WhatsApp
+- Halaman produk/blog/kontak dengan alamat asli + sitemap (SEO)
+- Mode gelap otomatis, responsif, menghormati pengaturan "kurangi animasi"
+- `?cekfoto` di belakang alamat → tampilkan foto mana yang sudah/belum ada
+
+## Mencoba di komputer sendiri
+
+Jalankan `python -m http.server` di folder ini lalu buka `http://localhost:8000`.
