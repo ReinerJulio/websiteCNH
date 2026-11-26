@@ -129,7 +129,9 @@ $('#pf-track').innerHTML = CFG.portofolio.map((x, i) => `
 $('#hs-n').textContent = String(CFG.portofolio.length).padStart(2, '0');
 
 // Footer, form, blog
-$('#ft-p').innerHTML = CFG.produk.map(p => `<a href="/produk/${p.id}/">${esc(p.nama)}</a>`).join('');
+// Footer: 4 produk teratas + tautan ke semua produk
+$('#ft-p').innerHTML = CFG.produk.slice(0, 4).map(p => `<a href="/produk/${p.id}/">${esc(p.nama)}</a>`).join('')
+  + '<a class="ft-all" href="/produk-kami/">Semua Produk →</a>';
 $('#f-k').innerHTML = CFG.produk.map(p => `<option>${esc(p.nama)}</option>`).join('') + '<option>Konsultasi Umum</option>';
 // Blog: artikel yang punya isi bisa dibuka di /blog/<id>
 const BLOG = (CFG.blog || []).map(b => ({ ...b, id: b.id || slugify(b.judul) }));
@@ -534,17 +536,19 @@ function hitung(el) {
 const cur = $('#cur'), dot = $('#dot'), curT = $('#cur-t');
 let mx = -100, my = -100, cx = -100, cy = -100;
 if (FINE && !REDUCED) {
+  let curJalan = false;
+  const loop = () => {
+    cx += (mx - cx) * .16; cy += (my - cy) * .16;
+    cur.style.transform = `translate3d(${cx}px,${cy}px,0)`;
+    if (Math.abs(mx - cx) + Math.abs(my - cy) > .3) requestAnimationFrame(loop); else curJalan = false;
+  };
   addEventListener('pointermove', e => {
     mx = e.clientX; my = e.clientY;
-    dot.style.transform = `translate(${mx}px,${my}px)`;
+    dot.style.transform = `translate3d(${mx}px,${my}px,0)`;
     document.body.classList.add('has-cur');
+    if (!curJalan) { curJalan = true; requestAnimationFrame(loop); }
   }, { passive: true });
-  document.addEventListener('pointerleave', () => document.body.classList.remove('has-cur'));
-  (function loop() {
-    cx += (mx - cx) * .16; cy += (my - cy) * .16;
-    cur.style.transform = `translate(${cx}px,${cy}px)`;
-    requestAnimationFrame(loop);
-  })();
+  document.addEventListener('pointerleave', () => document.body.classList.remove('has-cur'), { passive: true });
 }
 function kursorTarget() {
   if (!FINE) return;
@@ -555,18 +559,20 @@ function kursorTarget() {
       if (t) { curT.textContent = t.dataset.cursor; document.body.classList.add('cur-view'); }
       else document.body.classList.add('cur-hover');
     });
-    el.addEventListener('pointerleave', () => document.body.classList.remove('cur-view', 'cur-hover'));
+    el.addEventListener('pointerleave', () => document.body.classList.remove('cur-view', 'cur-hover'), { passive: true });
   });
 }
 function magnet() {
   if (!FINE || REDUCED) return;
   $$('.mag').forEach(b => {
     if (b._m) return; b._m = 1;
+    let r = null;
+    b.addEventListener('pointerenter', () => { r = b.getBoundingClientRect(); }, { passive: true });
     b.addEventListener('pointermove', e => {
-      const r = b.getBoundingClientRect();
-      b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .22}px,${(e.clientY - r.top - r.height / 2) * .32}px)`;
-    });
-    b.addEventListener('pointerleave', () => b.style.transform = '');
+      if (!r) r = b.getBoundingClientRect();
+      b.style.transform = `translate3d(${(e.clientX - r.left - r.width / 2) * .22}px,${(e.clientY - r.top - r.height / 2) * .32}px,0)`;
+    }, { passive: true });
+    b.addEventListener('pointerleave', () => { r = null; b.style.transform = ''; }, { passive: true });
   });
 }
 
@@ -579,54 +585,85 @@ const waF = $('.wa-float');
 let lastY = 0, ticking = false, view = 'home';
 const desktop = () => innerWidth > 980;
 
+/* Semua ukuran (posisi section, lebar track) dibaca SEKALI saat load/resize,
+   bukan setiap frame — scroll handler hanya memakai scrollY + angka cache,
+   sehingga browser tidak dipaksa menghitung ulang layout saat menggulir. */
+const M = { vh: innerHeight, max: 0, bandTop: 0, bandH: 0, bigTop: 0, bigH: 0, hsTop: 0, hsH: 0, geser: 0, desk: desktop() };
+const absTop = el => { let t = 0; while (el) { t += el.offsetTop; el = el.offsetParent; } return t; };
 function ukurHS() {
-  if (desktop() && !REDUCED) hs.style.height = (track.scrollWidth - innerWidth + innerHeight) + 'px';
-  else { hs.style.height = ''; track.style.transform = ''; }
+  M.desk = desktop(); M.vh = innerHeight;
+  if (M.desk && !REDUCED) {
+    M.geser = track.scrollWidth - innerWidth;
+    hs.style.height = (M.geser + M.vh) + 'px';
+  } else { hs.style.height = ''; track.style.transform = ''; M.geser = 0; }
+  ukur();
 }
+function ukur() {
+  M.vh = innerHeight;
+  M.max = document.documentElement.scrollHeight - M.vh;
+  const band = bandBg.parentElement;
+  M.bandTop = absTop(band); M.bandH = band.offsetHeight;
+  M.bigTop = absTop(bigTxt); M.bigH = bigTxt.offsetHeight;
+  M.hsTop = absTop(hs); M.hsH = hs.offsetHeight;
+}
+let litN = -1, hsIdx = -1;
 function setHS(p) {
   hsBar.style.transform = `scaleX(${p})`;
-  const n = CFG.portofolio.length;
-  hsI.textContent = String(Math.min(n, 1 + Math.floor(p * n * .999))).padStart(2, '0');
+  const n = CFG.portofolio.length, i = Math.min(n, 1 + Math.floor(p * n * .999));
+  if (i !== hsIdx) { hsIdx = i; hsI.textContent = String(i).padStart(2, '0'); }
 }
-track.addEventListener('scroll', () => { if (!desktop()) setHS(clamp(track.scrollLeft / (track.scrollWidth - track.clientWidth || 1))); }, { passive: true });
+track.addEventListener('scroll', () => { if (!M.desk) setHS(clamp(track.scrollLeft / (track.scrollWidth - track.clientWidth || 1))); }, { passive: true });
 
+let hdSolid = null, hdHide = false, waOn = null;
 function onScroll() {
   ticking = false;
-  const y = scrollY, vh = innerHeight;
-  const max = document.documentElement.scrollHeight - vh;
-  prog.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+  const y = scrollY, vh = M.vh;
+  prog.style.transform = `scaleX(${M.max > 0 ? Math.min(1, y / M.max) : 0})`;
 
   if (!document.body.classList.contains('menu-open')) {
-    hd.classList.toggle('solid', y > 40);
-    hd.classList.toggle('hide', y > 500 && y > lastY + 2);
-    if (y < lastY - 2) hd.classList.remove('hide');
+    const solid = y > 40;
+    if (solid !== hdSolid) { hdSolid = solid; hd.classList.toggle('solid', solid); }
+    let hide = hdHide;
+    if (y > 500 && y > lastY + 2) hide = true; else if (y < lastY - 2 || y <= 500) hide = false;
+    if (hide !== hdHide) { hdHide = hide; hd.classList.toggle('hide', hide); }
   }
   lastY = y;
-  waF.classList.toggle('on', view !== 'home' || y > vh * .7);
+  const on = view !== 'home' || y > vh * .7;
+  if (on !== waOn) { waOn = on; waF.classList.toggle('on', on); }
 
   if (view !== 'home' || REDUCED) return;
 
-  if (y < vh * 1.2) heroM.style.transform = `translate3d(0,${y * .3}px,0)`;
+  if (y < vh * 1.2) heroM.style.transform = `translate3d(0,${(y * .3).toFixed(1)}px,0)`;
 
-  const br = bandBg.parentElement.getBoundingClientRect();
-  if (br.bottom > 0 && br.top < vh) bandBg.style.transform = `translate3d(0,${(br.top + br.height / 2 - vh / 2) * -.15}px,0)`;
+  const bTop = M.bandTop - y;
+  if (bTop + M.bandH > 0 && bTop < vh) bandBg.style.transform = `translate3d(0,${((bTop + M.bandH / 2 - vh / 2) * -.15).toFixed(1)}px,0)`;
 
-  const r = bigTxt.getBoundingClientRect();
-  if (r.top < vh && r.bottom > 0) {
-    const p = clamp((vh * .8 - r.top) / (r.height + vh * .25));
-    const lit = Math.round(p * bigW.length);
-    bigW.forEach((w, i) => w.classList.toggle('lit', i < lit));
+  const gTop = M.bigTop - y;
+  if (gTop < vh && gTop + M.bigH > 0) {
+    const lit = Math.round(clamp((vh * .8 - gTop) / (M.bigH + vh * .25)) * bigW.length);
+    if (lit !== litN) {
+      const a = Math.min(lit, litN < 0 ? 0 : litN), b = Math.max(lit, litN < 0 ? bigW.length : litN);
+      for (let i = a; i < b; i++) bigW[i].classList.toggle('lit', i < lit);
+      litN = lit;
+    }
   }
 
-  if (desktop()) {
-    const hr = hs.getBoundingClientRect();
-    const p = clamp(-hr.top / (hs.offsetHeight - vh || 1));
-    track.style.transform = `translate3d(${-p * (track.scrollWidth - innerWidth)}px,0,0)`;
-    setHS(p);
+  if (M.desk && M.geser > 0) {
+    const p = clamp((y - M.hsTop) / (M.hsH - vh || 1));
+    if (p > 0 && p < 1 || track._p !== p) {
+      track._p = p;
+      track.style.transform = `translate3d(${(-p * M.geser).toFixed(1)}px,0,0)`;
+      setHS(p);
+    }
   }
 }
-addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-addEventListener('resize', () => { ukurHS(); onScroll(); });
+const minta = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
+addEventListener('scroll', minta, { passive: true });
+let rzT;
+addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(() => { ukurHS(); onScroll(); }, 120); }, { passive: true });
+addEventListener('load', () => { ukurHS(); onScroll(); }, { passive: true });
+// Tinggi halaman berubah saat foto/konten selesai dimuat → ukur ulang (tanpa polling)
+if ('ResizeObserver' in window) { let roT; new ResizeObserver(() => { clearTimeout(roT); roT = setTimeout(() => { ukur(); minta(); }, 100); }).observe(document.body); }
 
 /* =====================================================================
    MENU MOBILE
@@ -684,8 +721,8 @@ function tampilkan(r) {
   else document.title = JUDUL[r.v];
   $$('.links a').forEach(a => a.classList.toggle('on', a.dataset.link === (r.v === 'home' ? r.sec : r.v === 'artikel' ? 'blog' : r.v)));
   prepSplit(); pasangWA(); semuaFoto($('#v-' + r.v)); amati(); magnet(); kursorTarget();
-  hd.classList.remove('hide');
-  if (r.v === 'home') ukurHS();
+  hd.classList.remove('hide'); hdHide = false;
+  if (r.v === 'home') ukurHS(); else ukur();
 }
 
 let busy = false;
