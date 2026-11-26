@@ -37,10 +37,7 @@ foto/
 │   │   ├── champion/       ← motif Champion (bagian atas halaman): mb01.jpg ... mb10.jpg
 │   │   ├── marble-series/  ← 23 motif Mevvah: atlantic.jpg, new-york.jpg, ... (lihat BACA-SAYA.txt)
 │   │   └── galeri/         ← 1.jpg, 2.jpg, ...
-│   └── hpl/
-│       ├── sampul.jpg
-│       ├── motif/          ← wood.jpg, stone.jpg, white.jpg, charcoal.jpg
-│       └── galeri/         ← 1.jpg, 2.jpg, ...
+│   └── <produk-lain>/      ← jotun, pintu, glass-sticker, generator, ... (sampul, motif/, tipe/, galeri/)
 │
 └── portofolio/             ← 1.jpg, 2.jpg, 3.jpg, 4.jpg, 5.jpg, 6.jpg (portrait)
 
@@ -94,15 +91,15 @@ Semua isi diatur di satu file: **`assets/js/pengaturan.js`**. Contoh:
   ```
   Kotak warna langsung muncul; taruh `black.jpg` di `foto/produk/wall-panel/fluted/flt-195/` jika ingin pakai foto.
 
-- **Tambah motif baru** di Wall Board atau HPL — tambahkan satu baris di bagian `motif` produk itu:
+- **Tambah motif baru** di Wall Board atau produk lain — tambahkan satu baris di bagian `motif` produk itu:
   ```js
-  { nama: 'Teak', foto: 'foto/produk/hpl/motif/teak', tekstur: 'wood oak' },
+  { nama: 'Teak', foto: 'foto/produk/wall-board/motif/teak', tekstur: 'wood oak' },
   ```
-  lalu taruh `teak.jpg` di `foto/produk/hpl/motif/`.
+  lalu taruh `teak.jpg` di `foto/produk/wall-board/motif/`.
 
 - **Tambah portofolio** ke-7 — tambahkan di bagian `portofolio`:
   ```js
-  { judul: 'Hotel', kategori: 'HPL', foto: 'foto/portofolio/7', tekstur: 'wood wal' },
+  { judul: 'Hotel', kategori: 'Wall Panel', foto: 'foto/portofolio/7', tekstur: 'wood wal' },
   ```
   lalu taruh `7.jpg` di `foto/portofolio/`.
 

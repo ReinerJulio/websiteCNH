@@ -1,6 +1,6 @@
 # Website Central Niaga Hardware
 
-Website toko **Central Niaga Hardware**, Pandaan: cat Jotun, wall panel, wall board, HPL, pintu,
+Website toko **Central Niaga Hardware**, Pandaan: cat Jotun, wall panel, wall board, pintu,
 perlengkapan safety, dan lainnya. Alamat: **https://centralniagahardware.com**
 
 ## Cara kerja singkat

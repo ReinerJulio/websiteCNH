@@ -132,6 +132,23 @@ $('#hs-n').textContent = String(CFG.portofolio.length).padStart(2, '0');
 // Footer: 4 produk teratas + tautan ke semua produk
 $('#ft-p').innerHTML = CFG.produk.slice(0, 4).map(p => `<a href="/produk/${p.id}/">${esc(p.nama)}</a>`).join('')
   + '<a class="ft-all" href="/produk-kami/">Semua Produk →</a>';
+// Ulasan Google: ringkasan rating + ulasan bintang 5 (maks. 5), diatur di admin → Ulasan Google
+(function () {
+  const U = CFG.ulasan; if (!U || !(U.rating || (U.daftar || []).length)) return;
+  const link = U.link || K.maps || '';
+  $('#ulasan').hidden = false;
+  $('#rev-rt').textContent = U.rating || '5,0';
+  $('#rev-n').textContent = U.jumlah ? `${U.jumlah} ulasan Google` : 'Ulasan Google';
+  [$('#rev-sum'), $('#rev-link')].forEach(a => link ? a.href = link : a.removeAttribute('href'));
+  if (!link) $('.rev-more').remove();
+  const daftar = (U.daftar || []).filter(u => u.teks && u.teks.trim()).slice(0, 5);
+  $('#rev-g').innerHTML = daftar.map((u, i) => `<figure class="rev rv" style="--d:${(i % 3) * .08}s">
+    <i class="rev-st" aria-label="5 dari 5 bintang">★★★★★</i>
+    <blockquote>${esc(u.teks.trim())}</blockquote>
+    <figcaption><span class="rev-av" aria-hidden="true">${esc((u.nama || '?').trim().charAt(0).toUpperCase())}</span>
+      <span><b>${esc(u.nama || 'Pelanggan')}</b><small>${esc(u.waktu || 'Ulasan Google')}</small></span></figcaption>
+  </figure>`).join('');
+})();
 $('#f-k').innerHTML = CFG.produk.map(p => `<option>${esc(p.nama)}</option>`).join('') + '<option>Konsultasi Umum</option>';
 // Blog: artikel yang punya isi bisa dibuka di /blog/<id>
 const BLOG = (CFG.blog || []).map(b => ({ ...b, id: b.id || slugify(b.judul) }));
@@ -703,7 +720,7 @@ function gulirKe(id, smooth) {
 // Judul & deskripsi sama dengan yang dibuat seo/build.mjs untuk Google
 const MERK = 'Central Niaga Hardware';
 const JUDUL = { home: `${MERK} Pandaan — Jotun Studio, Wall Panel, WPC & Material Bangunan`, blog: `Blog & Tips Material Bangunan — ${MERK}`, kontak: `Kontak & Lokasi Toko — ${MERK} Pandaan` };
-const DESK_AWAL = (!jalur() && document.querySelector('meta[name="description"]')?.content) || 'Toko material bangunan & interior di Pandaan, Pasuruan: cat Jotun, wall panel, wall board, HPL, pintu dan lainnya. Konsultasi gratis via WhatsApp.';
+const DESK_AWAL = (!jalur() && document.querySelector('meta[name="description"]')?.content) || 'Toko material bangunan & interior di Pandaan, Pasuruan: cat Jotun, wall panel, wall board, pintu, perlengkapan safety dan lainnya. Konsultasi gratis via WhatsApp.';
 function setMeta(r, desk) {
   const m = document.querySelector('meta[name="description"]'), c = document.querySelector('link[rel="canonical"]');
   if (m) m.content = desk ? String(desk).replace(/\s+/g, ' ').trim().slice(0, 160) : DESK_AWAL;

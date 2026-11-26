@@ -20,6 +20,7 @@ const DATA_FILE = 'assets/js/pengaturan.js';
 function siapkan(d) {
   d = clone(d);
   d.produk = d.produk || [];
+  d.ulasan = Object.assign({ rating: '', jumlah: '', link: '', daftar: [] }, d.ulasan); d.ulasan.daftar = d.ulasan.daftar || [];
   d.produk.forEach(p => { p.spesifikasi = p.spesifikasi || []; p.tagline = p.tagline || ''; p.deskripsi = p.deskripsi || ''; if (!p.tipe) p.motif = p.motif || []; });
   return d;
 }
@@ -46,6 +47,7 @@ const TPL = {
   grup: () => ({ nama: 'Grup Baru', spesifikasi: [], motif: [] }),
   gmotif: () => ({ nama: '', foto: '' }),
   portofolio: () => ({ judul: '', kategori: '', foto: '', tekstur: 'wood oak' }),
+  ulasan: () => ({ nama: '', waktu: '', teks: '' }),
   blog: () => ({ id: '', label: 'Tips', judul: '', tanggal: new Date().toISOString().slice(0, 10), ringkas: '', foto: '', isi: '' }),
 };
 const TEKSTUR = [['stn', 'Batu / abu'], ['wht', 'Putih'], ['brd', 'Krem'], ['hpl', 'Abu terang'], ['wood oak', 'Kayu terang'], ['wood wal', 'Kayu gelap'], ['wood gry', 'Kayu abu'], ['wood blk', 'Kayu hitam']];
@@ -347,6 +349,30 @@ function editorPortofolio() {
   <p class="hint">Isi judul dulu, lalu klik kotak foto untuk mengunggah.</p>`;
 }
 
+/* ---------- Ulasan Google ---------- */
+function editorUlasan() {
+  const U = S.ulasan, list = U.daftar;
+  return `<div class="hd"><div><div class="eb">Konten</div><h1>Ulasan Google</h1></div>
+    <div class="hd-act"><a class="b ghost sm" href="index.html#ulasan" target="_blank" rel="noopener">Lihat di website ↗</a></div></div>
+  <p class="lead">Bagian <b>Ulasan Google</b> di beranda: rating toko + beberapa ulasan pelanggan. Website menampilkan maksimal <b>5 ulasan</b> teratas.</p>
+  <div class="note info"><b>Cara mengisi:</b> buka profil toko di Google Maps → <b>Ulasan</b> → urutkan <b>Paling relevan</b>.
+    Pilih ulasan <b>bintang 5</b>, salin nama &amp; isi ulasan <b>persis apa adanya</b> (jangan diubah), lalu tempel di sini.
+    Perbarui rating &amp; jumlah ulasan sesekali agar sama dengan Google.</div>
+  <section class="card"><h2>Ringkasan rating</h2><div class="grid">
+    ${inp('ulasan.rating', 'Rating', { ph: '4,9' })}
+    ${inp('ulasan.jumlah', 'Jumlah ulasan', { ph: '1.792' })}
+    ${inp('ulasan.link', 'Link ke ulasan Google', { full: true, hint: 'kosongkan untuk memakai link Google Maps di Kontak' })}
+  </div></section>
+  ${list.map((u, i) => { const B = `ulasan.daftar.${i}`; return `<section class="card">
+    <div class="row" style="margin-bottom:14px;justify-content:space-between"><b>★★★★★ Ulasan ${i + 1}${i >= 5 ? ' <em style="font-weight:400">(tidak tampil — maks. 5)</em>' : ''}</b>${aksiItem(B)}</div>
+    <div class="grid">
+      ${inp(`${B}.nama`, 'Nama pemberi ulasan', { ph: 'sesuai di Google' })}
+      ${inp(`${B}.waktu`, 'Waktu', { ph: 'mis. 2 bulan lalu', hint: 'opsional' })}
+      ${inp(`${B}.teks`, 'Isi ulasan', { full: true, area: true, rows: 4 })}
+    </div></section>`; }).join('') || '<p class="empty">Belum ada ulasan. Bagian ulasan tetap tampil dengan rating saja.</p>'}
+  <button type="button" class="b line" data-act="add" data-p="ulasan.daftar" data-tpl="ulasan">+ Tambah ulasan</button>`;
+}
+
 /* ---------- Blog ---------- */
 function editorBlog() {
   const list = S.blog || (S.blog = []);
@@ -450,13 +476,13 @@ function editorPanduan() {
 function renderNav() {
   $('#nav-produk').innerHTML = S.produk.map((p, i) => `<a data-tab="produk" data-i="${i}" class="${view.tab === 'produk' && view.i === i ? 'on' : ''}"><span>${esc(p.nama || 'Tanpa nama')}</span><small>${p.tipe ? 'tipe' : (p.motif || []).length + ' motif'}</small></a>`).join('');
   $$('.side nav a[data-tab]:not([data-i])').forEach(a => a.classList.toggle('on', view.tab === a.dataset.tab));
-  $('#n-pf').textContent = (S.portofolio || []).length; $('#n-blog').textContent = (S.blog || []).length;
+  $('#n-pf').textContent = (S.portofolio || []).length; $('#n-blog').textContent = (S.blog || []).length; $('#n-ul').textContent = (S.ulasan?.daftar || []).length;
 }
 function render() {
   const y = scrollY;
   const m = $('#main');
   if (view.tab === 'produk') { view.i = Math.min(view.i, S.produk.length - 1); m.innerHTML = S.produk.length ? editorProduk(view.i) : '<div class="hd"><h1>Belum ada produk</h1></div>'; }
-  else m.innerHTML = { katalog: editorKatalog, kontak: editorKontak, portofolio: editorPortofolio, blog: editorBlog, github: editorGithub, panduan: editorPanduan }[view.tab]();
+  else m.innerHTML = { katalog: editorKatalog, kontak: editorKontak, portofolio: editorPortofolio, ulasan: editorUlasan, blog: editorBlog, github: editorGithub, panduan: editorPanduan }[view.tab]();
   renderNav(); isiThumb(m); perbaruiStatus();
   if (view.tab === 'produk' && S.produk.length) isiGaleri(view.i);
   scrollTo(0, y);
