@@ -109,6 +109,8 @@ for (const b of blog.filter(x => x.isi)) {
 // Kontak
 peta.push({ url: halaman({ jalur: 'kontak', judul: `Kontak & Lokasi Toko — ${BRAND} Pandaan`, desk: rapikan(`${K.alamat || ''}. Buka ${K.jam || ''}. WhatsApp ${K.waTampil || ''}.`), gambar: LOGO }), prioritas: '0.8' });
 
+peta.push({ url: `${SITE}/privasi/`, prioritas: '0.3' });
+
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${peta.map(x => `  <url><loc>${x.url}</loc><lastmod>${x.ubah || HARI_INI}</lastmod><priority>${x.prioritas}</priority></url>`).join('\n')}
