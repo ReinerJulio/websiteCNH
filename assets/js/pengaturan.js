@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 13/11/2026, 15.55.09.
+   File ini diperbarui oleh halaman admin (/admin/) — 26/11/2026, 14.28.49.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat PANDUAN-FOTO.md).
 
@@ -25,7 +25,7 @@ const PENGATURAN = {
       id: "jotun",
       nama: "Jotun",
       merek: "JOTUN ",
-      tagline: "JOTUN INTERIOR & EXTERIOR",
+      tagline: "JOTUN INTERIOR & EXTERIOR - Pilihan Cat Jotun Pandaan Terbaik & Terlengkap",
       deskripsi: "JOTUN merupakan merek cat berkualitas untuk kebutuhan interior dan eksterior yang membantu memperindah serta melindungi bangunan Anda. Tersedia berbagai pilihan warna dan produk cat untuk dinding dalam maupun luar ruangan, sehingga Anda dapat menciptakan hunian yang nyaman, elegan, dan tahan lama.\n\nTemukan berbagai pilihan cat JOTUN di Central Niaga Hardware – Jotun Studio Pandaan, mitra kebutuhan cat untuk rumah, bangunan, dan proyek Anda.",
       sampul: "foto/produk/jotun/sampul",
       galeri: "foto/produk/jotun/galeri",
