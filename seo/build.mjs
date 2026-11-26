@@ -21,6 +21,14 @@ const ctx = {};
 vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'assets/js/pengaturan.js'), 'utf8') + ';this.P = PENGATURAN;', ctx, { timeout: 2000 });
 const P = ctx.P;
 const K = P.kontak || {};
+/* Versi file (cache-busting): setiap deploy, CSS/JS diberi ?v=<kode commit> agar browser & server
+   Cloudflare langsung memakai file terbaru, bukan salinan lama yang tersimpan. */
+const VER = (process.env.CF_PAGES_COMMIT_SHA || Date.now().toString(36)).slice(0, 8);
+const versikan = html => html.replace(/((?:href|src)="(?:assets|admin)\/[^"?]+\.(?:css|js))(?:\?v=[^"]*)?"/g, `$1?v=${VER}"`);
+for (const f of ['index.html', 'admin/index.html']) {
+  const file = path.join(ROOT, f);
+  fs.writeFileSync(file, versikan(fs.readFileSync(file, 'utf8')));
+}
 const TEMPLATE = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 if (!/<!-- SEO:MULAI[\s\S]*?<!-- SEO:SELESAI -->/.test(TEMPLATE)) throw new Error('Penanda SEO tidak ada di index.html');
 
