@@ -561,7 +561,7 @@ function buatFileData() {
    ---------------------------------------------------------------------
    File ini diperbarui oleh halaman admin (/admin/) — ${new Date().toLocaleString('id-ID')}.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
-   langsung juga boleh (lihat PANDUAN-FOTO.md).
+   langsung juga boleh (lihat panduan/foto.md).
 
    Foto: tulis path TANPA ekstensi — .jpg/.jpeg/.png/.webp dikenali otomatis.
    Buka index.html?cekfoto untuk melihat foto yang sudah/belum ada.

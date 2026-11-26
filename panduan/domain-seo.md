@@ -55,7 +55,11 @@ Klik **Save**. Perintah ini aman: jika ada masalah pada skrip SEO, website tetap
 
 Google sebaiknya hanya melihat **satu** alamat, yaitu `https://centralniagahardware.com`.
 
-**a. www → tanpa www:** pilih domain `centralniagahardware.com` → **Rules → Redirect Rules → Create rule → pilih template "Redirect from WWW to root"** → Deploy.
+**a. www → tanpa www:**
+1. **DNS → Records → Add record**: Type `CNAME`, Name `www`, Target `centralniagahardware.com`, Proxy **menyala** (awan oranye).
+   Tanpa record ini alamat www tidak bisa dibuka sama sekali.
+2. **Rules → Redirect Rules → Create rule → template "Redirect from WWW to root"** → Deploy.
+3. **SSL/TLS → Edge Certificates → Always Use HTTPS** = menyala (agar `http://` juga ikut pindah ke `https://`).
 
 **b. pages.dev → .com:**
 
