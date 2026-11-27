@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 27/11/2026, 12.29.39.
+   File ini diperbarui oleh halaman admin (/admin/) — 27/11/2026, 17.43.11.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat panduan/foto.md).
 
