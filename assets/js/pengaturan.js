@@ -1,7 +1,7 @@
 /* =====================================================================
    PENGATURAN WEBSITE — CENTRAL NIAGA HARDWARE
    ---------------------------------------------------------------------
-   File ini diperbarui oleh halaman admin (/admin/) — 26/11/2026, 14.28.49.
+   File ini diperbarui oleh halaman admin (/admin/) — 27/11/2026, 12.22.25.
    Paling mudah mengubah isi website lewat halaman admin. Mengedit file ini
    langsung juga boleh (lihat panduan/foto.md).
 
@@ -734,10 +734,26 @@ const PENGATURAN = {
     jumlah: "1.792",
     link: "https://share.google/HbRGai5cvOndSn72E",
     daftar: [
-      { nama: "Maudy Wilhelmina", waktu: "4 bulan lalu", teks: "Pelayanannya sangat ramah dan responsif. kualitas produknya juga bagus. Staff sabar menjelaskan perbedaan produk dan membantu memilih warna yang sesuai dengan kebutuhan. Tokonya bersih, nyaman, dan proses pelayanannya cepat. Sangat puas berbelanja di sini, pasti akan kembali lagi. Sangat direkomendasikan" },
-      { nama: "Ina Istanti Rahayu", waktu: "1 tahun lalu", teks: "Baru tau kalau di toko ini lengkap banget, alat teknik, bahan bangunan, cat, semuanya adaa, pegawainya ramah, tempatnya bersih nyaman, bakal langganan terus disini" },
-      { nama: "mgs multimedia", waktu: "2 bulan lalu", teks: "Toko perlangkapan Hardware dan perkakas terlengkap di pandaan serta peralatan bangunan. Harga bersaing" },
-      { nama: "Musa Abdul Jabbar", waktu: "3 minggu lalu", teks: "Tempat yang lengkap, dan harga termasuk affordable, termasuk berbagai janis cat." },
+      {
+        nama: "Maudy Wilhelmina",
+        waktu: "4 bulan lalu",
+        teks: "Pelayanannya sangat ramah dan responsif. kualitas produknya juga bagus. Staff sabar menjelaskan perbedaan produk dan membantu memilih warna yang sesuai dengan kebutuhan. Tokonya bersih, nyaman, dan proses pelayanannya cepat. Sangat puas berbelanja di sini, pasti akan kembali lagi. Sangat direkomendasikan"
+      },
+      {
+        nama: "Ina Istanti Rahayu",
+        waktu: "1 tahun lalu",
+        teks: "Baru tau kalau di toko ini lengkap banget, alat teknik, bahan bangunan, cat, semuanya adaa, pegawainya ramah, tempatnya bersih nyaman, bakal langganan terus disini"
+      },
+      {
+        nama: "mgs multimedia",
+        waktu: "2 bulan lalu",
+        teks: "Toko perlangkapan Hardware dan perkakas terlengkap di pandaan serta peralatan bangunan. Harga bersaing"
+      },
+      {
+        nama: "Musa Abdul Jabbar",
+        waktu: "3 minggu lalu",
+        teks: "Tempat yang lengkap, dan harga termasuk affordable, termasuk berbagai janis cat."
+      },
       { nama: "Ayu Yunita", waktu: "1 minggu lalu", teks: "Pelayanan nya baik dan ramah .." }
     ]
   },
